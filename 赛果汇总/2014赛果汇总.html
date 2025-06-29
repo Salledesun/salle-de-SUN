@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>孙颖莎比赛赛果汇总</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans SC', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary-color: #e6f7ff;
+            --secondary-color: #b3e0ff;
+            --accent-color: #5cb3ff;
+            --dark-accent: #3a7bbd;
+            --text-color: #1a3c5a;
+            --light-text: #5a7a9a;
+            --card-bg: #ffffff;
+            --phase-bg: #f0f9ff;
+            --breakthrough-bg: #e6f2ff;
+            --shadow: 0 4px 20px rgba(92, 179, 255, 0.15);
+            --hover-color: #d1edff;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2ff);
+            color: var(--text-color);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 0 30px;
+            animation: fadeIn 1s ease;
+        }
+        
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            color: var(--text-color);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            font-weight: 700;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+            color: #2c577a;
+        }
+        
+        .year-badge {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 10px 30px;
+            border-radius: 40px;
+            font-weight: 800;
+            margin-top: 30px;
+            box-shadow: var(--shadow);
+        }
+        
+        /* 下拉选择区域样式 */
+        .project-selector {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            margin: 40px auto;
+            max-width: 800px;
+            box-shadow: var(--shadow);
+            animation: slideUp 0.8s ease;
+            border: 1px solid var(--secondary-color);
+        }
+        
+        .selector-title {
+            text-align: center;
+            margin-bottom: 25px;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .selector-title i {
+            margin-right: 12px;
+            color: var(--accent-color);
+        }
+        
+        .project-dropdown {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid var(--secondary-color);
+            border-radius: 12px;
+            background: var(--primary-color);
+            font-size: 1.1rem;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%235cb3ff'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 20px center;
+            background-size: 20px;
+            font-weight: 500;
+        }
+        
+        .project-dropdown:hover {
+            background-color: var(--hover-color);
+            border-color: var(--accent-color);
+        }
+        
+        .project-dropdown:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(92, 179, 255, 0.3);
+        }
+        
+        .dropdown-container {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        
+        .dropdown-label {
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            background: white;
+            padding: 0 8px;
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+        
+        .selector-description {
+            text-align: center;
+            font-size: 1.05rem;
+            color: var(--light-text);
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .details-section {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin: 40px 0 60px;
+            box-shadow: var(--shadow);
+            animation: fadeIn 1s ease;
+            position: relative;
+            border: 1px solid var(--secondary-color);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--text-color);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+        
+        .project-detail {
+            margin-bottom: 60px;
+            padding: 30px;
+            border-radius: 12px;
+            background: var(--card-bg);
+            box-shadow: 0 4px 15px rgba(92, 179, 255, 0.1);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .project-detail:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(92, 179, 255, 0.2);
+        }
+        
+        .project-detail h3 {
+            font-size: 1.8rem;
+            color: var(--text-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .project-detail h3 i {
+            margin-right: 12px;
+            color: var(--accent-color);
+        }
+        
+        .project-overview {
+            display: flex;
+            margin-bottom: 30px;
+            gap: 30px;
+        }
+        
+        .overview-text {
+            flex: 1;
+        }
+        
+        .project-stats {
+            flex: 0 0 300px;
+            background: var(--phase-bg);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid var(--secondary-color);
+        }
+        
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px dashed var(--secondary-color);
+        }
+        
+        .stat-item:last-child {
+            border-bottom: none;
+        }
+        
+        .stat-label {
+            color: var(--light-text);
+            font-weight: 500;
+        }
+        
+        .stat-value {
+            font-weight: 600;
+            color: var(--dark-accent);
+        }
+        
+        .project-detail p {
+            line-height: 1.7;
+            margin-bottom: 20px;
+            color: var(--light-text);
+        }
+        
+        .project-detail ul {
+            padding-left: 20px;
+            margin: 15px 0;
+        }
+        
+        .project-detail li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        /* 项目阶段样式 */
+        .project-phases {
+            margin: 40px 0;
+        }
+        
+        .phases-title {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+            color: var(--text-color);
+            font-size: 1.5rem;
+        }
+        
+        .phases-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+        
+        .phases-container {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .phase-card {
+            flex: 1;
+            background: var(--phase-bg);
+            border-radius: 12px;
+            padding: 25px;
+            border: 1px solid var(--secondary-color);
+            transition: all 0.3s ease;
+        }
+        
+        .phase-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+        
+        .phase-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            color: var(--dark-accent);
+        }
+        
+        .phase-title i {
+            margin-right: 10px;
+            background: var(--accent-color);
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .phase-content h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+        
+        .breakthroughs {
+            margin-top: 20px;
+        }
+        
+        .breakthrough {
+            background: var(--breakthrough-bg);
+            border-radius: 10px;
+            padding: 18px;
+            margin-bottom: 15px;
+            border-left: 3px solid var(--accent-color);
+        }
+        
+        .breakthrough h5 {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            color: var(--dark-accent);
+        }
+        
+        .breakthrough h5 i {
+            margin-right: 8px;
+            color: var(--accent-color);
+        }
+        
+        .breakthrough p {
+            color: var(--light-text);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--accent-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(92, 179, 255, 0.4);
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: var(--light-text);
+            font-size: 0.95rem;
+            border-top: 1px solid var(--secondary-color);
+            margin-top: 20px;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .project-selector {
+                padding: 20px;
+            }
+            
+            .selector-title {
+                font-size: 1.3rem;
+            }
+            
+            .project-dropdown {
+                padding: 12px 15px;
+                font-size: 1rem;
+            }
+            
+            .details-section {
+                padding: 25px;
+            }
+            
+            .project-detail {
+                padding: 20px;
+            }
+            
+            .project-detail h3 {
+                font-size: 1.5rem;
+            }
+            
+            .project-overview {
+                flex-direction: column;
+            }
+            
+            .project-stats {
+                width: 100%;
+            }
+            
+            .phases-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>孙颖莎比赛赛果汇总</h1>
+            <p>🌻</p>
+            <div class="year-badge">2014</div>
+        </header>
+        
+        <!-- 导航汇总区域 -->
+        <div class="project-selector">
+            <h2 class="selector-title"><i class="fas fa-folder-open"></i> 导航目录</h2>
+            
+            <div class="dropdown-container">
+                <span class="dropdown-label">选择比赛查看详情</span>
+                <select class="project-dropdown" id="projectDropdown" onchange="scrollToProject(this.value)">
+                    <option value="" disabled selected>请选择比赛...</option>
+                    <option value="project1">2014年乒乓球俱乐部甲B比赛（第一站）</option>
+                    <option value="project2">2014年全国少年乒乓球锦标赛</option>
+                    <option value="project3">2014年乒乓球俱乐部甲B比赛（第二站）</option>
+					<option value="project4">2014亚洲青少年乒乓球锦标赛</option>
+					<option value="project5">2014年全国青年乒乓球锦标赛</option>
+					<option value="project6">2014年全国乒乓球锦标赛（决赛）</option>
+                </select>
+            </div>
+            
+            <p class="selector-description">
+                可以通过下拉菜单选择跳转到具体比赛场次查看赛果，也可以直接滚动页面按时间查看不同比赛赛果。
+            </p>
+        </div>
+		
+		
+        
+        <!-- 比赛赛果区域 -->
+        <div class="details-section">
+            <h2 class="section-title">比赛赛果</h2>
+            <div class="project-detail" id="project1">
+                <h3>2014年乒乓球俱乐部甲B比赛（第一站）</h3>
+				<p><strong>比赛时间：</strong> 2014.05.07—2014.05.11 </p>
+                <p><strong>比赛地点：</strong> 河南·漯河</p>
+                
+                <!-- 比赛比分 -->
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>女团：并列第1名</h4>
+                            </div>
+                            <div class="phase-content">
+                                <p>第一阶段：7胜积分14，小组第一</p>
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <h5>小组赛第一轮：河北霸州海润 3-1 山东体彩</h5>
+                                        <ul>
+											<li>第三盘：孙颖莎 1-3 单晓婧（9,-9,-6,-6）</li>
+										</ul>
+										<h5>小组赛第二轮：河北霸州海润 3-0 川威劲力先锋汽车二队</h5>
+                                        <ul>
+											<li>第三盘：孙颖莎 3-0 赵静（5,3,7）</li>
+										</ul>
+										<h5>小组赛第三轮：河北霸州海润 3-0 正大万浦一队 </h5>
+                                        <ul>
+											<li>第三盘：孙颖莎 3-0 陈震亚（6,5,4）</li>
+										</ul>
+										<h5>小组赛第四轮：河北霸州海润 3-1 沈阳师范大学</h5>
+                                        <ul>
+											<li>第三盘：孙颖莎 2-3 何艾格（10,6,-8,-8,-8）</li>
+										</ul>
+										<h5>小组赛第五轮：河北霸州海润 3-0 广东二沙二队</h5>
+                                        <ul>
+											<li>第三盘：孙颖莎 3-0 廖薇（1,1,5）</li>
+										</ul>
+										<h5>小组赛第六轮：河北霸州海润 3-0 山东胜利东胜二队</h5>
+                                        <ul>
+											<li>第一盘：孙颖莎 3-0 辛成琳（6,6,7）</li>
+										</ul>
+										<h5>小组赛第七轮：河北霸州海润 3-0 江阴正恒南航附中 </h5>
+                                        <ul>
+											<li>第三盘：孙颖莎 3-0 薛宇媛（4,5,4）</li>
+										</ul>
+                                    </div>
+                                    
+									<p>第二阶段：并列第一</p>
+									<div class="breakthroughs">
+										<div class="breakthrough">
+											<h5>1/8决赛：河北霸州海润 3-0 云南电网</h5>
+											<ul>
+												<li>第三盘：孙颖莎 3-0 徐佐嘉蓉（3,5,8）</li>
+											</ul>
+											
+											<h5>1/4决赛：河北霸州海润 3-0 湖北富思特一队 </h5>
+											<ul>
+												<li>第三盘：孙颖莎 3-0 涂茜钰（9,4,4）</li>
+											</ul>
+											<h5>半决赛：河北霸州海润 3-1 天津队</h5>
+											<ul>
+												<li>第二盘：孙颖莎 0-3 穆静毓（-11,-6,-8）</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		
+			<div class="project-detail" id="project2">
+				<h3>2014年全国少年乒乓球锦标赛</h3>
+				<p><strong>比赛时间：</strong> 2014.08.01—2014.08.07 </p>
+				<p><strong>比赛地点：</strong> 湖北·宜昌</p>
+				
+				<!-- 比赛比分 -->
+				<div class="project-phases">
+					<div class="phases-container">
+						<div class="phase-card">
+							<div class="phase-title">
+								<h4>女单：64强</h4>
+							</div>
+							<div class="phase-content">
+								<p>第一阶段：4胜积分8，小组第一</p>
+								<div class="breakthroughs">
+									<div class="breakthrough">
+										<p>
+											小组赛第一轮：孙颖莎 3-0 赵尚（江苏）（5,11,4）
+											<br>
+											小组赛第二轮：孙颖莎 3-0 宋雨寒（贵州）（4.6.7）
+											<br>
+											小组赛第三轮：孙颖莎 3-0 王一淼（解放军）（10,5,5）
+											<br>
+											小组赛第四轮：孙颖莎 3-0 李美慧（陕西）（2,5,4）
+										</p>
+									</div>
+								</div>	
+								<p>第二阶段：</p>
+								<div class="breakthroughs">
+									<div class="breakthrough">
+										<p>
+											1/32决赛：孙颖莎1-4郭雨涵（北京）（-8,-5,5,-9,-3）
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="project-phases">
+					<div class="phases-container">
+						<div class="phase-card">
+							<div class="phase-title">
+								<h4>女团：第6名</h4>
+							</div>
+							<div class="phase-content">
+								<p>第一阶段：3胜积分6，小组第一</p>
+								<div class="breakthroughs">
+									<div class="breakthrough">
+										<h5>小组赛第一轮：河北 3-0 云南</h5>
+										<ul>
+											<li>第一盘：孙颖莎 3-0 张慧怡（7,9,9）</li>
+										</ul>
+										<h5>小组赛第二轮：河北 3-0 江西 </h5>
+										<ul>
+											<li>第二盘：孙颖莎 3-0 晏子怡（4,1,4）</li>
+										</ul>
+										<h5>小组赛第三轮：河北 3-1 广东</h5>
+										<ul>
+											<li>第一盘：孙颖莎 3-1 年师瑶（5,7,-11,11）</li>
+											<li>第四盘：孙颖莎 3-0 黄頴琦（3,8,10）</li>
+										</ul>
+									</div>
+								</div>	
+								<p>第二阶段：</p>
+								<div class="breakthroughs">
+									<div class="breakthrough">
+										<h5>1/8决赛：河北 3-2 上海</h5>
+										<ul>
+											<li>第二盘：孙颖莎 2-3 陈明佳（2,-10,9,-9,-7） </li>
+											<li>第四盘：孙颖莎 3-1 朱家希（1,-8,5,2）</li>
+										</ul>
+										<h5>1/4决赛：河北 2-3 解放军</h5>
+										<ul>
+											<li>第二盘：孙颖莎 3-0 张宇和（4,3,7）</li>
+											<li>第四盘：孙颖莎 0-3 黄凡真（-6,-10,-7）</li>
+										</ul>
+										<h5>5-8名排位赛：河北 3-0 四川</h5>
+										<ul>
+											<li>第二盘：孙颖莎 3-0 于依帆（6,5,5）</li>
+										</ul>
+										<h5>5-6名排位赛：河北 1-3 宁夏银川</h5>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+    		<div class="project-detail" id="project3">
+    			<h3>2014年乒乓球俱乐部甲B比赛（第二站）</h3>
+    			<p><strong>比赛时间：</strong> 2014.08.11—2014.08.15 </p>
+    			<p><strong>比赛地点：</strong> 四川·成都</p>
+    			
+    			<!-- 比赛比分 -->
+    			<div class="project-phases">
+    				<div class="phases-container">
+    					<div class="phase-card">
+    						<div class="phase-title">
+    							<h4>女团：第1名</h4>
+    						</div>
+    						<div class="phase-content">
+    							<p>第一阶段：B组第1 </p>
+    							<div class="breakthroughs">
+    								<div class="breakthrough">
+    									<h5>1/8决赛：轮空 </h5>
+    									<h5>1/4决赛：河北霸州海润 3-0 北京首钢</h5>
+    									<ul>
+    										<li>第三盘：孙颖莎 3-0 董铮（8,11,8）</li>
+    									</ul>
+    									<h5>半决赛：河北霸州海润 3-0 湖北富思特一队</h5>
+    									<ul>
+    										<li>第三盘：孙颖莎 3-0 涂茜钰（-10,7,9,8）</li>
+    									</ul>
+    									<h5>决赛：河北霸州海润 3-2 上海中学华东理工一队 </h5>
+    									<ul>
+    										<li>第三盘：孙颖莎 3-1 李清韵（10,-8,6,3）</li>
+    									</ul>
+    								</div>
+    								
+    								<p>第二阶段：第1名</p>
+    								<div class="breakthroughs">
+    									<div class="breakthrough">
+    										<h5>1/8决赛：河北霸州海润 3-0 四川川威劲利先锋二队</h5>
+    										<ul>
+    											<li>第三盘：孙颖莎3-1 刘天禄（4,-9,5,5）</li>
+    										</ul>
+    										<h5>1/4决赛：河北霸州海润 3-2 四川川威劲力先锋一队</h5>
+    										<ul>
+    											<li>第三盘：孙颖莎 3-2 郭琳（4,6,-9,-10,8）</li>
+    										</ul>
+    										<h5>半决赛：河北霸州海润 3-0 深圳大学·动感地带</h5>
+    										<ul>
+    											<li>第三盘：孙颖莎 3-1 吴月皎（10,8,-12,4）</li>
+    										</ul>
+    										<h5>决赛：河北霸州海润 3-0 湖北富思特一队 </h5>
+    										<ul>
+    											<li>第三盘：孙颖莎 3-0 涂茜钰（10,6,11）</li>
+    										</ul>
+    									</div>
+    								</div>
+    							</div>
+    						</div>
+    					</div>
+    				</div>
+    			</div>
+    		</div>
+
+		    <div class="project-detail" id="project4">
+				<h3>2014亚洲青少年乒乓球锦标赛</h3>
+				<p><strong>比赛时间：</strong> 2014.9.12-2014.9.16 </p>
+				<p><strong>比赛地点：</strong> 印度.孟买</p>
+				
+				<!-- 比赛比分 -->
+				<div class="project-phases">
+					<div class="phases-container">
+						<div class="phase-card">
+							<div class="phase-title">
+								<h4>女单：U15组冠军</h4>
+							</div>
+							<div class="phase-content">
+								<div class="breakthroughs">
+									<div class="breakthrough">
+										<p>
+											小组赛第一轮：孙颖莎 3 -0 帕萨克艾什瓦里亚（印度）（3,6,3）
+											<br>
+											小组赛第二轮：孙颖莎 3-0 梁葭蕴(中国香港)（5,6,3）
+											<br>
+											1/8决赛：孙颖莎 3-0 金宥真(韩国)（3，4，3）
+											<br>
+											1/4决赛：孙颖莎 3 -2 早田希娜（日本）（10,5,-11,-5,7）
+											<br>
+											半决赛：孙颖莎 4-1 钱天一（中国）（3,10,-8,10,5）
+											<br>
+											决赛：孙颖莎 4-0 穆静毓（中国）（9,7,9,7）
+										</p>
+									</div>
+								</div>	
+								
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="project-phases">
+					<div class="phases-container">
+						<div class="phase-card">
+							<div class="phase-title">
+								<h4>女团：U15组亚军</h4>
+							</div>
+							<div class="phase-content">
+								<div class="breakthroughs">
+									<div class="breakthrough">
+										<h5>小组赛第一轮： 中国 3-0 约旦</h5>
+										<ul>
+											<li>第三盘：孙颖莎/钱天一 3-0 利马.卡马特/阿尔霍里蒂娜(4,4,5) </li>
+										</ul>
+										<h5>小组赛第二轮：中国 3-0 印度</h5>
+										<ul>
+											<li>第二盘：孙颖莎 3-0 奈纳(7,7,6) </li>
+										</ul>
+										<h5>1/4决赛：中国 3-0 中国台北</h5>
+										<ul>
+											<li>第二盘：孙颖莎 3-0 蔡育勤(8,4,4)  </li>
+										</ul>
+										<h5>半决赛：中国 3-0 中国香港</h5>
+										<ul>
+											<li>第二盘：孙颖莎 3-0 吴嘉敏(2,5,5) </li>
+										</ul>
+										<h5>决赛：中国 2 -3 日本</h5>
+										<ul>
+											<li>第一盘：孙颖莎 2-3 伊藤美诚（10,-9,2,-8,-9）</li>
+											<li>第四盘：孙颖莎 3-0 平野美宇（9,9,7）</li>
+										</ul>
+									</div>
+								</div>	
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="project-detail" id="project5">
+				<h3>2014年全国青年乒乓球锦标赛</h3>
+				<p><strong>比赛时间：</strong> 2014.09.27—2014.10.03</p>
+				<p><strong>比赛地点：</strong> 江西·新余</p>
+				
+				<!-- 比赛比分 -->
+				<div class="project-phases">
+					<div class="phases-container">
+						<div class="phase-card">
+							<div class="phase-title">
+								<h4>女单：第17名</h4>
+							</div>
+							<div class="phase-content">
+								<p>第一阶段：3胜积分6，小组第一</p>
+								<div class="breakthroughs">
+									<div class="breakthrough">
+										<p>
+											小组赛第一轮：孙颖莎 3-1 刘铭（云南电网）（-7,7,7,9） 
+											<br>
+											小组赛第二轮：孙颖莎 3-0 齐菲（天津）（6,1,7）
+											<br>
+											小组赛第三轮：孙颖莎 3-0 张优佳（山西）（4,6,7）
+										</p>
+									</div>
+								</div>	
+								<p>第二阶段：</p>
+								<div class="breakthroughs">
+									<div class="breakthrough">
+										<p>
+											1/32决赛：孙颖莎 4-2 詹利平（广东）（3,6,-9,7,-4,6） 
+											<br>
+											1/16决赛：孙颖莎 3-4  蒋慧（中国乒校）（6,-5,8,-9,9,-6,-11） 
+											<br>
+											17-32名排位赛：孙颖莎 3-0 商圆圆（安徽）（7,7,8）
+											<br>
+											17-24名排位赛：孙颖莎 3-0 刘靖轩（广西）（10,8,8）
+											<br>
+											17-20名排位赛：孙颖莎 3-2 王姝（华东理工）（8,-10,8,-9，8）
+											<br>
+											17-18名排位赛：孙颖莎 3-2 刘铭（云南电网）（3,-5,-6,5,1）
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="project-phases">
+					<div class="phases-container">
+						<div class="phase-card">
+							<div class="phase-title">
+								<h4>女团：冠军</h4>
+							</div>
+							<div class="phase-content">
+								<p>第一阶段：3胜积分6，小组第一</p>
+								<div class="breakthroughs">
+									<div class="breakthrough">
+										<h5>小组赛第一轮：河北 3-0 青海</h5>
+										<ul>
+											<li>第三盘：孙颖莎 3-0 张丹（3,12,6）</li>
+										</ul>
+										<h5>小组赛第二轮：河北 3-2 解放军</h5>
+										<ul>
+											<li>第三盘：孙颖莎 3-0 赵逸飞（8,8,3）</li>
+										</ul>
+										<h5>小组赛第三轮：河北 3-1 西藏世奥德</h5>
+									</div>
+								</div>	
+								<p>第二阶段：</p>
+								<div class="breakthroughs">
+									<div class="breakthrough">
+										<h5>1/8决赛：河北 3-0 浙江</h5>
+										<ul>
+											<li>第三盘：孙颖莎 3-1 林思怡 （6,3,-9,9）</li>
+										</ul>
+										<h5>1/4决赛：河北 3-1 江苏神鹰</h5>
+										<ul>
+											<li>第三盘：孙颖莎 3-1 蔡一铭（2,7,-7,2）</li>
+										</ul>
+										<h5>半决赛：河北 3-1 北京</h5>
+										<ul>
+											<li>第三盘：孙颖莎 1-3 郭雨涵（8,-4,-7,-9）</li>
+										</ul>
+										<h5>决赛：河北 3-0 天津</h5>
+										<ul>
+											<li>第三盘：孙颖莎 3-0 孙晓彤（6,11,8）</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="project-detail" id="project6">
+				<h3>2014年全国乒乓球锦标赛（决赛）</h3>
+				<p><strong>比赛时间：</strong> 2014.11.02—2014.11.09 </p>
+				<p><strong>比赛地点：</strong> 湖北·黄石</p>
+				
+				<!-- 比赛比分 -->
+				<div class="project-phases">
+					<div class="phases-container">
+						<div class="phase-card">
+							<div class="phase-title">
+								<h4>女单：预选赛未出线</h4>
+							</div>
+							<div class="phase-content">
+								<div class="breakthroughs">
+									<div class="breakthrough">
+										<p>
+											预选赛第一轮：孙颖莎 0-4 范思琦（四川）（-10,-12,-6,-4）
+										</p>
+									</div>
+								</div>	
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="project-phases">
+					<div class="phases-container">
+						<div class="phase-card">
+							<div class="phase-title">
+								<h4>女团：小组赛未出线</h4>
+							</div>
+							<div class="phase-content">
+								<p>第一阶段：2负积分2，小组第三</p>
+								<div class="breakthroughs">
+									<div class="breakthrough">
+										<h5>小组赛第一轮：河北 1-3 江苏二队</h5>
+										<ul>
+											<li>第三盘：孙颖莎 2-3 谢心悦(-5,7,11,-7,-10) </li>
+										</ul>
+										<h5>小组赛第二轮：河北 0-3 山东</h5>
+										<ul>
+											<li>第三盘：孙颖莎 0-3 顾玉婷（-6,-2,-9）</li>
+										</ul>
+									</div>
+								</div>	
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="project-phases">
+					<div class="phases-container">
+						<div class="phase-card">
+							<div class="phase-title">
+								<h4>混双：16强（搭档梁靖崑）</h4>
+							</div>
+							<div class="phase-content">
+								<div class="breakthroughs">
+									<div class="breakthrough">
+										<p>
+											1/32决赛：轮空 
+											<br>
+											1/16决赛：孙颖莎/梁靖崑 3-1 郭文/许诺（云南电网）（-9,6,5,3） 
+											<br>
+											1/8决赛：孙颖莎/梁靖崑 0-3 张煜东/赵岩（南通）（-5,-6,-9）
+										</p>
+									</div>
+								</div>	
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		
+               
+        <footer>
+            <p>© SUNDAY放映室 | 孙颖莎赛果记录</p>
+			<p>成长的每一个脚印都弥足珍贵，永远期待孙颖莎的下一个赛场</p>
+        </footer>
+    </div>
+    
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // 平滑滚动到项目详情
+        function scrollToProject(projectId) {
+            if (!projectId) return;
+            
+            const element = document.getElementById(projectId);
+            element.scrollIntoView({behavior: 'smooth', block: 'start'});
+            
+            // 添加高亮效果
+            element.style.backgroundColor = '#e6f7ff';
+            element.style.boxShadow = '0 0 0 4px rgba(92, 179, 255, 0.3)';
+            setTimeout(() => {
+                element.style.backgroundColor = '';
+                element.style.boxShadow = '';
+            }, 2000);
+            
+            // 更新下拉框显示当前项目
+            document.getElementById('projectDropdown').value = projectId;
+        }
+        
+        // 返回顶部按钮
+        const backToTopBtn = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+        
+        // 添加动画效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const details = document.querySelectorAll('.project-detail');
+            const phases = document.querySelectorAll('.phase-card');
+            
+            details.forEach((detail, index) => {
+                detail.style.animationDelay = `${index * 0.1}s`;
+                detail.style.animation = 'fadeIn 0.8s ease forwards';
+                detail.style.opacity = '0';
+            });
+            
+            phases.forEach((phase, index) => {
+                phase.style.animationDelay = `${index * 0.2 + 0.3}s`;
+                phase.style.animation = 'slideUp 0.8s ease forwards';
+                phase.style.opacity = '0';
+            });
+        });
+    </script>
+</body>
+</html>
