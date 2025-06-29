@@ -4,67 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SUNDAY 资源收藏馆</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
     <style>
-        :root {
-            --primary: #6EC3F4;
-            --secondary: #A2D9FF;
-            --accent: #FFB74D;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        /* 基础样式 */
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 100px;
+        :root {
+            --primary: #4a9bff;
+            --secondary: #a2d9ff;
+            --accent: #ff9e6b;
+            --text: #333;
+            --light: #f8f9fa;
+            --border: #e0e0e0;
         }
 
         body {
-            font-family: 'Microsoft YaHei', sans-serif;
-            background: linear-gradient(150deg, #f0f5ff 0%, #e6f0ff 100%);
+            font-family: 'Noto Sans SC', sans-serif;
+            background: linear-gradient(135deg, #e6f2ff 0%, #f0f8ff 100%);
+            color: var(--text);
+            line-height: 1.6;
             min-height: 100vh;
-            margin: 0;
-            overflow-x: hidden;
+            padding-top: 100px;
         }
 
-        /* 进度条 */
-        .progress-bar {
-            height: 3px;
-            background: var(--accent);
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 999;
-            transition: width 0.3s ease;
-        }
-
-        /* 标题样式 */
+        /* 头部样式 */
         .header {
             text-align: center;
-            padding: 4rem 1rem 3rem;
+            padding: 2rem 1rem;
             position: relative;
+            margin-bottom: 2rem;
         }
 
         .header h1 {
-            font-size: clamp(1.8rem, 6vw, 2.8rem);
-            color: #2C3E50;
+            font-size: clamp(2rem, 6vw, 3rem);
+            color: #2c3e50;
             display: inline-flex;
             align-items: center;
             gap: 1rem;
             padding: 1rem 2rem;
-            background: rgba(255,255,255,0.9);
+            background: rgba(255, 255, 255, 0.9);
             border-radius: 50px;
-            box-shadow: 0 4px 20px rgba(110,195,244,0.2);
+            box-shadow: 0 4px 20px rgba(74, 155, 255, 0.2);
         }
+
 
         /* 导航标签页 */
         nav {
             max-width: 1200px;
-            margin: 2rem auto;
+            margin: 0 auto 3rem;
             padding: 0 1rem;
             position: sticky;
-            top: 0;
-            background: rgba(255,255,255,0.9);
-            backdrop-filter: blur(5px);
+            top: 20px;
             z-index: 100;
         }
 
@@ -76,7 +70,7 @@
         }
 
         .nav-item {
-            padding: 1rem 2rem;
+            padding: 1rem 1.8rem;
             border-radius: 30px;
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
@@ -85,23 +79,29 @@
             align-items: center;
             gap: 0.8rem;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 15px rgba(110,195,244,0.3);
+            box-shadow: 0 4px 15px rgba(74, 155, 255, 0.3);
+            font-weight: 500;
+            transition: all 0.5s ease;
         }
 
         .nav-item.active {
-            background: linear-gradient(135deg, var(--accent) 0%, #FFD93D 100%);
+            background: linear-gradient(135deg, var(--accent) 0%, #ffb74d 100%);
             transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(255,183,77,0.4);
+            box-shadow: 0 6px 20px rgba(255, 158, 107, 0.4);
+        }
+
+        .nav-item:hover {
+            transform: translateY(-3px);
         }
 
         /* 内容区块 */
         .section {
             max-width: 1200px;
             margin: 3rem auto;
-            padding: 2rem;
-            background: rgba(255,255,255,0.95);
+            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 20px;
-            box-shadow: 0 8px 30px rgba(110,195,244,0.1);
+            box-shadow: 0 8px 30px rgba(74, 155, 255, 0.1);
             position: relative;
             opacity: 0;
             transform: translateY(30px);
@@ -113,307 +113,607 @@
             transform: translateY(0);
         }
 
-        /* 响应式设计 */
-        @media (max-width: 768px) {
-            .nav-item {
-                padding: 0.8rem 1.5rem;
-                font-size: 0.9rem;
-            }
-            
-            .section {
-                margin: 2rem 1rem;
-                padding: 1.5rem;
-            }
-            
-            .header h1 {
-                padding: 0.8rem 1.5rem;
-            }
+        .section::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            width: 80%;
+            height: 4px;
+            background: var(--primary);
+            transform: translateX(-50%);
+            border-radius: 2px;
         }
 
-        @media (max-width: 480px) {
-            .nav-tabs {
-                gap: 0.5rem;
-            }
-            
-            .nav-item {
-                padding: 0.6rem 1.2rem;
-            }
+        .section h2 {
+            color: var(--primary);
+            margin-bottom: 1.8rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid var(--secondary);
+            font-size: 2rem;
         }
-		
-		/* PC端3列布局 */
-		@media (min-width: 1024px) {
-			.interview-grid {
-				grid-template-columns: repeat(3, 1fr);
-			}
-			
-			.interview-image {
-				height: 360px; /* 增大PC端图片高度 */
-			}
-		}
 
-		/* 平板端2列布局 */
-		@media (min-width: 768px) and (max-width: 1023px) {
-			.interview-grid {
-				grid-template-columns: repeat(2, 1fr);
-			}
-		}
-
-		/* 移动端垂直排列 */
-		@media (max-width: 767px) {
-			.interview-grid {
-				grid-template-columns: 1fr;
-				gap: 1.5rem;
-			}
-			
-			.interview-image {
-				height: 280px; /* 调整移动端图片高度 */
-			}
-		}
-
-        /* 杂志板块样式 */
-        .media-grid {
+        /* 个人简介 */
+        .bio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .bio-column h3 {
+            color: var(--accent);
+            margin-bottom: 1.2rem;
+            font-size: 1.5rem;
+        }
+
+        .bio-column p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+        }
+
+        .achievements {
+            list-style-type: none;
+        }
+
+        .achievements li {
+            padding: 0.8rem 1rem;
+            margin-bottom: 0.8rem;
+            background: var(--light);
+            border-left: 4px solid var(--primary);
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* 比赛视频 */
+        .video-grid {
+            display: grid;
+            gap: 2.5rem;
+            margin: 2rem 0;
+        }
+
+        .results-column, .videos-column {
+            background: var(--light);
+            padding: 1.8rem;
+            border-radius: 15px;
+        }
+
+        .results-column h3, .videos-column h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+        }
+
+        .achievement-table {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            background-color: #f0f7ff;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background-color: #f5f9ff;
+        }
+
+        .video-collection {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .video-item {
+            display: flex;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s;
+        }
+
+        .video-thumb {
+            position: relative;
+            width: 40%;
+            min-width: 150px;
+            overflow: hidden;
+        }
+
+        .video-thumb img {
+            width: 100%;
+            height: 100%;
+            min-height: 120px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 2.8rem;
+            opacity: 0.8;
+            transition: all 0.3s;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .video-info {
+            padding: 1.2rem;
+            flex-grow: 1;
+        }
+
+        .video-info h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .video-duration {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .pan-link {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.8rem 1.8rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(74, 155, 255, 0.3);
+        }
+
+        .pan-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(74, 155, 255, 0.4);
+        }
+
+        /* 商务代言 */
+        .endorsement-grid {
+            display: grid;
+            gap: 1.8rem;
+            margin-top: 1.5rem;
+        }
+
+        .endorsement-item {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .endorsement-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .endorsement-grid img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s;
+        }
+
+        .endorsement-caption {
+            padding: 1.2rem;
+            text-align: center;
+            background: var(--light);
+        }
+
+        .endorsement-caption h3 {
+            color: var(--primary);
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .endorsement-caption p {
+            color: #666;
+            font-size: 0.9rem;
+            margin: 0.3rem 0 0;
+        }
+
+        /* 杂志媒体 */
+        .grow-grid {
+            display: grid;
+            gap: 2.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .media-category {
+            background: white;
+            border-radius: 15px;
+            padding: 1.8rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+        }
+
+        .media-category h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid var(--secondary);
+            font-size: 1.6rem;
+        }
+
+        .media-content {
+            display: grid;
             gap: 1.5rem;
         }
 
         .media-item {
-            position: relative;
+            display: flex;
+            background: var(--light);
             border-radius: 10px;
             overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s;
             cursor: pointer;
-            transition: transform 0.3s;
         }
 
         .media-item img {
-            width: 100%;
-            height: 250px;
+            width: 120px;
+            height: 160px;
             object-fit: cover;
-            border: 2px solid var(--primary);
-            transition: opacity 0.3s;
+            flex-shrink: 0;
         }
 
-        .media-window {
+        .media-info {
+            padding: 1.2rem;
+            flex-grow: 1;
+        }
+
+        .media-info h4 {
+            color: #333;
+            margin-bottom: 0.5rem;
+            font-size: 1.15rem;
+        }
+
+        .media-info p {
+            color: #666;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        .category-link {
+            display: block;
+            margin-top: 1.5rem;
+            padding: 0.8rem;
+            text-align: center;
+            background: var(--secondary);
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: background 0.3s;
+            font-weight: 500;
+        }
+
+        .category-link:hover {
+            background: var(--primary);
+        }
+
+        .box {
+            margin-bottom: 20px;
+        }
+
+        .box2 {
+            margin-bottom: 40px;
+        }
+
+        .box-caption {
+            text-align: center;
+            padding: 15px;
+            background: var(--light);
+            border-radius: 8px;
+        }
+
+
+        /* 个人专访 */
+        .interview-grid {
+            display: grid;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .interview-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .interview-link {
+            display: block;
+            position: relative;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .interview-image {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            border-radius: 12px 12px 0 0;
+            transition: transform 0.3s;
+        }
+
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .image-overlay span {
+            color: white;
+            font-size: 1.3rem;
+            padding: 10px 20px;
+            border: 2px solid white;
+            border-radius: 30px;
+            background: rgba(0, 0, 0, 0.5);
+            font-weight: 500;
+        }
+
+        .interview-caption {
+            padding: 1.5rem;
+            text-align: center;
+            background: white;
+        }
+
+        .interview-caption h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .interview-caption p {
+            color: #666;
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        /* 浮动窗口系统 */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
             display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .modal-container {
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             width: 90%;
             max-width: 800px;
-            height: 80vh;
+            max-height: 85vh;
             background: white;
-            border-radius: 15px;
-            z-index: 1000;
-            overflow-y: auto;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border-radius: 20px;
+            overflow: hidden;
+            z-index: 1001;
+            opacity: 0;
+            transform: translate(-50%, -45%) scale(0.9);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
         }
 
-        .media-window.active {
-            display: block;
+        .modal-container.active {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
         }
 
-        .media-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            backdrop-filter: blur(5px);
-            z-index: 999;
-            display: none;
-        }
-
-        /* 关闭按钮优化 */
-        .close-btn {
-            position: sticky;
-            top: 10px;
-            float: right;
-            background: var(--accent);
+        .modal-header {
+            padding: 20px 25px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        .close-btn {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 2.2rem;
+            cursor: pointer;
+            width: 45px;
+            height: 45px;
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 1001;
-            margin: 10px;
+            border-radius: 50%;
+            transition: all 0.3s;
         }
 
         .close-btn:hover {
-            transform: scale(1.2) rotate(90deg);
-            background: #ff5252;
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(90deg);
         }
 
-        /* 滚动条样式 */
-        .media-window::-webkit-scrollbar {
-            width: 8px;
-        }
-        .media-window::-webkit-scrollbar-thumb {
-            background: var(--primary);
-            border-radius: 4px;
-        }
-		
-		.bio-grid {
-            display: grid;
-            gap: 2rem;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        }
-		
-		.video-grid {
-            display: grid;
-            grid-template-columns: 300px auto 300px;
-            gap: 2rem;
-        }
-		
-		.endo-grid {
-		    display: grid;
-		    grid-template-columns: repeat(6, 1fr); /* 定义六列，每列等宽 */
-		    grid-template-rows: repeat(3, 300px); /* 定义两行，每行100px */
-		    gap: 10px; /* 设置列与行之间的间隙为20px */
-		}
-
-		.grow-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
+        .modal-content {
+            padding: 30px;
+            max-height: calc(85vh - 120px);
+            overflow-y: auto;
         }
 
-		.paper-grid {
-            display: grid;
-		    grid-template-columns: repeat(3, 1fr); 
-		    grid-template-rows: repeat(2, 160px); 
-		    gap: 10px; /* 设置列与行之间的间隙为10px */
-        }
-		
-		.ttpaper-grid {
-            display: grid;
-		    grid-template-columns: repeat(3, 1fr); 
-		    grid-template-rows: repeat(4, 180px); 
-		    gap: 40px; /* 设置列与行之间的间隙为10px */
-        }
-		
-		.box {
+        .modal-content h3 {
+            color: var(--primary);
             margin-bottom: 20px;
-        }
-		
-		.box2 {
-            margin-bottom: 40px;
+            font-size: 1.6rem;
         }
 
-		.pan-link {
-            display: block;
-            padding: 1rem;
-            background: #f8f9fa;
-            border-radius: 8px;
-            margin: 1rem 0;
-            transition: transform 0.2s;
+        .modal-content p {
+            margin-bottom: 20px;
+            line-height: 1.8;
         }
 
-        .pan-link:hover {
-            transform: translateX(10px);
+        .modal-content img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin: 15px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
-		
-		.image-container {
-            /* text-align: center;  可选：使图片和文字居中 */
-            display: block; /* 确保图片独占一行 */
-            margin: 0 auto; /* 可选：使图片水平居中 */
-            margin-top: 10px; /* 可选：设置图片和文字之间的间距 */
+
+        .modal-footer {
+            padding: 20px 30px;
+            background: var(--light);
+            text-align: right;
         }
-		
-		/* 专访模块样式 */
-		.interview-grid {
-			display: grid;
-			grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-			gap: 2rem 1.5rem;
-			margin-top: 1.5rem;
-		}	
 
-		.interview-item {
-			position: relative;
-			border-radius: 12px;
-			overflow: hidden;
-			transition: transform 0.3s;
-		}
-
-		.interview-link {
-			display: block;
-			position: relative;
-		}
-
-		.interview-image {
-			width: 100%;
-			height: 320px;
-			object-fit: cover;
-			border-radius: 8px;
-			transition: transform 0.3s;
-		}
-
-		.image-overlay {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			background: rgba(0,0,0,0.4);
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			opacity: 0;
-			transition: opacity 0.3s;
-		}
-
-		.image-overlay span {
-			color: white;
-			font-size: 1.2rem;
-			padding: 8px 16px;
-			border: 2px solid white;
-			border-radius: 25px;
-		}
-
-		.interview-caption {
-			padding: 1rem;
-			text-align: center;
-		}
-
-		.interview-caption h3 {
-			color: var(--primary);
-			margin-bottom: 0.5rem;
-		}
-
-		.interview-caption p {
-			color: #666;
-			font-size: 0.9rem;
-		}
-
-		/* 悬停效果 */
-		.interview-item:hover {
-			transform: translateY(-5px);
-		}
-
-		.interview-item:hover .interview-image {
-			transform: scale(1.05);
-		}
-
-		.interview-item:hover .image-overlay {
-			opacity: 1;
-		}
-		
-		footer {
-            text-align: center;
-            padding: 30px 0;
-            color: var(--light-text);
-            font-size: 0.95rem;
-            border-top: 1px solid var(--secondary-color);
-            margin-top: 20px;
+        /* 响应式设计 */
+        @media (min-width: 768px) {
+            .video-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .grow-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .interview-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .endorsement-grid {
+                grid-template-columns: repeat(6, 1fr);
+            }
         }
-		
-		
-		
+
+        @media (min-width: 992px) and (max-width: 1199px) {
+            .endorsement-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 991px) {
+            .endorsement-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .interview-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 767px) {
+            .section {
+                padding: 1.8rem;
+                margin: 2rem 1rem;
+            }
+            
+            .nav-tabs {
+                gap: 0.8rem;
+            }
+            
+            .nav-item {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.95rem;
+            }
+            
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .grow-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .interview-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .endorsement-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .video-thumb {
+                width: 35%;
+            }
+            
+            .interview-image {
+                height: 280px;
+            }
+            
+            .endorsement-grid img {
+                height: 160px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-item {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.9rem;
+            }
+            
+            .video-thumb {
+                width: 40%;
+            }
+            
+            .endorsement-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.2rem;
+            }
+            
+            .media-item img {
+                width: 100px;
+                height: 140px;
+            }
+        }
 
         /* 水印装饰 */
         .watermark {
@@ -423,37 +723,31 @@
             font-size: 20vw;
             z-index: -1;
         }
-
-        /* 加载指示器 */
-        .loader {
-            position: relative;
-            min-height: 200px;
+        
+        .watermark:nth-child(1) {
+            top: 20%;
+            left: 10%;
         }
-
-        .loader::after {
-            content: "";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 40px;
-            height: 40px;
-            border: 4px solid var(--primary);
-            border-radius: 50%;
-            border-top-color: transparent;
-            animation: spin 1s linear infinite;
-            transform: translate(-50%, -50%);
+        
+        .watermark:nth-child(2) {
+            top: 60%;
+            right: 15%;
         }
-
-        @keyframes spin {
-            to { transform: translate(-50%, -50%) rotate(360deg); }
+        
+        footer {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 4rem;
+            background: rgba(255, 255, 255, 0.8);
+            border-top: 1px solid var(--border);
         }
     </style>
 </head>
 <body>
-    <div class="progress-bar"></div>
-
-    <div class="watermark" style="top:20%;left:10%">🏓</div>
-    <div class="watermark" style="top:60%;right:15%">🌻</div>
+    <div class="watermark">🏓</div>
+    <div class="watermark">🌻</div>
 
     <div class="header">
         <h1>
@@ -461,7 +755,7 @@
             SUNDAY 资源收藏馆
             <i class="fas fa-sun"></i>
         </h1>
-		<p style="color:#c1cdcd">🌻收藏鲜活可爱、阳光开朗、实力超强、刻苦努力、霸气有责任心的孙颖莎🌻</p>
+        <p style="color:#c1cdcd"><br>🌻收藏鲜活可爱、阳光开朗、实力超强、刻苦努力、霸气有责任心的孙颖莎🌻</p>
     </div>
 
     <nav>
@@ -486,7 +780,7 @@
                 <i class="fas fa-camera"></i>
                 成长经历
             </a>
-			<a href="#interviews" class="nav-item">
+            <a href="#interviews" class="nav-item">
                 <i class="fas fa-microphone-alt"></i>
                 个人专访
             </a>
@@ -497,69 +791,69 @@
     <section id="bio" class="section">
         <h2>个人介绍</h2>
         <div class="bio-grid">
-            <div>
+            <div class="bio-column">
                 <h3>个人简介</h3>
                 <p>孙颖莎，中国乒乓球运动员。2000年出生于河北省石家庄市。5岁时开始练习乒乓球，10岁进入河北省队，14岁获得全国少年锦标赛女单冠军，同年9月进入国家二队。2017年1月在女乒一二队交流赛中脱颖而出，成功跻身国家一队。2017年日本公开赛（白金站）出道即双冠，又凭借在中国公开赛和亚青赛的出色表现，从无世界排名空降世界第十，央视评价“女乒出了个孙颖莎”。2019年成为当年国际乒联胜率最高的女运动员，2022年7月首次登上世界第一。2023年南非德班世界乒乓球锦标赛夺得职业生涯第一个女子单打世界冠军，2024年澳门新赛制世界杯重启夺得个人第一个世界杯冠军。2025年，在35天内，背靠背成功卫冕世界杯和世乒赛女单冠军，也打破前辈的记录成为第一个在三大赛中连续8次闯入决赛的选手。<br>
-				在世界排名积分方面，孙颖莎是国际乒联新积分规则实行以来，第一位积分破万的运动员，截至目前最高达11900分。是第一位拥有8个全W积分的选手，也是目前为止唯一一位多次达成8个全W积分的选手。</p>
-				<ul>
-				    <li line-height: 1.5;>【出生日期】2000年11月4日（农历十月初九）</li>
+                在世界排名积分方面，孙颖莎是国际乒联新积分规则实行以来，第一位积分破万的运动员，截至目前最高达11900分。是第一位拥有8个全W积分的选手，也是目前为止唯一一位多次达成8个全W积分的选手。</p>
+                <ul>
+                    <li line-height: 1.5;>【出生日期】2000年11月4日（农历十月初九）</li>
                     <li line-height: 1.5;>【微博主页】<a href="https://weibo.com/u/5051815423">@孙颖莎</a></li>
-					<li line-height: 1.5;>【抖音主页】<a href="https://v.douyin.com/zIYPdrr2vnc/">@孙颖莎🇨🇳</a></li>
-					<li line-height: 1.5;>【小红书主页】<a href="https://www.xiaohongshu.com/user/profile/5b4ef47c11be10342110277f?xsec_token=ABrrFB-jIXNWQnUOZ7t3XlFtHQYW7nD5snrR8-sDdi4rU%3D&xsec_source=pc_search">@孙颖莎</a></li>
-					<li line-height: 1.5;>【专业打法】右手横板，快攻结合弧圈打法</li>
-					<li line-height: 1.5;>【国际乒联ID】131163 </li>
-					<li line-height: 1.5;>【世界排名】<a href="https://worldtabletennis.com/rankings?selectedTab=WOMEN%27S%20SINGLES&Age=SENIOR">WTT世界排名</a> </li>
+                    <li line-height: 1.5;>【抖音主页】<a href="https://v.douyin.com/zIYPdrr2vnc/">@孙颖莎🇨🇳</a></li>
+                    <li line-height: 1.5;>【小红书主页】<a href="https://www.xiaohongshu.com/user/profile/5b4ef47c11be10342110277f?xsec_token=ABrrFB-jIXNWQnUOZ7t3XlFtHQYW7nD5snrR8-sDdi4rU%3D&xsec_source=pc_search">@孙颖莎</a></li>
+                    <li line-height: 1.5;>【专业打法】右手横板，快攻结合弧圈打法</li>
+                    <li line-height: 1.5;>【国际乒联ID】131163 </li>
+                    <li line-height: 1.5;>【世界排名】<a href="https://worldtabletennis.com/rankings?selectedTab=WOMEN%27S%20SINGLES&Age=SENIOR">WTT世界排名</a> </li>
                 </ul>
             </div>
-            <div>
+            <div class="bio-column">
                 <h3>比赛获奖记录（世界冠军标红、洲际赛标紫）</h3>
                 <ul>
-					<li><p style="color: red;">2025 多哈世界乒乓球锦标赛女单冠军、混双冠军（搭档王楚钦）</p></li>
+                    <li><p style="color: red;">2025 多哈世界乒乓球锦标赛女单冠军、混双冠军（搭档王楚钦）</p></li>
                     <li><p style="color: red;">2025 澳门世界杯女单冠军</p></li>
-					<li><p>2025 WTT重庆冠军赛女单冠军</p></li>
+                    <li><p>2025 WTT重庆冠军赛女单冠军</p></li>
                     <li><p>2025 WTT新加坡大满贯女单冠军</p></li>
-					<li><p style="color: red;">2024 成都混合团体世界杯冠军</p></li>
-					<li><p>2024 WTT北京大满贯女单冠军</p></li>
-					<li><p>2024 WTT澳门冠军赛女单冠军</p></li>
-					<li><p style="color: red;">2024 巴黎奥运会女单亚军、女团冠军、混双冠军（搭档王楚钦）</p></li>
-					<li><p>2024 WTT重庆冠军赛女单冠军</p></li>
-					<li><p style="color: red;">2024 澳门世界杯女单冠军</p></li>
-					<li><p>2024 WTT仁川冠军赛女单冠军</p></li>
-					<li><p style="color: red;">2024 釜山世界乒乓球锦标赛女团冠军</p></li>
-					<li><p>2024 WTT多哈球星挑战赛女单冠军、混双冠军（搭档王楚钦）</p></li>
-					<li><p>2023 WTT名古屋女子总决赛女单冠军</p></li>
-					<li><p style="color: red;">2023 成都混合团体世界杯冠军</p></li>
-					<li><p>2023 WTT兰州球星挑战赛女单冠军</p></li>
-					<li><p style="color: #990099;">2023 杭州亚运会女单冠军、女团冠军、混双冠军（搭档王楚钦）</p></li>
-					<li><p style="color: #990099;">2023 平昌亚锦赛女单亚军、女团冠军、女双亚军（搭档王艺迪）</p></li>
-					<li><p>2023 WTT卢布尔雅那球星挑战赛女单冠军、混双冠军（搭档王楚钦）</p></li>
-					<li><p style="color: red;">2023 德班世界乒乓球锦标赛女单冠军、混双冠军（搭档王楚钦）</p></li>
-					<li><p>2023 WTT新乡冠军赛女单冠军</p></li>
-					<li><p>2023 WTT新加坡大满贯女单冠军、女双冠军（搭档王曼昱）、混双冠军（搭档王楚钦）</p></li>
-					<li><p>2022 WTT新乡世界杯总决赛女单冠军</p></li>
-					<li><p>2022 WTT澳门冠军赛女单冠军</p></li>
-					<li><p style="color: red;">2022 成都世界乒乓球锦标赛女团冠军</p></li>
-					<li><p>2021 WTT新加坡世界杯总决赛女单冠军</p></li>
-					<li><p style="color: red;">2021 休斯顿世界乒乓球锦标赛女单亚军、女双冠军（搭档王曼昱）、混双冠军（搭档王楚钦）</p></li>
-					<li><p style="color: red;">2021 东京奥运会女单亚军、女团冠军</p></li>
-					<li><p>2020 WTT澳门赛女单冠军</p></li>
-					<li><p>2020 全国乒乓球锦标赛女团冠军</p></li>
-					<li><p>2019 T2钻石赛新加坡站女单冠军</p></li>
-					<li><p style="color: red;">2019 东京乒乓球世界杯女团冠军</p></li>
-					<li><p>2019 ITTF德国公开赛（白金站）女单冠军、混双冠军（搭档许昕）</p></li>
-					<li><p style="color: #990099;">2019 日惹亚锦赛女单冠军、女团冠军、混双亚军（搭档王楚钦）</p></li>
-					<li><p>2019 全国乒乓球锦标赛女单冠军</p></li>
-					<li><p>2019 ITTF澳大利亚公开赛（白金站）女单冠军</p></li>
-					<li><p>2019 ITTF日本公开赛（白金站）女单冠军</p></li>
-					<li><p style="color: red;">2019 布达佩斯世界乒乓球锦标赛女双冠军（搭档王曼昱）</p></li>
-					<li><p>2018 布宜诺斯艾利斯青年奥运会女单冠军、混团冠军（搭档王楚钦）</p></li>
-					<li><p>2018 全国乒乓球锦标赛混双冠军（搭档王楚钦）</p></li>
-					<li><p style="color: #990099;">2018 雅加达亚运会女团冠军、混双冠军（搭档王楚钦）</p></li>
-					<li><p>2017 世界青年乒乓球锦标赛女单冠军、女团冠军、女双冠军（搭档石洵瑶）</p></li>
-					<li><p>2017 亚洲青年乒乓球锦标赛U18组女单冠军、女团冠军、女双冠军（搭档钱天一）、混双冠军（搭档王楚钦）</p></li>
-					<li><p>2017 ITTF日本公开赛（白金站）女单冠军、女双冠军（搭档石陈幸同）</p></li>
-					<li><p>2015 全国少年乒乓球锦标赛女单冠军</p></li>
-					<li><p>2014 亚洲青少年乒乓球锦标赛U15组女单冠军</p></li>
+                    <li><p style="color: red;">2024 成都混合团体世界杯冠军</p></li>
+                    <li><p>2024 WTT北京大满贯女单冠军</p></li>
+                    <li><p>2024 WTT澳门冠军赛女单冠军</p></li>
+                    <li><p style="color: red;">2024 巴黎奥运会女单亚军、女团冠军、混双冠军（搭档王楚钦）</p></li>
+                    <li><p>2024 WTT重庆冠军赛女单冠军</p></li>
+                    <li><p style="color: red;">2024 澳门世界杯女单冠军</p></li>
+                    <li><p>2024 WTT仁川冠军赛女单冠军</p></li>
+                    <li><p style="color: red;">2024 釜山世界乒乓球锦标赛女团冠军</p></li>
+                    <li><p>2024 WTT多哈球星挑战赛女单冠军、混双冠军（搭档王楚钦）</p></li>
+                    <li><p>2023 WTT名古屋女子总决赛女单冠军</p></li>
+                    <li><p style="color: red;">2023 成都混合团体世界杯冠军</p></li>
+                    <li><p>2023 WTT兰州球星挑战赛女单冠军</p></li>
+                    <li><p style="color: #990099;">2023 杭州亚运会女单冠军、女团冠军、混双冠军（搭档王楚钦）</p></li>
+                    <li><p style="color: #990099;">2023 平昌亚锦赛女单亚军、女团冠军、女双亚军（搭档王艺迪）</p></li>
+                    <li><p>2023 WTT卢布尔雅那球星挑战赛女单冠军、混双冠军（搭档王楚钦）</p></li>
+                    <li><p style="color: red;">2023 德班世界乒乓球锦标赛女单冠军、混双冠军（搭档王楚钦）</p></li>
+                    <li><p>2023 WTT新乡冠军赛女单冠军</p></li>
+                    <li><p>2023 WTT新加坡大满贯女单冠军、女双冠军（搭档王曼昱）、混双冠军（搭档王楚钦）</p></li>
+                    <li><p>2022 WTT新乡世界杯总决赛女单冠军</p></li>
+                    <li><p>2022 WTT澳门冠军赛女单冠军</p></li>
+                    <li><p style="color: red;">2022 成都世界乒乓球锦标赛女团冠军</p></li>
+                    <li><p>2021 WTT新加坡世界杯总决赛女单冠军</p></li>
+                    <li><p style="color: red;">2021 休斯顿世界乒乓球锦标赛女单亚军、女双冠军（搭档王曼昱）、混双冠军（搭档王楚钦）</p></li>
+                    <li><p style="color: red;">2021 东京奥运会女单亚军、女团冠军</p></li>
+                    <li><p>2020 WTT澳门赛女单冠军</p></li>
+                    <li><p>2020 全国乒乓球锦标赛女团冠军</p></li>
+                    <li><p>2019 T2钻石赛新加坡站女单冠军</p></li>
+                    <li><p style="color: red;">2019 东京乒乓球世界杯女团冠军</p></li>
+                    <li><p>2019 ITTF德国公开赛（白金站）女单冠军、混双冠军（搭档许昕）</p></li>
+                    <li><p style="color: #990099;">2019 日惹亚锦赛女单冠军、女团冠军、混双亚军（搭档王楚钦）</p></li>
+                    <li><p>2019 全国乒乓球锦标赛女单冠军</p></li>
+                    <li><p>2019 ITTF澳大利亚公开赛（白金站）女单冠军</p></li>
+                    <li><p>2019 ITTF日本公开赛（白金站）女单冠军</p></li>
+                    <li><p style="color: red;">2019 布达佩斯世界乒乓球锦标赛女双冠军（搭档王曼昱）</p></li>
+                    <li><p>2018 布宜诺斯艾利斯青年奥运会女单冠军、混团冠军（搭档王楚钦）</p></li>
+                    <li><p>2018 全国乒乓球锦标赛混双冠军（搭档王楚钦）</p></li>
+                    <li><p style="color: #990099;">2018 雅加达亚运会女团冠军、混双冠军（搭档王楚钦）</p></li>
+                    <li><p>2017 世界青年乒乓球锦标赛女单冠军、女团冠军、女双冠军（搭档石洵瑶）</p></li>
+                    <li><p>2017 亚洲青年乒乓球锦标赛U18组女单冠军、女团冠军、女双冠军（搭档钱天一）、混双冠军（搭档王楚钦）</p></li>
+                    <li><p>2017 ITTF日本公开赛（白金站）女单冠军、女双冠军（搭档石陈幸同）</p></li>
+                    <li><p>2015 全国少年乒乓球锦标赛女单冠军</p></li>
+                    <li><p>2014 亚洲青少年乒乓球锦标赛U15组女单冠军</p></li>
                 </ul>
             </div>
         </div>
@@ -568,717 +862,519 @@
     <!-- 比赛汇总 -->
     <section id="videos" class="section">
         <h2>比赛汇总</h2>
-		<div class="video-grid">
-			<div>
-				<h3>赛果汇总</h3>
-				<ul>
-					<li line-height: 1.5;><a href=".\赛果汇总\2011赛果汇总.html">2011年比赛赛果汇总</a></li>
-					<li line-height: 1.5;><a href=".\赛果汇总\2012赛果汇总.html">2012年比赛赛果汇总</a></li>
-					<li line-height: 1.5;><a href=".\赛果汇总\2013赛果汇总.html">2013年比赛赛果汇总</a></li>
-					<li line-height: 1.5;><a href=".\赛果汇总\2014赛果汇总.html">2014年比赛赛果汇总</a></li>
-					<li line-height: 1.5;><a href=".\赛果汇总\2015赛果汇总.html">2015年比赛赛果汇总</a></li>
-					<li line-height: 1.5;><a href=".\赛果汇总\2016赛果汇总.html">2016年比赛赛果汇总</a></li>
-					<li line-height: 1.5;><a href=".\赛果汇总\2017赛果汇总.html">2017年比赛赛果汇总</a></li>
-					<li line-height: 1.5;><a href=".\赛果汇总\2018赛果汇总.html">2018年比赛赛果汇总</a></li>
-					<li line-height: 1.5;><a href=".\赛果汇总\2019赛果汇总.html">2019年比赛赛果汇总</a></li>
-					<li line-height: 1.5;><a href=".\赛果汇总\2020赛果汇总.html">2020年比赛赛果汇总</a></li>
-					<li line-height: 1.5;><a href=".\赛果汇总\2021赛果汇总.html">2021年比赛赛果汇总</a></li>
-					<li line-height: 1.5;><a href=".\赛果汇总\2022赛果汇总.html">2022年比赛赛果汇总</a></li>
-					<li line-height: 1.5;><a href=".\赛果汇总\2023赛果汇总.html">2023年比赛赛果汇总</a></li>
-					<li line-height: 1.5;><a href=".\赛果汇总\2024赛果汇总.html">2024年比赛赛果汇总</a></li>
-					<li line-height: 1.5;><a href=".\赛果汇总\2025赛果汇总.html">2024年比赛赛果汇总</a></li>
-				</ul>
-			</div>
-			<div>
-				<h3>视频汇总</h3>
-				<p>SUNDAY放映室存档网络上现存的比赛视频，部分已过期链接会逐步替换。</p>
-				<a href="https://flowus.cn/share/9e4855d0-6db4-452b-b277-45b6d48af588?code=LHFMBV" class="pan-link">SUNDAY 放映室</a>
-				<iframe src="https://flowus.cn/share/9e4855d0-6db4-452b-b277-45b6d48af588?code=LHFMBV" width="800" height="500"></iframe>
-			</div>
-		</div>
+        <div class="video-grid">
+            <div class="results-column">
+                <h3>赛果汇总</h3>
+                <div class="achievement-table">
+                    <table>
+                        <tr><th>年份</th><th>汇总链接</th></tr>
+                        <tr><td>2011</td><td><a href=".\赛果汇总\2011赛果汇总.html">2011年比赛赛果汇总</a></td></tr>
+                        <tr><td>2012</td><td><a href=".\赛果汇总\2012赛果汇总.html">2012年比赛赛果汇总</a></td></tr>
+                        <tr><td>2013</td><td><a href=".\赛果汇总\2013赛果汇总.html">2013年比赛赛果汇总</a></td></tr>
+                        <tr><td>2014</td><td><a href=".\赛果汇总\2014赛果汇总.html">2014年比赛赛果汇总</a></td></tr>
+                        <tr><td>2015</td><td><a href=".\赛果汇总\2015赛果汇总.html">2015年比赛赛果汇总</a></td></tr>
+                        <tr><td>2016</td><td><a href=".\赛果汇总\2016赛果汇总.html">2016年比赛赛果汇总</a></td></tr>
+                        <tr><td>2017</td><td><a href=".\赛果汇总\2017赛果汇总.html">2017年比赛赛果汇总</a></td></tr>
+                        <tr><td>2018</td><td><a href=".\赛果汇总\2018赛果汇总.html">2018年比赛赛果汇总</a></td></tr>
+                        <tr><td>2019</td><td><a href=".\赛果汇总\2019赛果汇总.html">2019年比赛赛果汇总</a></td></tr>
+                        <tr><td>2020</td><td><a href=".\赛果汇总\2020赛果汇总.html">2020年比赛赛果汇总</a></td></tr>
+                        <tr><td>2021</td><td><a href=".\赛果汇总\2021赛果汇总.html">2021年比赛赛果汇总</a></td></tr>
+                        <tr><td>2022</td><td><a href=".\赛果汇总\2022赛果汇总.html">2022年比赛赛果汇总</a></td></tr>
+                        <tr><td>2023</td><td><a href=".\赛果汇总\2023赛果汇总.html">2023年比赛赛果汇总</a></td></tr>
+                        <tr><td>2024</td><td><a href=".\赛果汇总\2024赛果汇总.html">2024年比赛赛果汇总</a></td></tr>
+                        <tr><td>2025</td><td><a href=".\赛果汇总\2025赛果汇总.html">2025年比赛赛果汇总</a></td></tr>
+                    </table>
+                </div>
+            </div>
+            <div class="videos-column">
+                <h3>视频汇总</h3>
+                <div class="video-collection">
+                    <a href="https://flowus.cn/share/9e4855d0-6db4-452b-b277-45b6d48af588?code=LHFMBV" class="video-item">
+                        <div class="video-thumb">
+                            <img src=".\SUNDAY放映室.png" alt="SUNDAY 放映室">
+                            <div class="play-icon">
+                                <i class="fas fa-play-circle"></i>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h4>SUNDAY 放映室</h4>
+                            <p>存档网络上现存的比赛视频，部分已过期链接会逐步替换。</p>
+                        </div>
+                    </a>
+                    <iframe src="https://flowus.cn/share/9e4855d0-6db4-452b-b277-45b6d48af588?code=LHFMBV" style="aspect-ratio:3/4; width: 100%"></iframe>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- 个人商务代言 -->
     <section id="endorsements" class="section">
         <h2>个人商务代言</h2>
-		<p style="color:red">只统计未到期代言，过往代言相关物料可在下方网盘汇总查看。</p>
-        <div class="gallery">
-			<div class="endo-grid">
-				<div style="text-align:center";>
-					<img src=".\代言\汰渍品牌代言人.png" alt="汰渍品牌代言人" style="width:100%">
-					<p>20240626 汰渍品牌代言人</p>
-				</div>
-				<div style="text-align:center";>
-					<img src=".\代言\OLAY品牌代言人.jpg" alt="OLAY品牌代言人" style="width:100%">
-					<p>20240924 OLAY品牌代言人</p>
-				</div>
-				<div style="text-align:center";>
-					<img src=".\代言\欧扎克品牌代言人.jpg" alt="欧扎克品牌代言人" style="width:100%">
-					<p>20241104 欧扎克品牌代言人</p>
-				</div>
-				<div style="text-align:center";>
-					<img src=".\代言\肯德基品牌代言人.jpg" alt="肯德基品牌代言人" style="width:100%">
-					<p>20241227 肯德基品牌代言人</p>
-				</div>
-				<div style="text-align:center";>
-					<img src=".\代言\半亩花田全球品牌代言人.jpg" alt="半亩花田全球品牌代言人（洗护发系列）" style="width:100%">
-					<p>20250106 半亩花田全球品牌代言人（洗护发系列）</p>
-				</div>
-				<div style="text-align:center";>
-					<img src=".\代言\理肤泉品牌修护代言人.jpg" alt="理肤泉品牌修护代言人" style="width:100%">
-					<p>20250117 理肤泉品牌修护代言人</p>
-				</div>
-				<div style="text-align:center";>
-					<img src=".\代言\高露洁品牌代言人.jpg" alt="高露洁品牌代言人" style="width:100%">
-					<p>20250226 高露洁品牌代言人</p>
-				</div>
-				<div style="text-align:center";>
-					<img src=".\代言\OPPO智能生态全球合作伙伴.jpg" alt="OPPO智能生态全球合作伙伴" style="width:100%">
-					<p>20250324 OPPO智能生态全球合作伙伴</p>
-				</div>
-				<div style="text-align:center";>
-					<img src=".\代言\红旗天工家族代言人.jpg" alt="红旗天工家族代言人" style="width:100%">
-					<p>20250331 红旗天工家族代言人</p>
-				</div>
-				<div style="text-align:center";>
-					<img src=".\代言\碧然德品牌代言人.jpg" alt="碧然德品牌代言人" style="width:100%">
-					<p>20250428 碧然德品牌代言人</p>
-				</div>
-				<div style="text-align:center";>
-					<img src=".\代言\雀巢品牌代言人.jpg" alt="雀巢品牌代言人" style="width:100%">
-					<p>20250515 雀巢品牌代言人（饼干类）</p>
-				</div>
-				<div style="text-align:center";>
-					<img src=".\代言\妮维雅品牌代言人.jpg" alt="妮维雅品牌代言人" style="width:100%">
-					<p>20250528 妮维雅品牌代言人（身体护理系列）</p>
-				</div>
-				<div style="text-align:center";>
-					<img src=".\代言\梅森马吉拉香氛品牌代言人.jpg" alt="梅森马吉拉香氛品牌代言人" style="width:100%">
-					<p>20250627 梅森马吉拉香氛品牌代言人</p>
-				</div>
-			</div>
-        </div>
-		<p><br><br><b>个人商务代言官方物料网盘资源汇总</b></p>
-        <a href="https://pan.quark.cn/s/c916de3745fb" class="pan-link">夸克网盘</a>
-		<a href="https://pan.baidu.com/s/14x1q5DqBzBDzb9JCqzRSAA?pwd=hqj7" class="pan-link">百度网盘</a>
-    </section>
-	
-	<!-- 杂志媒体报道 -->
-	<section id="media" class="section">
-        <h2>杂志媒体报道</h2>
-        <div class="grow-grid">
-			<div>
-				<h3>个人时尚杂志</h3>
-				<div class="box">
-					<img src=".\杂志媒体报道\2024《时尚芭莎》.jpg" alt="2024年10月《时尚芭莎》" style="width:30%">
-					<a href="https://mp.weixin.qq.com/s/DnWv6XxewxaFnErn0wX-9Q">2024《时尚芭莎》银十周年刊</a>
-				</div>
-				<div class="box">
-					<img src=".\杂志媒体报道\2025《ELLE》.jpg" alt="2025年1月《ELLE》" style="width:30%">
-					<img src=".\杂志媒体报道\2025《ELLE》2.jpg" alt="2025年1月《ELLE》" style="width:30%">
-					<a href="https://mp.weixin.qq.com/s/h0WAj3mnNF_QFfH-YADyvg">2025《ELLE 世界时装之苑》开年刊</a>
-				</div>
-				<div class="box">
-					<div class="paper-grid">
-						<img src=".\杂志媒体报道\2025《嘉人》1.jpg" alt="2025年6月《嘉人》" style="width:100%">
-						<img src=".\杂志媒体报道\2025《嘉人》2.jpg" alt="2025年6月《嘉人》" style="width:100%">
-						<img src=".\杂志媒体报道\2025《嘉人》3.jpg" alt="2025年6月《嘉人》" style="width:100%">
-						<img src=".\杂志媒体报道\2025《嘉人》4.jpg" alt="2025年6月《嘉人》" style="width:100%">
-						<img src=".\杂志媒体报道\2025《嘉人》5.jpg" alt="2025年6月《嘉人》" style="width:100%">
-						<img src=".\杂志媒体报道\2025《嘉人》6.jpg" alt="2025年6月《嘉人》" style="width:100%">
-					</div>
-					<a href="https://mp.weixin.qq.com/s/GX3sZwX0pRjOgDmQad6blw">2025《嘉人》6月第500封OG</a>
-				</div>
-				<div class="box">
-					<p style="margin-top:30px"><br><br><b>个人时尚杂志官方物料网盘资源汇总</b></p>
-					<a href="https://pan.quark.cn/s/92e0b8491714" class="pan-link">夸克网盘</a>
-					<a href="https://pan.baidu.com/s/1NvdFxMDBM9_GQjTcEiCTXA?pwd=wci8" class="pan-link">百度网盘</a>
-				</div>
-			</div>
-			<div>
-				<h3>《乒乓世界》</h3>
-					<div class="ttpaper-grid">
-						<div style="text-align:center";>
-							<img src=".\杂志媒体报道\2019年10月封面.jpg" alt="2019年10月封面" style="width:100%">
-							<a href="https://mp.weixin.qq.com/s/iAa7R9ljnj_J5j8OcyEs2g">2019年10月封面</a>
-						</div>
-						<div style="text-align:center";>
-							<img src=".\杂志媒体报道\2020年9月封面.jpg" alt="2020年9月封面" style="width:100%">
-							<a href="https://mp.weixin.qq.com/s/TihjgLIe8fDML1bcuRyHKg">2020年9月封面</a>
-						</div>
-						<div style="text-align:center";>
-							<img src=".\杂志媒体报道\2021年12月封面.jpg" alt="2021年12月封面" style="width:100%">
-							<a href="https://mp.weixin.qq.com/s/I1gEz5miUG2zGL-0qu3T7w">2021年12月封面</a>
-						</div>
-						<div style="text-align:center";>
-							<img src=".\杂志媒体报道\2022年8月封面.jpg" alt="2022年8月封面" style="width:100%">
-							<a href="https://mp.weixin.qq.com/s/2b-Vc7cmpRojjDFgoEPAHw">2022年8月封面</a>
-						</div>
-						<div style="text-align:center";>
-							<img src=".\杂志媒体报道\2023年2月封面.jpg" alt="2023年2月封面" style="width:100%">
-							<a>2023年2月封面</a>
-						</div>
-						<div style="text-align:center";>
-							<img src=".\杂志媒体报道\2023年5月封面.jpg" alt="2023年5月封面" style="width:100%">
-							<a href="https://mp.weixin.qq.com/s/2WSYWjY3FhT6cXBsZvR2Yw">2023年5月封面</a>
-						</div>
-						<div style="text-align:center";>
-							<img src=".\杂志媒体报道\2023年8月封面.jpg" alt="2023年8月封面" style="width:100%">
-							<a href="https://mp.weixin.qq.com/s/K3b2pdCuxzCeq_nHc9iTzQ">2023年8月封面</a>
-						</div>
-						<div style="text-align:center";>
-							<img src=".\杂志媒体报道\2023年12月封面.jpg" alt="2023年12月封面" style="width:100%">
-							<a>2023年12月封面</a>
-						</div>
-						<div style="text-align:center";>
-							<img src=".\杂志媒体报道\2024年2月封面.jpg" alt="2024年2月封面" style="width:100%">
-							<a href="https://mp.weixin.qq.com/s/A_Al_WrcGpW6D0mZ24tJBg">2024年2月封面</a>
-						</div>
-						<div style="text-align:center";>
-							<img src=".\杂志媒体报道\2024年7月封面.jpg" alt="2024年7月封面" style="width:100%">
-							<a href="https://mp.weixin.qq.com/s/1MgF-LoqCa4rsoYeI0ObJQ">2024年7月封面</a>
-						</div>
-						<div style="text-align:center";>
-							<img src=".\杂志媒体报道\2025年1月封面.jpg" alt="2025年1月封面" style="width:100%">
-							<a href="https://mp.weixin.qq.com/s/pBBWC4Yjxo79l1lYpvzi5A">2025年1月封面</a>
-						</div>
-				</div>
-				<p><br><br><b>《乒乓世界》孙颖莎相关网盘资源汇总</b></p>
-				<a href="https://pan.quark.cn/s/c6d6947aebf4" class="pan-link">夸克网盘</a>
-				<a href="https://pan.baidu.com/s/1Er9660W2dfS13VMw7wbfHQ?pwd=supm " class="pan-link">百度网盘</a>
-
-			</div>
-			<div>
-				<h3>媒体报道</h3>
-				<p style="color:red">只汇总包含相关人物采访叙述的报道。</p>
-				<p>20170619 【体坛周报】<a href="https://resource.ttplus.cn/publish/app/data/2017/06/19/62121/share1.html">孙颖莎夺冠黄海城大呼意外 “她一点都不比平野差”</a></p>
-				<p>20170619 【燕赵晚报】<a href="https://hebei.hebnews.cn/2017-06/19/content_6527634.htm">棒！石家庄16岁姑娘孙颖莎日本乒乓球公开赛独揽两冠</a></p>
-				<p>20170621 【衡水广播电视台】<a href="https://mp.weixin.qq.com/s/P4W2tul4MhHItOrdpELFkA">衡水出了个世界冠军！家乡父老为你骄傲</a></p>
-				<p>20170622 【民生关注】<a href="https://weibo.com/7895688576/PuXTGhNtM">直面当事人|心系乒乓无旁骛——16岁“双冠王”孙颖莎</a></p>
-				<p>20170629 【河北青年报】<a href="https://www.hbynet.net/html/heqing/daohang/guoneidongtai1555011803978326017/954420034429.html">孙颖莎：石家庄走出来的乒乓“黑马”</a></p>
-				<p>20170629 【郑晓禾说乒乓】<a href="https://mp.weixin.qq.com/s/j3zuo4aolYUjDtOo52mT0g">“小魔王”孙颖莎的三板斧</a></p>
-				<p>20170710 【郑晓禾说乒乓】<a href="https://mp.weixin.qq.com/s/QYcT94gSA87jn9azuaRb4A">寻找孙颖莎足迹 小魔王从小就“以小打大”</a></p>
-				<p>20170730 【微乒乓】<a href="https://mp.weixin.qq.com/s/V-9C_OFeuuC2RLZDP3YLew">孙颖莎：业余比赛记--知道她是是天才，没想到能达到如此高度！</a></p>
-				<p>20180223 【中国税务报】<a href="https://pan.baidu.com/s/1Q8_TkbuTeT1UetURIPMHQg?pwd=a688">在拼搏中收获幸福</a></p>
-				<p>20190429 【燕赵都市报】<a href="https://yzdsb.hebnews.cn/pc/paper/c/201904/29/c131939.html">这一刻，河北乒乓等了太久</a></p>
-				<p>20190430 【燕赵晚报】<a href="https://baijiahao.baidu.com/s?id=1632231412148462708&wfr=spider&for=pc">世乒冠军孙颖莎：别人家的孩子，咱庄里的娃！（成长深度帖！）</a></p>
-				<p>20191111 【燕赵晚报】<a href="https://weibo.com/ttarticle/p/show?id=2309404437551774564692">庄里莎今日凯旋回京！大心脏是因为有颗定心丸</a></p>
-				<p>20200828 【微乒乓】<a href="https://mp.weixin.qq.com/s/8YAOODJTR1cGsYlSGXsLqw">孙颖莎启蒙教练：只要给她点阳光，她就能灿烂！</a></p>
-				<p>20210730 【燕赵晚报】<a href="https://pan.baidu.com/s/1PwsazQENj33HMda1i7hprg?pwd=ttyh"> 最大功臣是咱庄里姑娘孙颖莎</a></p>
-				<p>20210806 【河北日报】<a href="https://hbrb.hebnews.cn/pc/paper/c/202108/06/content_95793.html">“大心脏”是这样炼出来的</a></p>
-				<p>20210806 【石家庄日报】<a href="https://pan.baidu.com/s/16zzLl42Wzy4zJz9D3zbvyg?pwd=kxpy">石家庄姑娘孙颖莎霸气夺金</a></p>
-				<p>20210808 【长城网】<a href="https://www.hebgcdy.com/szyw/system/2021/08/09/030510332.shtml">冠军之路·河北奥运夺金运动员成长探密｜孙颖莎：最奶气的脸，最霸气的球！</a></p>
-				<p>20210817 【燕赵都市报】<a href="https://yzdsb.hebnews.cn/pc/paper/c/202108/17/content_97438.html">孙颖莎：“小魔王”期待变身“大魔王”</a></p>
-				
-			</div>
-        </div>
-    </section>
-
-    <!-- 杂志媒体 -->
-    <section id="grow" class="section">
-        <h2>成长经历</h2>
-		<p style="color:c1cdcd">以一个球迷/旁观者/网络陪伴者的视角，记录我眼中的关于孙颖莎的成长和经历。会尽量客观，以事实为依据，以报道为中心。</p>
-		<p style="color:red">请点击对应区域查看详细内容！</p>
-        <div class="media-grid">
-            <!-- 进阶国家队之路 -->
-            <div class="media-item">
-				<h3>进阶国家队之路</h3>
-				<p>2015年8月，孙颖莎获得全国少年乒乓球锦标赛女单冠军，拿到进入国青队资格。又因为在比赛面对劲敌连续上演大逆转，9月被国家二队相中。</p>
-                <div class="media-window">
-                    <div class="media-content">
-                        <h3>进阶国家队之路</h3>
-                        <div class="article">
-							<a href="https://www.douban.com/group/topic/287769758/" class="pan-link">进国家队前的幼崽小莎</a>
-                            <h4>5岁，与乒乓球结缘，天赋与热爱初显现</h4>
-                            <blockquote><p style="color:#808080">将孙颖莎送去学乒乓球原本只是一个无意之举，孙颖莎的妈妈说，自己和丈夫都是国税局的职工，平时忙，没时间照顾孩子，就想着把孩子送去家附近的和平西路小学学乒乓球，一来能在自己下班前给孩子找个去处，二来孩子也能锻炼身体。</p></blockquote>
-                            <a href="https://www.hbynet.net/html/heqing/daohang/guoneidongtai1555011803978326017/954420034429.html" class="pan-link">来源：20170629【河北青年报】孙颖莎：石家庄走出来的乒乓“黑马”</a>
-							<h4>8岁，获河北省苗子调赛冠军，全国少年赛大展身手</h4>
-                            <blockquote><p style="color:#808080">天分和努力的加持，让孙颖莎很快脱颖而出。2007年，7岁的孙颖莎被选到了和平西路小学执教高年龄段学员的田跃祥教练的队伍里，当时她是年龄最小的队员。 </p></blockquote>
-                            <h4>10岁，选拔进入河北省队，开启“走读”生活</h4>
-                            <blockquote>
-								<p style="color:#808080">2010年，10岁的孙颖莎因为在全国少年赛上的出色表现被选拔进了河北省队。<br>
-								“我从来没有见过像她这样的运动员。”在孙颖莎省队的教练杨广弟印象中，她虽然在队里年龄最小，但练习最为刻苦，“孙颖莎不像其他小姑娘那样爱玩，她会百分之百地投入训练。结束训练后，她一有时间还会重复练习学到的新动作。”</p>
-							</blockquote>
-                            <a href="https://www.hebgcdy.com/szyw/system/2021/08/09/030510332.shtml" class="pan-link">来源：20210808【长城网】冠军之路·河北奥运夺金运动员成长探密｜孙颖莎：最奶气的脸，最霸气的球！</a>
-							<blockquote><p style="color:#808080">莎莎上小学后，学习成绩一直名列前茅，我和她爸爸觉得孩子还小，应该多学习文化课，进省队后就没让她住宿，每天训练后接回家补习功课，第二天早上4∶00起床回队训练。基本上是她爸爸每天接送，风雨无阻。</p></blockquote>
-							<a href="https://pan.baidu.com/s/1Q8_TkbuTeT1UetURIPMHQg?pwd=a688" class="pan-link">来源：20180223【中国税务报】在拼搏中收获幸福</a>
-　　							<blockquote><p style="color:#808080">2009、2010年期间，孙颖莎三次参加卓悦乒乓球俱乐部月赛，第一次莎莎输给了融涛（石家庄长胶老怪，经常剔专业选手），获得第八名。另外两次分别输给了陈刚（陈默）和黄旭，分获第三、第二名，这两位选手均有专业乒乓球背景，应该都是河北师范大学乒乓球系。</p></blockquote>
-							<h4>2011年7月，参加全国少年乒乓球北方赛区比赛，部分cut</h4>
-                            <a href="https://www.bilibili.com/video/BV1ov411A7LW/" class="pan-link">【孙颖莎守护站】2011少年乒乓球锦标赛(北方赛区)比赛 孙颖莎cut太萌了</a>
-							<h4>2012年8月，参加全国乒乓球少年锦标赛（北方赛区），部分cut</h4>
-                            <a href="https://www.bilibili.com/video/BV1Qg411G7t2/" class="pan-link">【孙颖莎守护站】2012全国乒乓球少年锦标赛(北方赛区)孙颖莎cut感受你的小可爱突然出现的快乐</a>
-							<h4>2013年，第一次冲击国家队失败，恩师杨广弟指导制定“补短”计划</h4>
-                            <blockquote><p style="color:#808080">第一次，是2013年全国少年乒乓球锦标赛。当年13岁的孙颖莎表现抢眼，一路过关斩将，打进了女单决赛，最后却以3∶4输给了当时已是国手、人高马大的王曼昱。<br>
-“当时经过分析，我们认为孙颖莎的得分手段和能力偏弱。”于是，杨广弟为孙颖莎制定了一系列“补短”计划。</p></blockquote>
-                            <a href="https://www.bilibili.com/video/BV1Tv411P7HY/" class="pan-link">【孙颖莎守护站】2013少年乒乓球锦标赛 孙颖莎cut</a>
-							<h4>2014年，第二次冲击国家队意外失利，培养“大心脏”</h4>
-                            <blockquote><p style="color:#808080">2014年全国少年乒乓球锦标赛，孙颖莎信心十足，却再次遭受打击——当时出了新政策，前两名就能进国家队，然而，孙颖莎却意外止步16强。<br>
-杨广弟没有对孙颖莎失望，他一边开导孙颖莎，一边总结——她还需要颗“大心脏”。<br>
-于是，随后的训练中，杨广弟想方设法给孙颖莎“添堵”，专门挑让孙颖莎打着难受的对手和打法让她去练，让队员们给孙颖莎的队友喊加油、给她嘘声……</p></blockquote>
-							<h4>2015年9月，进入国家二队</h4>
-                            <blockquote><p style="color:#808080"> 2015年全国少年乒乓球锦标赛，技术和心理都过硬的孙颖莎一鸣惊人，此后如愿进入了国家青年队。同年，因为面对劲敌连续上演大逆转，孙颖莎又被国家队相中。</p></blockquote>
-                        </div>
+        <p style="color:red">只统计未到期代言，过往代言相关物料可在下方网盘汇总查看。</p>
+        <div class="endorsement-grid">
+            <div class="endorsement-item">
+                <a href="https://www.weibo.com/u/2752519061" class="endorsement-link">
+                    <img src=".\代言\汰渍品牌代言人.png" alt="汰渍品牌代言人" loading="lazy">
+                    <div class="endorsement-caption">
+                        <h3>汰渍品牌代言人</h3>
+                        <p>20240626</p>
                     </div>
-                    <div class="close-btn">×</div>
+                </a>
+            </div>
+            <div class="endorsement-item">
+                <a href="https://www.weibo.com/u/1645365377" class="endorsement-link">
+                    <img src=".\代言\OLAY品牌代言人.jpg" alt="OLAY品牌代言人" loading="lazy">
+                    <div class="endorsement-caption">
+                        <h3>OLAY品牌代言人</h3>
+                        <p>20240924</p>
+                    </div>
+                </a>
+            </div>
+            <div class="endorsement-item">
+                <a href="https://www.weibo.com/u/6052350826" class="endorsement-link">
+                    <img src=".\代言\欧扎克品牌代言人.jpg" alt="欧扎克品牌代言人" loading="lazy">
+                    <div class="endorsement-caption">
+                        <h3>欧扎克品牌代言人</h3>
+                        <p>20241104</p>
+                    </div>
+                </a>
+            </div>
+            <div class="endorsement-item">
+                <a href="https://www.weibo.com/u/1687422352" class="endorsement-link">
+                    <img src=".\代言\肯德基品牌代言人.jpg" alt="肯德基品牌代言人" loading="lazy">
+                    <div class="endorsement-caption">
+                        <h3>肯德基品牌代言人</h3>
+                        <p>20241227</p>
+                    </div>
+                </a>
+            </div>
+            <div class="endorsement-item">
+                <a href="https://www.weibo.com/u/2734399627" class="endorsement-link">
+                    <img src=".\代言\半亩花田全球品牌代言人.jpg" alt="半亩花田全球品牌代言人（洗护发系列）" loading="lazy">
+                    <div class="endorsement-caption">
+                        <h3>半亩花田全球品牌代言人（洗护发系列）</h3>
+                        <p>20250106</p>
+                    </div>
+                </a>
+            </div>
+            <div class="endorsement-item">
+                <a href="https://www.weibo.com/u/2051652844" class="endorsement-link">
+                    <img src=".\代言\理肤泉品牌修护代言人.jpg" alt="理肤泉品牌修护代言人" loading="lazy">
+                    <div class="endorsement-caption">
+                        <h3>理肤泉品牌修护代言人（精华及面膜）</h3>
+                        <p>20250117</p>
+                    </div>
+                </a>
+            </div>
+            <div class="endorsement-item">
+                <a href="https://www.weibo.com/u/2775934450" class="endorsement-link">
+                    <img src=".\代言\高露洁品牌代言人.jpg" alt="高露洁品牌代言人" loading="lazy">
+                    <div class="endorsement-caption">
+                        <h3>高露洁品牌代言人</h3>
+                        <p>20250226</p>
+                    </div>
+                </a>
+            </div>
+            <div class="endorsement-item">
+                <a href="https://www.weibo.com/u/1710173801" class="endorsement-link">
+                    <img src=".\代言\OPPO智能生态全球合作伙伴.jpg" alt="OPPO智能生态全球合作伙伴" loading="lazy">
+                    <div class="endorsement-caption">
+                        <h3>OPPO智能生态全球合作伙伴</h3>
+                        <p>20250324</p>
+                    </div>
+                </a>
+            </div>
+            <div class="endorsement-item">
+                <a href="https://www.weibo.com/u/3266910853" class="endorsement-link">
+                    <img src=".\代言\红旗天工家族代言人.jpg" alt="红旗天工家族代言人" loading="lazy">
+                    <div class="endorsement-caption">
+                        <h3>红旗天工家族代言人</h3>
+                        <p>20250331</p>
+                    </div>
+                </a>
+            </div>
+            <div class="endorsement-item">
+                <a href="https://www.weibo.com/u/3865423736" class="endorsement-link">
+                    <img src=".\代言\碧然德品牌代言人.jpg" alt="碧然德品牌代言人" loading="lazy">
+                    <div class="endorsement-caption">
+                        <h3>碧然德品牌代言人</h3>
+                        <p>20250428</p>
+                    </div>
+                </a>
+            </div>
+            <div class="endorsement-item">
+                <a href="https://www.weibo.com/u/2761426061" class="endorsement-link">
+                    <img src=".\代言\雀巢品牌代言人.jpg" alt="雀巢品牌代言人" loading="lazy">
+                    <div class="endorsement-caption">
+                        <h3>雀巢品牌代言人（饼干类）</h3>
+                        <p>20250515</p>
+                    </div>
+                </a>
+            </div>
+            <div class="endorsement-item">
+                <a href="https://www.weibo.com/u/1882901950" class="endorsement-link">
+                    <img src=".\代言\妮维雅品牌代言人.jpg" alt="妮维雅品牌代言人" loading="lazy">
+                    <div class="endorsement-caption">
+                        <h3>妮维雅品牌代言人（身体护理系列）</h3>
+                        <p>20250528</p>
+                    </div>
+                </a>
+            </div>
+            <div class="endorsement-item">
+                <a href="https://www.weibo.com/u/7051369932" class="endorsement-link">
+                    <img src=".\代言\梅森马吉拉香氛品牌代言人.jpg" alt="梅森马吉拉香氛品牌代言人" loading="lazy">
+                    <div class="endorsement-caption">
+                        <h3>梅森马吉拉香氛品牌代言人</h3>
+                        <p>20250627</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <p><br><br><b>个人商务代言官方物料网盘资源汇总</b></p>
+        <a href="https://pan.quark.cn/s/c916de3745fb" class="pan-link">夸克网盘</a>
+        <a href="https://pan.baidu.com/s/14x1q5DqBzBDzb9JCqzRSAA?pwd=hqj7" class="pan-link">百度网盘</a>
+    </section>
+
+    <!-- 杂志媒体报道 -->
+    <section id="media" class="section">
+        <h2>杂志及媒体报道</h2>
+        <div class="grow-grid">
+            <div>
+                <h3>个人时尚杂志</h3>
+                <div class="box">
+                    <img src=".\杂志媒体报道\2024《时尚芭莎》.jpg" alt="2024年10月《时尚芭莎》" >
+                    <a href="https://mp.weixin.qq.com/s/DnWv6XxewxaFnErn0wX-9Q">2024《时尚芭莎》银十周年刊</a>
+                </div>
+                <div class="box">
+                    <img src=".\杂志媒体报道\2025《ELLE》.jpg" alt="2025年1月《ELLE》" >
+                    <img src=".\杂志媒体报道\2025《ELLE》2.jpg" alt="2025年1月《ELLE》" >
+                    <a href="https://mp.weixin.qq.com/s/h0WAj3mnNF_QFfH-YADyvg">2025《ELLE 世界时装之苑》开年刊</a>
+                </div>
+                <div class="box">
+                    <div class="paper-grid">
+                        <img src=".\杂志媒体报道\2025《嘉人》1.jpg" alt="2025年6月《嘉人》" >
+                        <img src=".\杂志媒体报道\2025《嘉人》2.jpg" alt="2025年6月《嘉人》" >
+                        <img src=".\杂志媒体报道\2025《嘉人》3.jpg" alt="2025年6月《嘉人》" >
+                        <img src=".\杂志媒体报道\2025《嘉人》4.jpg" alt="2025年6月《嘉人》" >
+                        <img src=".\杂志媒体报道\2025《嘉人》5.jpg" alt="2025年6月《嘉人》" >
+                        <img src=".\杂志媒体报道\2025《嘉人》6.jpg" alt="2025年6月《嘉人》" >
+                    </div>
+                    <a href="https://mp.weixin.qq.com/s/GX3sZwX0pRjOgDmQad6blw">2025《嘉人》6月第500封OG</a>
+                </div>
+                <div class="box">
+                    <p style="margin-top:30px"><br><br><b>个人时尚杂志官方物料网盘资源汇总</b></p>
+                    <a href="https://pan.quark.cn/s/92e0b8491714" class="pan-link">夸克网盘</a>
+                    <a href="https://pan.baidu.com/s/1NvdFxMDBM9_GQjTcEiCTXA?pwd=wci8" class="pan-link">百度网盘</a>
                 </div>
             </div>
-			
-			
-			<!-- 2016 -->
-			<div class="media-item">
-				<h3>2016</h3>
-				<p>由于在国家二队，国际上并没有太多出赛机会，相关报道提及很少，重要考古节点也比较少。网上还能找到的视频资源只有青少年公开赛香港站和太仓站部分，以及国内乒超联赛，可以在放映室观看。</p>
-				<div class="media-window">
-					<div class="media-content">
-						<h3>2016</h3>
-						<div class="article">
-							<h4>考古必看：</h4>
-							<a href="https://www.douban.com/group/topic/242726992/" class="pan-link">关于孙颖莎，你可能想要知道的10086件小事儿（2016年系列）</a>
-							<p>10086件小事中已经基本全面地整理记录了莎莎的成长，所以接下来的部分只记录一部分重要节点。</p>
-							<h4>2016年6月，女二队到黄石基地进行夏训</h4>
-							<blockquote><p style="color:#808080">在提高技术的基础上，本次集训还着重强调了运动员心理与意志品质的重要性。队伍从“五个方面的赢和三个方面的不输”入手，重点解决青少年运动员普遍存在的想赢怕输的心态问题。女二队主教练黄海城还特意讲了“精、气、神”在场上的关键作用，他说这样做可以缩短小运动员的心理成熟期，目的也是促进技战术水平的提高。这些话，黄海城对目前队里的小重点孙颖莎说的最多，可最初孙颖莎并不当回事儿，直到这次集训因为在比赛中精神面貌不好被罚站一周，她才明白教练的良苦用心。站在墙边，面对国旗，孙颖莎没站多久就累得乱晃，突然间她意识到自己才站了一会儿就受不了，这些教练一站就是一天，她感叹教练辛劳的同时，反思到自己跟教练较劲的不懂事。看着队友们训练，孙颖莎心里痒痒，所以每到午休时间，她都找队友陪着练会儿。一周站下来，孙颖莎有了很多心得体会，“之前黄导经常跟我说自己跟一队队员的差距，可我没走过心。这次他罚我站，我就把之前他跟我说的那些话都用脑子过了一遍，悟出了很多道理，尤其是场上的精神面貌，积极的人确实会提高技战术水平的发挥，这也就是为什么黄导让我在场上一定要喊出来的原因。”<br><br>
-							——节选自《乒乓世界》2016年第8期<br></p></blockquote>
-							
-						</div>
-					</div>
-					<div class="close-btn">×</div>
-				</div>
-			</div>	
+            <div>
+                <h3>《乒乓世界》</h3>
+                    <div class="ttpaper-grid">
+                        <div style="text-align:center";>
+                            <img src=".\杂志媒体报道\2019年10月封面.jpg" alt="2019年10月封面" style="width:100%">
+                            <a href="https://mp.weixin.qq.com/s/iAa7R9ljnj_J5j8OcyEs2g">2019年10月封面</a>
+                        </div>
+                        <div style="text-align:center";>
+                            <img src=".\杂志媒体报道\2020年9月封面.jpg" alt="2020年9月封面" style="width:100%">
+                            <a href="https://mp.weixin.qq.com/s/TihjgLIe8fDML1bcuRyHKg">2020年9月封面</a>
+                        </div>
+                        <div style="text-align:center";>
+                            <img src=".\杂志媒体报道\2021年12月封面.jpg" alt="2021年12月封面" style="width:100%">
+                            <a href="https://mp.weixin.qq.com/s/I1gEz5miUG2zGL-0qu3T7w">2021年12月封面</a>
+                        </div>
+                        <div style="text-align:center";>
+                            <img src=".\杂志媒体报道\2022年8月封面.jpg" alt="2022年8月封面" style="width:100%">
+                            <a href="https://mp.weixin.qq.com/s/2b-Vc7cmpRojjDFgoEPAHw">2022年8月封面</a>
+                        </div>
+                        <div style="text-align:center";>
+                            <img src=".\杂志媒体报道\2023年2月封面.jpg" alt="2023年2月封面" style="width:100%">
+                            <a>2023年2月封面</a>
+                        </div>
+                        <div style="text-align:center";>
+                            <img src=".\杂志媒体报道\2023年5月封面.jpg" alt="2023年5月封面" style="width:100%">
+                            <a href="https://mp.weixin.qq.com/s/2WSYWjY3FhT6cXBsZvR2Yw">2023年5月封面</a>
+                        </div>
+                        <div style="text-align:center";>
+                            <img src=".\杂志媒体报道\2023年8月封面.jpg" alt="2023年8月封面" style="width:100%">
+                            <a href="https://mp.weixin.qq.com/s/K3b2pdCuxzCeq_nHc9iTzQ">2023年8月封面</a>
+                        </div>
+                        <div style="text-align:center";>
+                            <img src=".\杂志媒体报道\2023年12月封面.jpg" alt="2023年12月封面" style="width:100%">
+                            <a>2023年12月封面</a>
+                        </div>
+                        <div style="text-align:center";>
+                            <img src=".\杂志媒体报道\2024年2月封面.jpg" alt="2024年2月封面" style="width:100%">
+                            <a href="https://mp.weixin.qq.com/s/A_Al_WrcGpW6D0mZ24tJBg">2024年2月封面</a>
+                        </div>
+                        <div style="text-align:center";>
+                            <img src=".\杂志媒体报道\2024年7月封面.jpg" alt="2024年7月封面" style="width:100%">
+                            <a href="https://mp.weixin.qq.com/s/1MgF-LoqCa4rsoYeI0ObJQ">2024年7月封面</a>
+                        </div>
+                        <div style="text-align:center";>
+                            <img src=".\杂志媒体报道\2025年1月封面.jpg" alt="2025年1月封面" style="width:100%">
+                            <a href="https://mp.weixin.qq.com/s/pBBWC4Yjxo79l1lYpvzi5A">2025年1月封面</a>
+                        </div>
+                </div>
+                <p><br><br><b>《乒乓世界》孙颖莎相关网盘资源汇总</b></p>
+                <a href="https://pan.quark.cn/s/c6d6947aebf4" class="pan-link">夸克网盘</a>
+                <a href="https://pan.baidu.com/s/1Er9660W2dfS13VMw7wbfHQ?pwd=supm " class="pan-link">百度网盘</a>
+            </div>
+            <div>
+                <h3>媒体报道</h3>
+                <p style="color:red">只汇总包含相关人物采访叙述的报道。</p>
+                <p>20170619 【体坛周报】<a href="https://resource.ttplus.cn/publish/app/data/2017/06/19/62121/share1.html">孙颖莎夺冠黄海城大呼意外 “她一点都不比平野差”</a></p>
+                <p>20170619 【燕赵晚报】<a href="https://hebei.hebnews.cn/2017-06/19/content_6527634.htm">棒！石家庄16岁姑娘孙颖莎日本乒乓球公开赛独揽两冠</a></p>
+                <p>20170621 【衡水广播电视台】<a href="https://mp.weixin.qq.com/s/P4W2tul4MhHItOrdpELFkA">衡水出了个世界冠军！家乡父老为你骄傲</a></p>
+                <p>20170622 【民生关注】<a href="https://weibo.com/7895688576/PuXTGhNtM">直面当事人|心系乒乓无旁骛——16岁“双冠王”孙颖莎</a></p>
+                <p>20170629 【河北青年报】<a href="https://www.hbynet.net/html/heqing/daohang/guoneidongtai1555011803978326017/954420034429.html">孙颖莎：石家庄走出来的乒乓“黑马”</a></p>
+                <p>20170629 【郑晓禾说乒乓】<a href="https://mp.weixin.qq.com/s/j3zuo4aolYUjDtOo52mT0g">“小魔王”孙颖莎的三板斧</a></p>
+                <p>20170710 【郑晓禾说乒乓】<a href="https://mp.weixin.qq.com/s/QYcT94gSA87jn9azuaRb4A">寻找孙颖莎足迹 小魔王从小就“以小打大”</a></p>
+                <p>20170730 【微乒乓】<a href="https://mp.weixin.qq.com/s/V-9C_OFeuuC2RLZDP3YLew">孙颖莎：业余比赛记--知道她是是天才，没想到能达到如此高度！</a></p>
+                <p>20180223 【中国税务报】<a href="https://pan.baidu.com/s/1Q8_TkbuTeT1UetURIPMHQg?pwd=a688">在拼搏中收获幸福</a></p>
+                <p>20190429 【燕赵都市报】<a href="https://yzdsb.hebnews.cn/pc/paper/c/201904/29/c131939.html">这一刻，河北乒乓等了太久</a></p>
+                <p>20190430 【燕赵晚报】<a href="https://baijiahao.baidu.com/s?id=1632231412148462708&wfr=spider&for=pc">世乒冠军孙颖莎：别人家的孩子，咱庄里的娃！（成长深度帖！）</a></p>
+                <p>20191111 【燕赵晚报】<a href="https://weibo.com/ttarticle/p/show?id=2309404437551774564692">庄里莎今日凯旋回京！大心脏是因为有颗定心丸</a></p>
+                <p>20200828 【微乒乓】<a href="https://mp.weixin.qq.com/s/8YAOODJTR1cGsYlSGXsLqw">孙颖莎启蒙教练：只要给她点阳光，她就能灿烂！</a></p>
+                <p>20210730 【燕赵晚报】<a href="https://pan.baidu.com/s/1PwsazQENj33HMda1i7hprg?pwd=ttyh"> 最大功臣是咱庄里姑娘孙颖莎</a></p>
+                <p>20210806 【河北日报】<a href="https://hbrb.hebnews.cn/pc/paper/c/202108/06/content_95793.html">“大心脏”是这样炼出来的</a></p>
+                <p>20210806 【石家庄日报】<a href="https://pan.baidu.com/s/16zzLl42Wzy4zJz9D3zbvyg?pwd=kxpy">石家庄姑娘孙颖莎霸气夺金</a></p>
+                <p>20210808 【长城网】<a href="https://www.hebgcdy.com/szyw/system/2021/08/09/030510332.shtml">冠军之路·河北奥运夺金运动员成长探密｜孙颖莎：最奶气的脸，最霸气的球！</a></p>
+                <p>20210817 【燕赵都市报】<a href="https://yzdsb.hebnews.cn/pc/paper/c/202108/17/content_97438.html">孙颖莎：“小魔王”期待变身“大魔王”</a></p>
+                
+            </div>
         </div>
-
-		
-		<div class="media-grid">
-            <!-- 2017 -->
-			<div class="media-item">
-				<h3>2017</h3>
-				<p>1月，通过一二队升降赛排名前三进入国家一队。5月份，作为杜塞尔多夫世乒赛女乒训练中平野美宇模仿者，表现出色，获得2017年6月日本公开赛（白金站）参赛机会并夺取双冠一鸣惊人。此后终于获得机会参加亚青赛和世青赛，成功把握住机会成为亚青赛四冠王和世青赛三冠王。</p>
-				<div class="media-window">
-					<div class="media-content">
-						<h3>2017</h3>
-						<div class="article">
-							<h4>考古必看：</h4>
-							<a href="https://www.douban.com/group/topic/242250979/" class="pan-link">关于孙颖莎，你可能想要知道的10086件小事儿（2017年系列）</a>
-							<h4>原球迷会微博考古：</h4>
-							<a href="https://m.weibo.cn/c/novelty/detail?card_id=7655507768154113" class="pan-link">【孙颖莎考古收藏包】2017年球迷会考古搬运</a>
-							<h4>李武军微博中的孙颖莎存档（2017-2018）</h4>
-							<a href="https://www.douban.com/group/topic/276708922/" class="pan-link">李武军微博中的孙颖莎存档（2017-2018）</a>
-							<p style="color:red">10086件小事中已经基本全面地整理记录了莎莎的成长，所以接下来的部分只记录一部分重要节点。</p>
-							<p><b>20170120</b>，通过女乒一、二队升降赛前三的成绩，孙颖莎进入国家一队。<br></p>
-							<p>5月份，作为杜塞尔多夫世乒赛女乒训练中平野美宇模仿者，表现出色，获得2017年6月日本公开赛（白金站）参赛机会。</p>
-							<p><b>20170614-20170618</b>，出战日本公开赛（白金站），参加女单女双两项均夺冠，一鸣惊人，央视出了栏目“女乒出了个孙颖莎”。</p>
-							<ul>
-								<li><a href="https://www.bilibili.com/video/BV1wf4y1u7Tm/">2017日本公开赛直播讨论帖</a></li>
-								<li><a href="https://m.weibo.cn/status/4525090353742461">女双决赛后超可爱的摄像机签名</a></li>
-								<li><a href="https://weibo.com/7895688576/PuXRzE56k">20170620 《体育咖吧》专题：女乒出了个孙颖莎</a></li>
-								<li><p>20170622 【故城新闻】<a href="https://www.bilibili.com/video/BV1y5411d7v4/">民生广场：孙颖莎获国际乒联巡回赛冠军 家乡父老倍感荣耀（采访莎莎爷爷奶奶）</a></p></li>
-							</ul>
-							<p><b>20170620-20170625</b>，出战中国公开赛（白金站），一周内连续两次击败当时最大的竞争对手冯天薇，半决赛击败刘诗雯，决赛不敌丁宁获得亚军，证明日本公开赛的双冠绝非偶然。</p>
-							<ul>
-								<li><a href="https://www.bilibili.com/video/BV1cr4y117kK/">2017中国公开赛直播讨论帖</a></li>
-								<li><a href="https://weibo.com/5681734521/4122535929068537">决赛前和波尔练球</a></li>
-								<li><p>半决赛后采访爆金句“我觉得我也不年轻了吧，都17、16了”<a href="https://www.bilibili.com/video/BV1gx41167a8/">170624 成都公开赛后胜刘诗雯后采访 孙颖莎说了什么？把现场媒体记者都逗乐了？？</a></p></li>
-								<li><p>女单决赛后很可爱的新闻发布会<a href="https://www.bilibili.com/video/BV1Ex41167AY/">170625 中国公开赛 女单决赛后新闻发布会 丁宁 孙颖莎</a></p></li>
-							</ul>
-							<p><b>20170627-20170704</b>，出战亚洲青少年锦标赛，获女单、女团、女双、混双四项冠军。<br></p>
-							<p><b>20170705</b>，在近期公开赛中表现神勇的中国00后小将孙颖莎，凭借日本公开赛、中国公开赛以及亚青赛中的出色发挥，狂揽2999分，排名从无直接“空降”至世界第10。（摘自《乒乓世界》2017年8月刊）<br></p>
-							<p><b>20170713</b>，【斯蒂卡V乒乓】<a href="https://www.bilibili.com/video/BV1Ex41167AY/">170625 中国公开赛 女单决赛后新闻发布会 丁宁 孙颖莎</a><br></p>
-							<h4>2016年6月，女二队到黄石基地进行夏训</h4>
-							<blockquote><p style="color:#808080">在提高技术的基础上，本次集训还着重强调了运动员心理与意志品质的重要性。队伍从“五个方面的赢和三个方面的不输”入手，重点解决青少年运动员普遍存在的想赢怕输的心态问题。女二队主教练黄海城还特意讲了“精、气、神”在场上的关键作用，他说这样做可以缩短小运动员的心理成熟期，目的也是促进技战术水平的提高。这些话，黄海城对目前队里的小重点孙颖莎说的最多，可最初孙颖莎并不当回事儿，直到这次集训因为在比赛中精神面貌不好被罚站一周，她才明白教练的良苦用心。站在墙边，面对国旗，孙颖莎没站多久就累得乱晃，突然间她意识到自己才站了一会儿就受不了，这些教练一站就是一天，她感叹教练辛劳的同时，反思到自己跟教练较劲的不懂事。看着队友们训练，孙颖莎心里痒痒，所以每到午休时间，她都找队友陪着练会儿。一周站下来，孙颖莎有了很多心得体会，“之前黄导经常跟我说自己跟一队队员的差距，可我没走过心。这次他罚我站，我就把之前他跟我说的那些话都用脑子过了一遍，悟出了很多道理，尤其是场上的精神面貌，积极的人确实会提高技战术水平的发挥，这也就是为什么黄导让我在场上一定要喊出来的原因。”<br><br>
-							——节选自《乒乓世界》2016年第8期<br></p></blockquote>
-							
-						</div>
-					</div>
-					<div class="close-btn">×</div>
-				</div>
-			</div>	
-			
-			
-			<!-- 2018 -->
-			<div class="media-item">
-				<h3>2018</h3>
-				<p>由冲击者到被冲击者，经历了一段时间的困难。不管是输外战还是与主管教练的矛盾，都是成长需要经历的。在亚运封闭训练期间，被罚跑一万米。好在经过调整，重新回到正轨，在10月份实现青年赛事大满贯。</p>
-				<div class="media-window">
-					<div class="media-content">
-						<h3>2018</h3>
-						<div class="article">
-							<h4>考古必看：</h4>
-							<a href="https://www.douban.com/group/topic/242726992/" class="pan-link">关于孙颖莎，你可能想要知道的10086件小事儿（2016年系列）</a>
-							<p>10086件小事中已经基本全面地整理记录了莎莎的成长，所以接下来的部分只记录一部分重要节点。</p>
-							<h4>2016年6月，女二队到黄石基地进行夏训</h4>
-							<blockquote><p style="color:#808080">在提高技术的基础上，本次集训还着重强调了运动员心理与意志品质的重要性。队伍从“五个方面的赢和三个方面的不输”入手，重点解决青少年运动员普遍存在的想赢怕输的心态问题。女二队主教练黄海城还特意讲了“精、气、神”在场上的关键作用，他说这样做可以缩短小运动员的心理成熟期，目的也是促进技战术水平的提高。这些话，黄海城对目前队里的小重点孙颖莎说的最多，可最初孙颖莎并不当回事儿，直到这次集训因为在比赛中精神面貌不好被罚站一周，她才明白教练的良苦用心。站在墙边，面对国旗，孙颖莎没站多久就累得乱晃，突然间她意识到自己才站了一会儿就受不了，这些教练一站就是一天，她感叹教练辛劳的同时，反思到自己跟教练较劲的不懂事。看着队友们训练，孙颖莎心里痒痒，所以每到午休时间，她都找队友陪着练会儿。一周站下来，孙颖莎有了很多心得体会，“之前黄导经常跟我说自己跟一队队员的差距，可我没走过心。这次他罚我站，我就把之前他跟我说的那些话都用脑子过了一遍，悟出了很多道理，尤其是场上的精神面貌，积极的人确实会提高技战术水平的发挥，这也就是为什么黄导让我在场上一定要喊出来的原因。”<br><br>
-							——节选自《乒乓世界》2016年第8期<br></p></blockquote>
-						</div>
-					</div>
-					<div class="close-btn">×</div>
-				</div>
-			</div>	
-        </div>
-		
-		<div class="media-grid">
-            <!-- 2019 -->
-			<div class="media-item">
-				<h3>2019</h3>
-				<p>向上冲击与腾飞的一年，经历布达佩斯世乒赛，找到了调整与进步的方向。在此后半年时间，即使主管教练不能经常跟赛，也连续夺得多个赛事女单冠军，过了左手大高个的关。第一次参加世界杯团体赛便临危受命在决赛打一单，并上演惊天大逆转。经历了大赛的磨练，还在飞速成长中。这一年的精彩表现也让莎莎成为2019年国际乒联胜率最高的女运动员（86%）。</p>
-				<div class="media-window">
-					<div class="media-content">
-						<h3>2019</h3>
-						<div class="article">
-							<h4>考古必看：</h4>
-							<a href="https://www.douban.com/group/topic/242726992/" class="pan-link">关于孙颖莎，你可能想要知道的10086件小事儿（2016年系列）</a>
-							<p>10086件小事中已经基本全面地整理记录了莎莎的成长，所以接下来的部分只记录一部分重要节点。</p>
-							<h4>2016年6月，女二队到黄石基地进行夏训</h4>
-							<blockquote><p style="color:#808080">在提高技术的基础上，本次集训还着重强调了运动员心理与意志品质的重要性。队伍从“五个方面的赢和三个方面的不输”入手，重点解决青少年运动员普遍存在的想赢怕输的心态问题。女二队主教练黄海城还特意讲了“精、气、神”在场上的关键作用，他说这样做可以缩短小运动员的心理成熟期，目的也是促进技战术水平的提高。这些话，黄海城对目前队里的小重点孙颖莎说的最多，可最初孙颖莎并不当回事儿，直到这次集训因为在比赛中精神面貌不好被罚站一周，她才明白教练的良苦用心。站在墙边，面对国旗，孙颖莎没站多久就累得乱晃，突然间她意识到自己才站了一会儿就受不了，这些教练一站就是一天，她感叹教练辛劳的同时，反思到自己跟教练较劲的不懂事。看着队友们训练，孙颖莎心里痒痒，所以每到午休时间，她都找队友陪着练会儿。一周站下来，孙颖莎有了很多心得体会，“之前黄导经常跟我说自己跟一队队员的差距，可我没走过心。这次他罚我站，我就把之前他跟我说的那些话都用脑子过了一遍，悟出了很多道理，尤其是场上的精神面貌，积极的人确实会提高技战术水平的发挥，这也就是为什么黄导让我在场上一定要喊出来的原因。”<br><br>
-							——节选自《乒乓世界》2016年第8期<br></p></blockquote>
-							
-						</div>
-					</div>
-					<div class="close-btn">×</div>
-				</div>
-			</div>	
-			
-			
-			<!-- 2020 -->
-			<div class="media-item">
-				<h3>2020</h3>
-				<p>稳步成长。受疫情影响，在1月份前往卡塔尔进行封训备战奥运会。参加完卡公后飞澳门集训，后面原定3-6月的赛事全部停摆，世界排名也从4月起冻结至比赛重启。东京奥运会推迟后，大部队回到内地封训，8月在海南陵水举行奥运模拟赛，孙颖莎夺得三冠。又在10月份的全国锦标赛中，率领河北女队夺得女团冠军。11月在威海参加还未改制的世界杯，即使主管教练未跟赛，也成功守住半区狙击头号对手伊藤美诚与队友会师决赛。</p>
-				<div class="media-window">
-					<div class="media-content">
-						<h3>2020</h3>
-						<div class="article">
-							<h4>考古必看：</h4>
-							<a href="https://www.douban.com/group/topic/242726992/" class="pan-link">关于孙颖莎，你可能想要知道的10086件小事儿（2016年系列）</a>
-							<p>10086件小事中已经基本全面地整理记录了莎莎的成长，所以接下来的部分只记录一部分重要节点。</p>
-							<h4>2016年6月，女二队到黄石基地进行夏训</h4>
-							<blockquote><p style="color:#808080">在提高技术的基础上，本次集训还着重强调了运动员心理与意志品质的重要性。队伍从“五个方面的赢和三个方面的不输”入手，重点解决青少年运动员普遍存在的想赢怕输的心态问题。女二队主教练黄海城还特意讲了“精、气、神”在场上的关键作用，他说这样做可以缩短小运动员的心理成熟期，目的也是促进技战术水平的提高。这些话，黄海城对目前队里的小重点孙颖莎说的最多，可最初孙颖莎并不当回事儿，直到这次集训因为在比赛中精神面貌不好被罚站一周，她才明白教练的良苦用心。站在墙边，面对国旗，孙颖莎没站多久就累得乱晃，突然间她意识到自己才站了一会儿就受不了，这些教练一站就是一天，她感叹教练辛劳的同时，反思到自己跟教练较劲的不懂事。看着队友们训练，孙颖莎心里痒痒，所以每到午休时间，她都找队友陪着练会儿。一周站下来，孙颖莎有了很多心得体会，“之前黄导经常跟我说自己跟一队队员的差距，可我没走过心。这次他罚我站，我就把之前他跟我说的那些话都用脑子过了一遍，悟出了很多道理，尤其是场上的精神面貌，积极的人确实会提高技战术水平的发挥，这也就是为什么黄导让我在场上一定要喊出来的原因。”<br><br>
-							——节选自《乒乓世界》2016年第8期<br></p></blockquote>
-						</div>
-					</div>
-					<div class="close-btn">×</div>
-				</div>
-			</div>	
-        </div>
-		
-		<div class="media-grid">
-            <!-- 2021 -->
-			<div class="media-item">
-				<h3>2021</h3>
-				<p>一战成名。获得参加东京奥运会女单和女团名额，在奥运会混双失利的情况下，女单半决赛4-0战胜伊藤美诚一战成名，也振奋了球队的士气。虽然单打遗憾摘银，孙颖莎迅速调整好心态投入到女团的比赛中，除了第一场出战女双外，其他均出战团体一单。在女团决赛中又一次战胜头号对手伊藤美诚，为女团夺金拿下重要的一分。奥运会结束回国隔离一段时间，9月由于赛程冲突，国乒没有参加亚锦赛，在全运会中，孙颖莎大胆换拍，同时也被球迷发现此时主管教练已离开，此后几个月的备战和比赛，孙颖莎均无主管教练。10月通过乒超MVP拿到通往休斯顿世乒赛的门票，11月在无主管教练的情况下兼三项，获得两金一银。世乒赛结束后立即飞往新加坡参加2021年的世界杯总决赛，终夺冠军，像孙颖莎说的，“是什么比赛不重要，冠军才重要”，这个冠军为孙颖莎的2021年画下了一个还算圆满的句号。</p>
-				<div class="media-window">
-					<div class="media-content">
-						<h3>2016</h3>
-						<div class="article">
-							<h4>考古必看：</h4>
-							<a href="https://www.douban.com/group/topic/242726992/" class="pan-link">关于孙颖莎，你可能想要知道的10086件小事儿（2016年系列）</a>
-							<p>10086件小事中已经基本全面地整理记录了莎莎的成长，所以接下来的部分只记录一部分重要节点。</p>
-							<h4>2016年6月，女二队到黄石基地进行夏训</h4>
-							<blockquote><p style="color:#808080">在提高技术的基础上，本次集训还着重强调了运动员心理与意志品质的重要性。队伍从“五个方面的赢和三个方面的不输”入手，重点解决青少年运动员普遍存在的想赢怕输的心态问题。女二队主教练黄海城还特意讲了“精、气、神”在场上的关键作用，他说这样做可以缩短小运动员的心理成熟期，目的也是促进技战术水平的提高。这些话，黄海城对目前队里的小重点孙颖莎说的最多，可最初孙颖莎并不当回事儿，直到这次集训因为在比赛中精神面貌不好被罚站一周，她才明白教练的良苦用心。站在墙边，面对国旗，孙颖莎没站多久就累得乱晃，突然间她意识到自己才站了一会儿就受不了，这些教练一站就是一天，她感叹教练辛劳的同时，反思到自己跟教练较劲的不懂事。看着队友们训练，孙颖莎心里痒痒，所以每到午休时间，她都找队友陪着练会儿。一周站下来，孙颖莎有了很多心得体会，“之前黄导经常跟我说自己跟一队队员的差距，可我没走过心。这次他罚我站，我就把之前他跟我说的那些话都用脑子过了一遍，悟出了很多道理，尤其是场上的精神面貌，积极的人确实会提高技战术水平的发挥，这也就是为什么黄导让我在场上一定要喊出来的原因。”<br><br>
-							——节选自《乒乓世界》2016年第8期<br></p></blockquote>
-							
-						</div>
-					</div>
-					<div class="close-btn">×</div>
-				</div>
-			</div>	
-			
-			
-			<!-- 2022 -->
-			<div class="media-item">
-				<h3>2022</h3>
-				<p>获得突破。2月末官宣邱贻可成为主管教练，自2021年奥运会结束后开始的无主管教练的日子终于过去。新主管教练，自然面临新的磨合，在7月份布达佩斯两次失利输给王艺迪，让人有点担忧。幸好在备战成都世乒赛团体赛的封训期间，磨合得相对好一些。10月份参加成都世乒赛团体赛帮助中国女团夺得金牌，这也是孙颖莎第一次参加世乒赛团体赛。只是夺冠的第二天，教练组以梯队建设为由将孙颖莎的亚洲杯邀请名额给了其他队友，这是第一次教练组将没参加过亚洲杯的人的名额给了他人。当时即将面临清分，好在孙颖莎在10月底的澳门冠军赛和新乡世界杯总决赛背靠背夺冠，稳住了自己的积分和世界排名，新乡世界杯总决赛也是孙颖莎战胜自己跨过一道坎的比赛。</p>
-				<div class="media-window">
-					<div class="media-content">
-						<h3>2016</h3>
-						<div class="article">
-							<h4>考古必看：</h4>
-							<a href="https://www.douban.com/group/topic/242726992/" class="pan-link">关于孙颖莎，你可能想要知道的10086件小事儿（2016年系列）</a>
-							<p>10086件小事中已经基本全面地整理记录了莎莎的成长，所以接下来的部分只记录一部分重要节点。</p>
-							<h4>2016年6月，女二队到黄石基地进行夏训</h4>
-							<blockquote><p style="color:#808080">在提高技术的基础上，本次集训还着重强调了运动员心理与意志品质的重要性。队伍从“五个方面的赢和三个方面的不输”入手，重点解决青少年运动员普遍存在的想赢怕输的心态问题。女二队主教练黄海城还特意讲了“精、气、神”在场上的关键作用，他说这样做可以缩短小运动员的心理成熟期，目的也是促进技战术水平的提高。这些话，黄海城对目前队里的小重点孙颖莎说的最多，可最初孙颖莎并不当回事儿，直到这次集训因为在比赛中精神面貌不好被罚站一周，她才明白教练的良苦用心。站在墙边，面对国旗，孙颖莎没站多久就累得乱晃，突然间她意识到自己才站了一会儿就受不了，这些教练一站就是一天，她感叹教练辛劳的同时，反思到自己跟教练较劲的不懂事。看着队友们训练，孙颖莎心里痒痒，所以每到午休时间，她都找队友陪着练会儿。一周站下来，孙颖莎有了很多心得体会，“之前黄导经常跟我说自己跟一队队员的差距，可我没走过心。这次他罚我站，我就把之前他跟我说的那些话都用脑子过了一遍，悟出了很多道理，尤其是场上的精神面貌，积极的人确实会提高技战术水平的发挥，这也就是为什么黄导让我在场上一定要喊出来的原因。”<br><br>
-							——节选自《乒乓世界》2016年第8期<br></p></blockquote>
-						</div>
-					</div>
-					<div class="close-btn">×</div>
-				</div>
-			</div>	
-        </div>
-		
-		<div class="media-grid">
-            <!-- 2023 -->
-			<div class="media-item">
-				<h3>2023</h3>
-				<p>收获满满的一年。这一年，孙颖莎稳步成长，也在不停兼项比赛中度过。在3月份的新加坡大满贯中，夺得三冠，是WTT大满贯历史上第一个三冠王。又在4月份夺得新乡冠军赛冠军。5月份，德班世乒赛，依然身兼三项，这次孙颖莎如愿捧起了吉·盖斯特杯，这是她个人第一个单打世冠，这届世乒赛获得两金一铜。7月份，夺得卢布尔雅那球星挑战赛冠军，这也是孙颖莎第一个球星挑战赛冠军。9月份，连着两个洲际赛，平昌亚锦赛和杭州亚运会，孙颖莎分别兼三项和兼四项，杭州亚运会在女单半区失守的情况下，在国庆节当晚战胜日本选手早田希娜夺得冠军。结束亚运会的赛程后，又马不停蹄地飞往兰州，参加球星挑战赛，并再次夺得冠军。12月份，参加第一届混合团体世界杯夺冠后，又飞名古屋参加女子总决赛，豪取总决赛三连冠。</p>
-				<div class="media-window">
-					<div class="media-content">
-						<h3>2023</h3>
-						<div class="article">
-							<h4>考古必看：</h4>
-							<a href="https://www.douban.com/group/topic/242726992/" class="pan-link">关于孙颖莎，你可能想要知道的10086件小事儿（2016年系列）</a>
-							<p>10086件小事中已经基本全面地整理记录了莎莎的成长，所以接下来的部分只记录一部分重要节点。</p>
-							<h4>2016年6月，女二队到黄石基地进行夏训</h4>
-							<blockquote><p style="color:#808080">在提高技术的基础上，本次集训还着重强调了运动员心理与意志品质的重要性。队伍从“五个方面的赢和三个方面的不输”入手，重点解决青少年运动员普遍存在的想赢怕输的心态问题。女二队主教练黄海城还特意讲了“精、气、神”在场上的关键作用，他说这样做可以缩短小运动员的心理成熟期，目的也是促进技战术水平的提高。这些话，黄海城对目前队里的小重点孙颖莎说的最多，可最初孙颖莎并不当回事儿，直到这次集训因为在比赛中精神面貌不好被罚站一周，她才明白教练的良苦用心。站在墙边，面对国旗，孙颖莎没站多久就累得乱晃，突然间她意识到自己才站了一会儿就受不了，这些教练一站就是一天，她感叹教练辛劳的同时，反思到自己跟教练较劲的不懂事。看着队友们训练，孙颖莎心里痒痒，所以每到午休时间，她都找队友陪着练会儿。一周站下来，孙颖莎有了很多心得体会，“之前黄导经常跟我说自己跟一队队员的差距，可我没走过心。这次他罚我站，我就把之前他跟我说的那些话都用脑子过了一遍，悟出了很多道理，尤其是场上的精神面貌，积极的人确实会提高技战术水平的发挥，这也就是为什么黄导让我在场上一定要喊出来的原因。”<br><br>
-							——节选自《乒乓世界》2016年第8期<br></p></blockquote>
-							
-						</div>
-					</div>
-					<div class="close-btn">×</div>
-				</div>
-			</div>	
-			
-			
-			<!-- 2024 -->
-			<div class="media-item">
-				<h3>2024</h3>
-				<p>不止技术，更是心理上的成长。年初多哈球星挑战赛夺冠。2月份釜山世乒赛团体赛，在决赛场，作为一单出战日本，第一场3：0战胜张本美和后，队友接连输给早田希娜和平野美宇，在大比分1：2落后的情况下，孙颖莎强势扳平比分，帮助中国队夺得金牌，也获得MVP。4月份，在仁川冠军赛夺冠后，参加新赛制世界杯，在面对无缝球和决赛1：3落后的大逆风，实现大逆转4：3赢下比赛，捧起哈马隆德杯，也是孙颖莎的第一个世界杯单打冠军和第二个单打世冠。6月份重庆冠军赛夺冠后便进入备战巴黎奥运会的封闭训练中。巴黎奥运会期间，混双带领整个赛程都不在状态的队友夺得金牌；女单全都4：0守住半区与队友会师决赛，却遭遇舆论围剿，不顾即将到来的团体赛；团体赛依然全程担任一单，扛起责任，决赛面对平野美宇第一局在1：7落后的情况下逆转取胜，3：0获胜帮助中国队拿下金牌。从开幕式打到闭幕式，孙颖莎14天打了61局比赛。在国乒大部队回国时，孙颖莎作为亚洲代表在奥运会闭幕式吹灭圣火。回国后得不到休整的时间，在手臂已有不适的情况下，孙颖莎连续夺得澳门冠军赛和北京大满贯的女单冠军，第二天就飞阿斯塔纳参加亚锦赛。在教练组保守的排兵布阵和密集的赛程下，孙颖莎在团体赛连续上场，女团决赛为队伍拿下1分，最终1：3不敌日本。孙颖莎也因为手臂伤势在10月10号发表微博退出亚锦赛单项赛事并回国养伤。之后孙颖莎连续退出已报名的蒙彼利埃和法兰克福冠军赛，经过一个月的养伤休整，11月份参加福冈总决赛，又身兼两项。12月参加成都混合团体世界杯夺冠，之后国内乒超联赛，个人全胜战绩，深圳大学俱乐部获得第二名。</p>
-				<div class="media-window">
-					<div class="media-content">
-						<h3>2024</h3>
-						<div class="article">
-							<h4>考古必看：</h4>
-							<a href="https://www.douban.com/group/topic/242726992/" class="pan-link">关于孙颖莎，你可能想要知道的10086件小事儿（2016年系列）</a>
-							<p>10086件小事中已经基本全面地整理记录了莎莎的成长，所以接下来的部分只记录一部分重要节点。</p>
-							<h4>2016年6月，女二队到黄石基地进行夏训</h4>
-							<blockquote><p style="color:#808080">在提高技术的基础上，本次集训还着重强调了运动员心理与意志品质的重要性。队伍从“五个方面的赢和三个方面的不输”入手，重点解决青少年运动员普遍存在的想赢怕输的心态问题。女二队主教练黄海城还特意讲了“精、气、神”在场上的关键作用，他说这样做可以缩短小运动员的心理成熟期，目的也是促进技战术水平的提高。这些话，黄海城对目前队里的小重点孙颖莎说的最多，可最初孙颖莎并不当回事儿，直到这次集训因为在比赛中精神面貌不好被罚站一周，她才明白教练的良苦用心。站在墙边，面对国旗，孙颖莎没站多久就累得乱晃，突然间她意识到自己才站了一会儿就受不了，这些教练一站就是一天，她感叹教练辛劳的同时，反思到自己跟教练较劲的不懂事。看着队友们训练，孙颖莎心里痒痒，所以每到午休时间，她都找队友陪着练会儿。一周站下来，孙颖莎有了很多心得体会，“之前黄导经常跟我说自己跟一队队员的差距，可我没走过心。这次他罚我站，我就把之前他跟我说的那些话都用脑子过了一遍，悟出了很多道理，尤其是场上的精神面貌，积极的人确实会提高技战术水平的发挥，这也就是为什么黄导让我在场上一定要喊出来的原因。”<br><br>
-							——节选自《乒乓世界》2016年第8期<br></p></blockquote>
-						</div>
-					</div>
-					<div class="close-btn">×</div>
-				</div>
-			</div>	
-        </div>
-		
-		<div class="media-grid">
-            <!-- 2025 -->
-			<div class="media-item">
-				<h3>2025</h3>
-				<p>由于在国家二队，国际上并没有太多出赛机会，相关报道提及很少，重要考古节点也比较少。网上还能找到的视频资源只有青少年公开赛香港站和太仓站部分，以及国内乒超联赛，可以在放映室观看。</p>
-				<div class="media-window">
-					<div class="media-content">
-						<h3>2016</h3>
-						<div class="article">
-							<h4>考古必看：</h4>
-							<a href="https://www.douban.com/group/topic/242726992/" class="pan-link">关于孙颖莎，你可能想要知道的10086件小事儿（2016年系列）</a>
-							<p>10086件小事中已经基本全面地整理记录了莎莎的成长，所以接下来的部分只记录一部分重要节点。</p>
-							<h4>2016年6月，女二队到黄石基地进行夏训</h4>
-							<blockquote><p style="color:#808080">在提高技术的基础上，本次集训还着重强调了运动员心理与意志品质的重要性。队伍从“五个方面的赢和三个方面的不输”入手，重点解决青少年运动员普遍存在的想赢怕输的心态问题。女二队主教练黄海城还特意讲了“精、气、神”在场上的关键作用，他说这样做可以缩短小运动员的心理成熟期，目的也是促进技战术水平的提高。这些话，黄海城对目前队里的小重点孙颖莎说的最多，可最初孙颖莎并不当回事儿，直到这次集训因为在比赛中精神面貌不好被罚站一周，她才明白教练的良苦用心。站在墙边，面对国旗，孙颖莎没站多久就累得乱晃，突然间她意识到自己才站了一会儿就受不了，这些教练一站就是一天，她感叹教练辛劳的同时，反思到自己跟教练较劲的不懂事。看着队友们训练，孙颖莎心里痒痒，所以每到午休时间，她都找队友陪着练会儿。一周站下来，孙颖莎有了很多心得体会，“之前黄导经常跟我说自己跟一队队员的差距，可我没走过心。这次他罚我站，我就把之前他跟我说的那些话都用脑子过了一遍，悟出了很多道理，尤其是场上的精神面貌，积极的人确实会提高技战术水平的发挥，这也就是为什么黄导让我在场上一定要喊出来的原因。”<br><br>
-							——节选自《乒乓世界》2016年第8期<br></p></blockquote>
-							
-						</div>
-					</div>
-					<div class="close-btn">×</div>
-				</div>
-			</div>	
-			
-			
-			<!-- 2026 -->
-			<div class="media-item">
-				<h3></h3>
-				<p></p>
-				<div class="media-window">
-					<div class="media-content">
-						<h3></h3>
-						<div class="article">
-							
-						</div>
-					</div>
-					<div class="close-btn">×</div>
-				</div>
-			</div>	
-        </div>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-        
-        <div class="media-overlay"></div>
     </section>
 
     <!-- 个人专访 -->
     <section id="interviews" class="section">
-		<h2>个人专访</h2>
-		<div class="interview-grid">
-			<!-- 专访项目1 -->
-			<div class="interview-item">
-				<a href="https://weibo.com/7895688576/Pv7yvzMaP" target="_blank" class="interview-link">
-					<img src=".\个人专访\斯蒂卡V乒乓专访（上）.png" 
-						 data-src=".\个人专访\斯蒂卡V乒乓专访（上）.png" 
-						 alt="斯蒂卡V乒乓专访（上）" 
-						 class="interview-image">
-					<div class="image-overlay">
-						<span>立即查看</span>
-					</div>
-				</a>
-				<div class="interview-caption">
-				<h3>斯蒂卡V乒乓专访（上）</h3>
-					<p>时间：2017.07.13</p>
-				</div>
-			</div>
-			
-			<!-- 专访项目2 -->
-			<div class="interview-item">
-				<a href="https://weibo.com/7895688576/Pv7yGBicS" target="_blank" class="interview-link">
-					<img src=".\个人专访\斯蒂卡V乒乓专访（下）.png" 
-						 data-src=".\个人专访\斯蒂卡V乒乓专访（下）.png" 
-						 alt="斯蒂卡V乒乓专访（下）" 
-						 class="interview-image">
-					<div class="image-overlay">
-						<span>立即查看</span>
-					</div>
-				</a>
-				<div class="interview-caption">
-				<h3>斯蒂卡V乒乓专访（下）</h3>
-					<p>时间：2017.07.15</p>
-				</div>
-			</div>
+        <h2>个人专访</h2>
+        <div class="interview-grid">
+            <div class="interview-item" data-modal="cctv-interview">
+                <div class="interview-link">
+                    <img src="https://images.unsplash.com/photo-1592656094267-764a451608b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="央视专访封面" class="interview-image">
+                    <div class="image-overlay">
+                        <span>立即查看</span>
+                    </div>
+                </div>
+                <div class="interview-caption">
+                    <h3>2023央视独家专访</h3>
+                    <p>时长：15分钟｜采访时间：2023.08</p>
+                </div>
+            </div>
+            <div class="interview-item" data-modal="people-interview">
+                <div class="interview-link">
+                    <img src="https://images.unsplash.com/photo-1592656094267-764a451608b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="人物杂志封面" class="interview-image">
+                    <div class="image-overlay">
+                        <span>阅读全文</span>
+                    </div>
+                </div>
+                <div class="interview-caption">
+                    <h3>《人物》年度特稿</h3>
+                    <p>2023年度运动员专题报道</p>
+                </div>
+            </div>
+            <div class="interview-item" data-modal="sports-interview">
+                <div class="interview-link">
+                    <img src="https://images.unsplash.com/photo-1592656094267-764a451608b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="体育周刊封面" class="interview-image">
+                    <div class="image-overlay">
+                        <span>查看详情</span>
+                    </div>
+                </div>
+                <div class="interview-caption">
+                    <h3>体育周刊封面故事</h3>
+                    <p>新生代运动员代表专访</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-			<!-- 专访项目3 -->
-			<div class="interview-item">
-				<a href="https://weibo.com/7895688576/PuXRX5osO" target="_blank" class="interview-link">
-					<img src="placeholder.jpg" 
-						 data-src="interview1.jpg" 
-						 alt="国乒小将孙颖莎专访" 
-						 class="interview-image">
-					<div class="image-overlay">
-						<span>立即查看</span>
-					</div>
-				</a>
-				<div class="interview-caption">
-				<h3>《乒乓是也》国乒小将孙颖莎专访</h3>
-					<p>时间：2017.08.31</p>
-				</div>
-			</div>
-			
-			<!-- 专访项目3 -->
-			<div class="interview-item">
-				<a href="#人物杂志" class="interview-link">
-					<img src="placeholder.jpg"
-						 data-src="interview2.jpg"
-						 alt="人物杂志封面"
-						 class="interview-image">
-					<div class="image-overlay">
-						<span>阅读全文</span>
-					</div>
-				</a>
-				<div class="interview-caption">
-					<h3>《人物》年度特稿</h3>
-					<p>2023年度运动员专题报道</p>
-				</div>
-			</div>
-		</div>
-		
-		<div class="interview-grid">
-			<!-- 专访项目1 -->
-			<div class="interview-item">
-				<a href="https://weibo.com/7895688576/Pv7yvzMaP" target="_blank" class="interview-link">
-					<img src="placeholder.jpg" 
-						 data-src="interview1.jpg" 
-						 alt="斯蒂卡V乒乓专访（上）" 
-						 class="interview-image">
-					<div class="image-overlay">
-						<span>立即查看</span>
-					</div>
-				</a>
-				<div class="interview-caption">
-				<h3>斯蒂卡V乒乓专访（上）</h3>
-					<p>时间：2017.07.13</p>
-				</div>
-			</div>
-			
-			<!-- 专访项目2 -->
-			<div class="interview-item">
-				<a href="https://weibo.com/7895688576/PuXRX5osO" target="_blank" class="interview-link">
-					<img src="placeholder.jpg" 
-						 data-src="interview1.jpg" 
-						 alt="国乒小将孙颖莎专访" 
-						 class="interview-image">
-					<div class="image-overlay">
-						<span>立即查看</span>
-					</div>
-				</a>
-				<div class="interview-caption">
-				<h3>《乒乓是也》国乒小将孙颖莎专访</h3>
-					<p>时间：2017.08.31</p>
-				</div>
-			</div>
+    <footer>
+        <p>本站资源收集自网络，仅供球迷学习交流使用，版权归原作者所有</p>
+        <p>未经允许禁止商业用途，下载后请于24小时内删除</p>
+        <p>© 2023 SUNDAY资源收藏馆</p>
+    </footer>
 
-			<!-- 专访项目2 -->
-			<div class="interview-item">
-				<a href="#人物杂志" class="interview-link">
-					<img src="placeholder.jpg"
-						 data-src="interview2.jpg"
-						 alt="人物杂志封面"
-						 class="interview-image">
-					<div class="image-overlay">
-						<span>阅读全文</span>
-					</div>
-				</a>
-				<div class="interview-caption">
-					<h3>《人物》年度特稿</h3>
-					<p>2023年度运动员专题报道</p>
-				</div>
-			</div>
-			
-			<!-- 专访项目3 -->
-			<div class="interview-item">
-				<a href="#人物杂志" class="interview-link">
-					<img src="placeholder.jpg"
-						 data-src="interview2.jpg"
-						 alt="人物杂志封面"
-						 class="interview-image">
-					<div class="image-overlay">
-						<span>阅读全文</span>
-					</div>
-				</a>
-				<div class="interview-caption">
-					<h3>《人物》年度特稿</h3>
-					<p>2023年度运动员专题报道</p>
-				</div>
-			</div>
-		</div>
-		
-		<footer>
-            <p>© SUNDAY放映室 | 孙颖莎资源收藏</p>
-        </footer>
-		
-		
-	</section>
+    <!-- 浮动窗口系统 -->
+    <div class="modal-overlay" id="modalOverlay"></div>
+    
+    <!-- 个人介绍模态框 -->
+    <div class="modal-container" id="bio-detail">
+        <div class="modal-header">
+            <h2 class="modal-title">个人成长经历</h2>
+            <button class="close-btn">&times;</button>
+        </div>
+        <div class="modal-content">
+            <img src="https://images.unsplash.com/photo-1519861531473-9200262188bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="孙颖莎个人照">
+            <h3>孙颖莎的成长之路</h3>
+            <p>孙颖莎，2000年11月4日出生于河北石家庄，中国女子乒乓球运动员，效力于中国女子乒乓球队。5岁开始接触乒乓球，展现出非凡的天赋和潜力。</p>
+            <p>2015年进入国家二队，2017年1月进入国家一队。2017年国际乒联日本公开赛女单冠军，成为首位00后世界巡回赛冠军。</p>
+            <p>2020年东京奥运会乒乓球女团冠军、女单亚军。2021年休斯敦世乒赛女单冠军。2023年德班世乒赛女单冠军，实现个人大满贯。</p>
+            <h3>技术特点</h3>
+            <p>孙颖莎技术全面，正手进攻威力大，反手技术稳定，发球变化多样。比赛中心理素质稳定，关键时刻敢于出手，战术执行能力强。</p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn">下载完整资料</button>
+        </div>
+    </div>
+    
+    <!-- 比赛汇总模态框 -->
+    <div class="modal-container" id="achievements-detail">
+        <div class="modal-header">
+            <h2 class="modal-title">主要成绩</h2>
+            <button class="close-btn">&times;</button>
+        </div>
+        <div class="modal-content">
+            <h3>2023年主要赛事成绩</h3>
+            <ul>
+                <li>WTT新加坡大满贯 - 冠军</li>
+                <li>杭州亚运会 - 女单金牌</li>
+                <li>德班世乒赛 - 女单冠军</li>
+                <li>WTT澳门冠军赛 - 冠军</li>
+                <li>WTT新乡冠军赛 - 冠军</li>
+            </ul>
+            <h3>经典比赛回顾</h3>
+            <p>2023年德班世乒赛女单决赛，孙颖莎对阵陈梦，双方激战7局，最终孙颖莎以4-3获胜，首次获得世乒赛女单冠军。</p>
+            <p>2023年杭州亚运会女单决赛，孙颖莎对阵日本选手早田希娜，以4-1的比分轻松夺冠，展现了绝对统治力。</p>
+        </div>
+    </div>
+    
+    <!-- 商务代言模态框示例 -->
+    <div class="modal-container" id="red-double">
+        <div class="modal-header">
+            <h2 class="modal-title">红双喜代言</h2>
+            <button class="close-btn">&times;</button>
+        </div>
+        <div class="modal-content">
+            <img src="https://images.unsplash.com/photo-1592656094267-764a451608b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="红双喜代言">
+            <h3>红双喜品牌代言</h3>
+            <p>孙颖莎于2022年正式成为红双喜品牌代言人，代言期至2024年。作为中国乒乓球队的长期合作伙伴，红双喜为孙颖莎提供了专业比赛装备。</p>
+            <p>在代言期间，孙颖莎参与了多支广告拍摄和品牌推广活动，包括"国球荣耀"系列宣传片和"冠军之路"纪录片。</p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn">查看代言详情</button>
+        </div>
+    </div>
+    
+    <!-- 杂志媒体模态框示例 -->
+    <div class="modal-container" id="fashion-bazaar">
+        <div class="modal-header">
+            <h2 class="modal-title">《时尚芭莎》：孙颖莎 势不可挡</h2>
+            <button class="close-btn">&times;</button>
+        </div>
+        <div class="modal-content">
+            <img src=".\个人专访\《时尚芭莎》孙颖莎势不可挡.png" alt="时尚芭莎封面">
+            <h3>2024年10月刊专访</h3>
+            <p>在这期时尚芭莎中，孙颖莎首次以封面人物亮相，展示了她不同于赛场上的另一面。专访中她谈到了自己的成长经历、对时尚的理解以及如何平衡训练与生活。</p>
+            <p>"在赛场上，我是全力以赴的运动员；在生活中，我也希望能展现真实的自己。"孙颖莎在采访中这样说道。</p>
+            <p>这组大片由著名摄影师陈漫操刀，展现了孙颖莎优雅、自信和力量的多面形象。</p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn">阅读完整专访</button>
+        </div>
+    </div>
+    
+    <!-- 个人专访模态框示例 -->
+    <div class="modal-container" id="cctv-interview">
+        <div class="modal-header">
+            <h2 class="modal-title">央视专访</h2>
+            <button class="close-btn">&times;</button>
+        </div>
+        <div class="modal-content">
+            <img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="央视专访">
+            <h3>2023央视独家专访</h3>
+            <p>在这次长达45分钟的专访中，孙颖莎首次深度分享了自己的职业生涯和心路历程。她谈到了从5岁开始接触乒乓球到成为世界冠军的历程。</p>
+            <p>采访中，孙颖莎特别提到了东京奥运会的经历："站在奥运赛场上是每个运动员的梦想，我很珍惜这次经历，它让我成长了很多。"</p>
+            <p>当被问到如何应对压力时，她说："我会把压力转化为动力，相信自己的训练成果，在比赛中专注每一个球。"</p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn">观看完整专访</button>
+        </div>
+    </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // 进度条逻辑
-            const progressBar = document.querySelector('.progress-bar');
+        // 浮动窗口系统
+        document.addEventListener('DOMContentLoaded', function() {
+            const modalOverlay = document.getElementById('modalOverlay');
+            const closeButtons = document.querySelectorAll('.close-btn');
+            const modalTriggers = document.querySelectorAll('[data-modal]');
+            const modals = document.querySelectorAll('.modal-container');
+            
+            // 显示模态框
+            function showModal(modalId) {
+                const modal = document.getElementById(modalId);
+                if (modal) {
+                    // 隐藏所有模态框
+                    modals.forEach(m => m.classList.remove('active'));
+                    
+                    // 显示目标模态框
+                    modalOverlay.classList.add('active');
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+            
+            // 隐藏所有模态框
+            function hideModals() {
+                modalOverlay.classList.remove('active');
+                modals.forEach(modal => modal.classList.remove('active'));
+                document.body.style.overflow = '';
+            }
+            
+            // 点击卡片打开模态框
+            modalTriggers.forEach(trigger => {
+                trigger.addEventListener('click', function() {
+                    const modalId = this.getAttribute('data-modal');
+                    showModal(modalId);
+                });
+            });
+            
+            // 关闭按钮事件
+            closeButtons.forEach(button => {
+                button.addEventListener('click', hideModals);
+            });
+            
+            // 点击遮罩层关闭模态框
+            modalOverlay.addEventListener('click', hideModals);
+            
+            // ESC键关闭模态框
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    hideModals();
+                }
+            });
+            
+            // 模态框滚动边界检测
+            modals.forEach(modal => {
+                const content = modal.querySelector('.modal-content');
+                
+                content.addEventListener('scroll', function() {
+                    // 顶部边界检测
+                    if (this.scrollTop === 0) {
+                        this.style.borderTop = 'none';
+                    } else {
+                        this.style.borderTop = '1px solid rgba(0,0,0,0.1)';
+                    }
+                    
+                    // 底部边界检测
+                    const isBottom = this.scrollHeight - this.scrollTop === this.clientHeight;
+                    if (isBottom) {
+                        this.style.borderBottom = 'none';
+                    } else {
+                        this.style.borderBottom = '1px solid rgba(0,0,0,0.1)';
+                    }
+                });
+            });
             
             // 导航交互逻辑
             const navItems = document.querySelectorAll('.nav-item');
             const sections = document.querySelectorAll('.section');
-
-            // 更新进度条
-            function updateProgress() {
-                const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
-                progressBar.style.width = `${(window.scrollY / windowHeight) * 100}%`;
-            }
-
+            
             // 交叉观察器
             const observerOptions = {
                 threshold: 0.1,
                 rootMargin: "0px"
             };
-
+            
             // 内容区块入场动画
             const sectionObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -1287,15 +1383,18 @@
                     }
                 });
             }, observerOptions);
-
+            
             sections.forEach(section => {
                 sectionObserver.observe(section);
+            });
+            
+            // 初始激活所有导航项
+            navItems.forEach(item => {
+                item.classList.add('active');
             });
 
             // 滚动监听
             window.addEventListener('scroll', () => {
-                updateProgress();
-                
                 let current = '';
                 sections.forEach(section => {
                     const sectionTop = section.offsetTop;
@@ -1303,13 +1402,21 @@
                         current = section.id;
                     }
                 });
-
+                
+                // 移除所有active类
+                navItems.forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // 添加当前区域的active类
                 navItems.forEach(item => {
                     const href = item.getAttribute('href').substring(1);
-                    item.classList.toggle('active', href === current);
+                    if (href === current) {
+                        item.classList.add('active');
+                    }
                 });
             });
-
+            
             // 导航点击处理
             navItems.forEach(item => {
                 item.addEventListener('click', (e) => {
@@ -1319,125 +1426,13 @@
                     history.replaceState(null, null, item.hash);
                 });
             });
-
-            // 媒体窗口交互
-            const mediaItems = document.querySelectorAll('.media-item');
-            const overlay = document.querySelector('.media-overlay');
-            let currentWindow = null;
-
-            // 智能滚动传递
-            function handleScrollTransfer(element) {
-                // 处理滚轮事件
-                element.addEventListener('wheel', function(e) {
-                    const delta = e.deltaY;
-                    const isAtTop = this.scrollTop === 0 && delta < 0;
-                    const isAtBottom = (this.scrollTop + this.clientHeight >= this.scrollHeight - 1) && delta > 0;
-
-                    if (isAtTop || isAtBottom) {
-                        document.body.style.overflow = 'auto';
-                        window.scrollBy({
-                            top: delta,
-                            behavior: 'auto'
-                        });
-                        e.preventDefault();
-                    }
-                });
-
-                // 处理触摸事件
-                let touchStartY = 0;
-                element.addEventListener('touchstart', function(e) {
-                    touchStartY = e.touches[0].clientY;
-                }, { passive: true });
-
-                element.addEventListener('touchmove', function(e) {
-                    const currentY = e.touches[0].clientY;
-                    const deltaY = currentY - touchStartY;
-                    const isAtTop = this.scrollTop === 0 && deltaY > 0;
-                    const isAtBottom = (this.scrollTop + this.clientHeight >= this.scrollHeight - 1) && deltaY < 0;
-
-                    if (isAtTop || isAtBottom) {
-                        document.body.style.overflow = 'auto';
-                        window.scrollBy({
-                            top: -deltaY,
-                            behavior: 'auto'
-                        });
-                        e.preventDefault();
-                    }
-                }, { passive: false });
-            }
-
-            mediaItems.forEach(item => {
-                const mediaWindow = item.querySelector('.media-window');
-                const closeBtn = item.querySelector('.close-btn');
-
-                // 初始化滚动传递
-                handleScrollTransfer(mediaWindow);
-
-                item.addEventListener('click', (e) => {
-                    if (!mediaWindow.classList.contains('active')) {
-                        if(currentWindow) currentWindow.classList.remove('active');
-                        mediaWindow.classList.add('active');
-                        overlay.style.display = 'block';
-                        document.body.style.overflow = 'hidden';
-                        currentWindow = mediaWindow;
-                    }
-                });
-
-                closeBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    mediaWindow.classList.remove('active');
-                    overlay.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                    currentWindow = null;
-                });
-            });
-
-            overlay.addEventListener('click', () => {
-                if(currentWindow) {
-                    currentWindow.classList.remove('active');
-                    overlay.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                    currentWindow = null;
-                }
-            });
-
-            // 键盘支持
-            document.addEventListener('keydown', (e) => {
-                if(e.key === 'Escape' && currentWindow) {
-                    currentWindow.classList.remove('active');
-                    overlay.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                    currentWindow = null;
-                }
-            });
-
-            // 图片懒加载
-            const lazyLoad = (entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target.querySelector('img');
-                        img.src = img.dataset.src;
-                        img.onload = () => {
-                            entry.target.classList.remove('loading');
-                        };
-                        observer.unobserve(entry.target);
-                    }
-                });
-            };
-
-            const lazyObserver = new IntersectionObserver(lazyLoad, {
-                rootMargin: '200px 0px'
-			});
-
-            mediaItems.forEach(item => {
-                item.classList.add('loading');
-                lazyObserver.observe(item);
-            });
-
-            // 初始化
-            updateProgress();
+            
+            // 初始化 - 如果有hash则滚动到对应位置
             if (window.location.hash) {
                 document.querySelector(window.location.hash).scrollIntoView();
+            } else {
+                // 默认激活第一个导航项
+                navItems[0].classList.add('active');
             }
         });
     </script>
