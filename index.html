@@ -170,7 +170,7 @@
 			}
 		}
 
-        /* 杂志板块样式 */
+        /* 成长经历样式 */
         .media-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -196,21 +196,50 @@
         .media-window {
             display: none;
             position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1000;
+            overflow: hidden;
+            background: transparent;
+            overflow: hidden;
+        }
+
+        .media-window.active {
+            display: block;
+        }
+
+        .window-container {
+            position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             width: 90%;
             max-width: 800px;
-            height: 80vh;
+            max-height: 80vh;
             background: white;
             border-radius: 15px;
-            z-index: 1000;
-            overflow-y: auto;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+            animation: popup 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .media-window.active {
-            display: block;
+        .window-content {
+            max-height: calc(80vh - 60px);
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        @keyframes popup {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -45%) scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
         }
 
         .media-overlay {
@@ -227,9 +256,9 @@
 
         /* 关闭按钮优化 */
         .close-btn {
-            position: sticky;
+            position: absolute;
             top: 10px;
-            float: right;
+            right: 10px;
             background: var(--accent);
             color: white;
             width: 40px;
@@ -239,13 +268,16 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 1001;
-            margin: 10px;
+            transition: all 0.3s;
+            font-size: 1.5rem;
+            font-weight: bold;
+            border: none;
+            outline: none;
         }
 
         .close-btn:hover {
-            transform: scale(1.2) rotate(90deg);
+            transform: rotate(90deg) scale(1.1);
             background: #ff5252;
         }
 
@@ -266,21 +298,233 @@
 		
 		.video-grid {
             display: grid;
-            grid-template-columns: 300px auto 300px;
             gap: 2rem;
+            margin: 2rem 0;
         }
 		
-		.endo-grid {
-		    display: grid;
-		    grid-template-columns: repeat(6, 1fr); /* 定义六列，每列等宽 */
-		    grid-template-rows: repeat(3, 300px); /* 定义两行，每行100px */
-		    gap: 10px; /* 设置列与行之间的间隙为20px */
-		}
+        /* PC端：两栏并排 */
+        @media (min-width: 768px) {
+            .video-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .results-column {
+                border-right: 1px solid #eee;
+                padding-right: 2rem;
+            }
+        }
 
-		.grow-grid {
+        /* 移动端：垂直排列 */
+        @media (max-width: 767px) {
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .results-column {
+                border-bottom: 1px solid #eee;
+                padding-bottom: 2rem;
+                margin-bottom: 1rem;
+            }
+        }
+
+		/* 商务代言网格布局 */
+        .endorsement-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .endorsement-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .endorsement-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .endorsement-grid img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s;
+        }
+
+        .endorsement-caption {
+            padding: 1rem;
+            text-align: center;
+            background: rgba(255,255,255,0.9);
+        }
+
+        .endorsement-caption h3 {
+            color: var(--primary);
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .endorsement-caption p {
+            color: #666;
+            font-size: 0.85rem;
+            margin: 0.3rem 0 0;
+        }
+
+        /* 悬停效果 */
+        .endorsement-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .endorsement-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* 响应式布局 */
+        @media (min-width: 1200px) {
+            .endorsement-grid {
+                grid-template-columns: repeat(6, 1fr);
+            }
+        }
+
+        @media (min-width: 992px) and (max-width: 1199px) {
+            .endorsement-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 991px) {
+            .endorsement-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (min-width: 576px) and (max-width: 767px) {
+            .endorsement-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 575px) {
+            .endorsement-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .endorsement-grid img {
+                height: 150px;
+            }
+        }
+
+		/* 杂志媒体网格布局 */
+        .grow-grid {
+            display: grid;
             gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .media-category {
+            background: rgba(255,255,255,0.95);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .media-category h3 {
+            color: var(--primary);
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid var(--secondary);
+        }
+
+        .media-content {
+            display: grid;
+            gap: 1.2rem;
+        }
+
+        .media-item {
+            display: flex;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s;
+        }
+
+        .media-item img {
+            width: 120px;
+            height: 160px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .media-info {
+            padding: 1rem;
+            flex-grow: 1;
+        }
+
+        .media-info h4 {
+            color: #333;
+            margin-bottom: 0.3rem;
+            font-size: 1.05rem;
+        }
+
+        .media-info p {
+            color: #666;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .category-link {
+            display: block;
+            margin-top: 1.2rem;
+            padding: 0.6rem;
+            text-align: center;
+            background: var(--secondary);
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .category-link:hover {
+            background: var(--primary);
+        }
+
+        /* 悬停效果 */
+        .media-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .media-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* PC端：三列布局 */
+        @media (min-width: 768px) {
+            .grow-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* 移动端：三行布局 */
+        @media (max-width: 767px) {
+            .grow-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .media-item img {
+                width: 100px;
+                height: 140px;
+            }
         }
 
 		.paper-grid {
@@ -593,7 +837,7 @@
 				<h3>视频汇总</h3>
 				<p>SUNDAY放映室存档网络上现存的比赛视频，部分已过期链接会逐步替换。</p>
 				<a href="https://flowus.cn/share/9e4855d0-6db4-452b-b277-45b6d48af588?code=LHFMBV" class="pan-link">SUNDAY 放映室</a>
-				<iframe src="https://flowus.cn/share/9e4855d0-6db4-452b-b277-45b6d48af588?code=LHFMBV" width="800" height="500"></iframe>
+				<iframe src="https://flowus.cn/share/9e4855d0-6db4-452b-b277-45b6d48af588?code=LHFMBV" style="aspect-ratio:4/3; width: 100%"></iframe>
 			</div>
 		</div>
     </section>
@@ -603,7 +847,7 @@
         <h2>个人商务代言</h2>
 		<p style="color:red">只统计未到期代言，过往代言相关物料可在下方网盘汇总查看。</p>
         <div class="gallery">
-			<div class="endo-grid">
+			<div class="endorsement-grid">
 				<div style="text-align:center";>
 					<img src=".\代言\汰渍品牌代言人.png" alt="汰渍品牌代言人" style="width:100%">
 					<p>20240626 汰渍品牌代言人</p>
@@ -785,40 +1029,42 @@
 				<h3>进阶国家队之路</h3>
 				<p>2015年8月，孙颖莎获得全国少年乒乓球锦标赛女单冠军，拿到进入国青队资格。又因为在比赛面对劲敌连续上演大逆转，9月被国家二队相中。</p>
                 <div class="media-window">
-                    <div class="media-content">
-                        <h3>进阶国家队之路</h3>
-                        <div class="article">
-							<a href="https://www.douban.com/group/topic/287769758/" class="pan-link">进国家队前的幼崽小莎</a>
-                            <h4>5岁，与乒乓球结缘，天赋与热爱初显现</h4>
-                            <blockquote><p style="color:#808080">将孙颖莎送去学乒乓球原本只是一个无意之举，孙颖莎的妈妈说，自己和丈夫都是国税局的职工，平时忙，没时间照顾孩子，就想着把孩子送去家附近的和平西路小学学乒乓球，一来能在自己下班前给孩子找个去处，二来孩子也能锻炼身体。</p></blockquote>
-                            <a href="https://www.hbynet.net/html/heqing/daohang/guoneidongtai1555011803978326017/954420034429.html" class="pan-link">来源：20170629【河北青年报】孙颖莎：石家庄走出来的乒乓“黑马”</a>
-							<h4>8岁，获河北省苗子调赛冠军，全国少年赛大展身手</h4>
-                            <blockquote><p style="color:#808080">天分和努力的加持，让孙颖莎很快脱颖而出。2007年，7岁的孙颖莎被选到了和平西路小学执教高年龄段学员的田跃祥教练的队伍里，当时她是年龄最小的队员。 </p></blockquote>
-                            <h4>10岁，选拔进入河北省队，开启“走读”生活</h4>
-                            <blockquote>
-								<p style="color:#808080">2010年，10岁的孙颖莎因为在全国少年赛上的出色表现被选拔进了河北省队。<br>
-								“我从来没有见过像她这样的运动员。”在孙颖莎省队的教练杨广弟印象中，她虽然在队里年龄最小，但练习最为刻苦，“孙颖莎不像其他小姑娘那样爱玩，她会百分之百地投入训练。结束训练后，她一有时间还会重复练习学到的新动作。”</p>
-							</blockquote>
-                            <a href="https://www.hebgcdy.com/szyw/system/2021/08/09/030510332.shtml" class="pan-link">来源：20210808【长城网】冠军之路·河北奥运夺金运动员成长探密｜孙颖莎：最奶气的脸，最霸气的球！</a>
-							<blockquote><p style="color:#808080">莎莎上小学后，学习成绩一直名列前茅，我和她爸爸觉得孩子还小，应该多学习文化课，进省队后就没让她住宿，每天训练后接回家补习功课，第二天早上4∶00起床回队训练。基本上是她爸爸每天接送，风雨无阻。</p></blockquote>
-							<a href="https://pan.baidu.com/s/1Q8_TkbuTeT1UetURIPMHQg?pwd=a688" class="pan-link">来源：20180223【中国税务报】在拼搏中收获幸福</a>
-　　							<blockquote><p style="color:#808080">2009、2010年期间，孙颖莎三次参加卓悦乒乓球俱乐部月赛，第一次莎莎输给了融涛（石家庄长胶老怪，经常剔专业选手），获得第八名。另外两次分别输给了陈刚（陈默）和黄旭，分获第三、第二名，这两位选手均有专业乒乓球背景，应该都是河北师范大学乒乓球系。</p></blockquote>
-							<h4>2011年7月，参加全国少年乒乓球北方赛区比赛，部分cut</h4>
-                            <a href="https://www.bilibili.com/video/BV1ov411A7LW/" class="pan-link">【孙颖莎守护站】2011少年乒乓球锦标赛(北方赛区)比赛 孙颖莎cut太萌了</a>
-							<h4>2012年8月，参加全国乒乓球少年锦标赛（北方赛区），部分cut</h4>
-                            <a href="https://www.bilibili.com/video/BV1Qg411G7t2/" class="pan-link">【孙颖莎守护站】2012全国乒乓球少年锦标赛(北方赛区)孙颖莎cut感受你的小可爱突然出现的快乐</a>
-							<h4>2013年，第一次冲击国家队失败，恩师杨广弟指导制定“补短”计划</h4>
-                            <blockquote><p style="color:#808080">第一次，是2013年全国少年乒乓球锦标赛。当年13岁的孙颖莎表现抢眼，一路过关斩将，打进了女单决赛，最后却以3∶4输给了当时已是国手、人高马大的王曼昱。<br>
-“当时经过分析，我们认为孙颖莎的得分手段和能力偏弱。”于是，杨广弟为孙颖莎制定了一系列“补短”计划。</p></blockquote>
-                            <a href="https://www.bilibili.com/video/BV1Tv411P7HY/" class="pan-link">【孙颖莎守护站】2013少年乒乓球锦标赛 孙颖莎cut</a>
-							<h4>2014年，第二次冲击国家队意外失利，培养“大心脏”</h4>
-                            <blockquote><p style="color:#808080">2014年全国少年乒乓球锦标赛，孙颖莎信心十足，却再次遭受打击——当时出了新政策，前两名就能进国家队，然而，孙颖莎却意外止步16强。<br>
-杨广弟没有对孙颖莎失望，他一边开导孙颖莎，一边总结——她还需要颗“大心脏”。<br>
-于是，随后的训练中，杨广弟想方设法给孙颖莎“添堵”，专门挑让孙颖莎打着难受的对手和打法让她去练，让队员们给孙颖莎的队友喊加油、给她嘘声……</p></blockquote>
-							<h4>2015年9月，进入国家二队</h4>
-                            <blockquote><p style="color:#808080"> 2015年全国少年乒乓球锦标赛，技术和心理都过硬的孙颖莎一鸣惊人，此后如愿进入了国家青年队。同年，因为面对劲敌连续上演大逆转，孙颖莎又被国家队相中。</p></blockquote>
+                    <div class="window-container">
+                        <div class="media-content">
+                            <h3>进阶国家队之路</h3>
+                            <div class="article">
+    							<a href="https://www.douban.com/group/topic/287769758/" class="pan-link">进国家队前的幼崽小莎</a>
+                                <h4>5岁，与乒乓球结缘，天赋与热爱初显现</h4>
+                                <blockquote><p style="color:#808080">将孙颖莎送去学乒乓球原本只是一个无意之举，孙颖莎的妈妈说，自己和丈夫都是国税局的职工，平时忙，没时间照顾孩子，就想着把孩子送去家附近的和平西路小学学乒乓球，一来能在自己下班前给孩子找个去处，二来孩子也能锻炼身体。</p></blockquote>
+                                <a href="https://www.hbynet.net/html/heqing/daohang/guoneidongtai1555011803978326017/954420034429.html" class="pan-link">来源：20170629【河北青年报】孙颖莎：石家庄走出来的乒乓“黑马”</a>
+    							<h4>8岁，获河北省苗子调赛冠军，全国少年赛大展身手</h4>
+                                <blockquote><p style="color:#808080">天分和努力的加持，让孙颖莎很快脱颖而出。2007年，7岁的孙颖莎被选到了和平西路小学执教高年龄段学员的田跃祥教练的队伍里，当时她是年龄最小的队员。 </p></blockquote>
+                                <h4>10岁，选拔进入河北省队，开启“走读”生活</h4>
+                                <blockquote>
+    								<p style="color:#808080">2010年，10岁的孙颖莎因为在全国少年赛上的出色表现被选拔进了河北省队。<br>
+    								“我从来没有见过像她这样的运动员。”在孙颖莎省队的教练杨广弟印象中，她虽然在队里年龄最小，但练习最为刻苦，“孙颖莎不像其他小姑娘那样爱玩，她会百分之百地投入训练。结束训练后，她一有时间还会重复练习学到的新动作。”</p>
+    							</blockquote>
+                                <a href="https://www.hebgcdy.com/szyw/system/2021/08/09/030510332.shtml" class="pan-link">来源：20210808【长城网】冠军之路·河北奥运夺金运动员成长探密｜孙颖莎：最奶气的脸，最霸气的球！</a>
+    							<blockquote><p style="color:#808080">莎莎上小学后，学习成绩一直名列前茅，我和她爸爸觉得孩子还小，应该多学习文化课，进省队后就没让她住宿，每天训练后接回家补习功课，第二天早上4∶00起床回队训练。基本上是她爸爸每天接送，风雨无阻。</p></blockquote>
+    							<a href="https://pan.baidu.com/s/1Q8_TkbuTeT1UetURIPMHQg?pwd=a688" class="pan-link">来源：20180223【中国税务报】在拼搏中收获幸福</a>
+    　　							<blockquote><p style="color:#808080">2009、2010年期间，孙颖莎三次参加卓悦乒乓球俱乐部月赛，第一次莎莎输给了融涛（石家庄长胶老怪，经常剔专业选手），获得第八名。另外两次分别输给了陈刚（陈默）和黄旭，分获第三、第二名，这两位选手均有专业乒乓球背景，应该都是河北师范大学乒乓球系。</p></blockquote>
+    							<h4>2011年7月，参加全国少年乒乓球北方赛区比赛，部分cut</h4>
+                                <a href="https://www.bilibili.com/video/BV1ov411A7LW/" class="pan-link">【孙颖莎守护站】2011少年乒乓球锦标赛(北方赛区)比赛 孙颖莎cut太萌了</a>
+    							<h4>2012年8月，参加全国乒乓球少年锦标赛（北方赛区），部分cut</h4>
+                                <a href="https://www.bilibili.com/video/BV1Qg411G7t2/" class="pan-link">【孙颖莎守护站】2012全国乒乓球少年锦标赛(北方赛区)孙颖莎cut感受你的小可爱突然出现的快乐</a>
+    							<h4>2013年，第一次冲击国家队失败，恩师杨广弟指导制定“补短”计划</h4>
+                                <blockquote><p style="color:#808080">第一次，是2013年全国少年乒乓球锦标赛。当年13岁的孙颖莎表现抢眼，一路过关斩将，打进了女单决赛，最后却以3∶4输给了当时已是国手、人高马大的王曼昱。<br>
+    “当时经过分析，我们认为孙颖莎的得分手段和能力偏弱。”于是，杨广弟为孙颖莎制定了一系列“补短”计划。</p></blockquote>
+                                <a href="https://www.bilibili.com/video/BV1Tv411P7HY/" class="pan-link">【孙颖莎守护站】2013少年乒乓球锦标赛 孙颖莎cut</a>
+    							<h4>2014年，第二次冲击国家队意外失利，培养“大心脏”</h4>
+                                <blockquote><p style="color:#808080">2014年全国少年乒乓球锦标赛，孙颖莎信心十足，却再次遭受打击——当时出了新政策，前两名就能进国家队，然而，孙颖莎却意外止步16强。<br>
+    杨广弟没有对孙颖莎失望，他一边开导孙颖莎，一边总结——她还需要颗“大心脏”。<br>
+    于是，随后的训练中，杨广弟想方设法给孙颖莎“添堵”，专门挑让孙颖莎打着难受的对手和打法让她去练，让队员们给孙颖莎的队友喊加油、给她嘘声……</p></blockquote>
+    							<h4>2015年9月，进入国家二队</h4>
+                                <blockquote><p style="color:#808080"> 2015年全国少年乒乓球锦标赛，技术和心理都过硬的孙颖莎一鸣惊人，此后如愿进入了国家青年队。同年，因为面对劲敌连续上演大逆转，孙颖莎又被国家队相中。</p></blockquote>
+                            </div>
                         </div>
-                    </div>
+                    </div>    
                     <div class="close-btn">×</div>
                 </div>
             </div>
@@ -1260,25 +1506,16 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // 进度条逻辑
-            const progressBar = document.querySelector('.progress-bar');
-            
             // 导航交互逻辑
             const navItems = document.querySelectorAll('.nav-item');
             const sections = document.querySelectorAll('.section');
-
-            // 更新进度条
-            function updateProgress() {
-                const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
-                progressBar.style.width = `${(window.scrollY / windowHeight) * 100}%`;
-            }
-
+            
             // 交叉观察器
             const observerOptions = {
                 threshold: 0.1,
                 rootMargin: "0px"
             };
-
+            
             // 内容区块入场动画
             const sectionObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -1287,15 +1524,13 @@
                     }
                 });
             }, observerOptions);
-
+            
             sections.forEach(section => {
                 sectionObserver.observe(section);
             });
-
+            
             // 滚动监听
             window.addEventListener('scroll', () => {
-                updateProgress();
-                
                 let current = '';
                 sections.forEach(section => {
                     const sectionTop = section.offsetTop;
@@ -1303,13 +1538,13 @@
                         current = section.id;
                     }
                 });
-
+                
                 navItems.forEach(item => {
                     const href = item.getAttribute('href').substring(1);
                     item.classList.toggle('active', href === current);
                 });
             });
-
+            
             // 导航点击处理
             navItems.forEach(item => {
                 item.addEventListener('click', (e) => {
@@ -1319,127 +1554,73 @@
                     history.replaceState(null, null, item.hash);
                 });
             });
-
-            // 媒体窗口交互
+            
+            // 浮动窗口交互
             const mediaItems = document.querySelectorAll('.media-item');
             const overlay = document.querySelector('.media-overlay');
-            let currentWindow = null;
-
-            // 智能滚动传递
-            function handleScrollTransfer(element) {
-                // 处理滚轮事件
-                element.addEventListener('wheel', function(e) {
-                    const delta = e.deltaY;
-                    const isAtTop = this.scrollTop === 0 && delta < 0;
-                    const isAtBottom = (this.scrollTop + this.clientHeight >= this.scrollHeight - 1) && delta > 0;
-
-                    if (isAtTop || isAtBottom) {
-                        document.body.style.overflow = 'auto';
-                        window.scrollBy({
-                            top: delta,
-                            behavior: 'auto'
-                        });
-                        e.preventDefault();
-                    }
-                });
-
-                // 处理触摸事件
-                let touchStartY = 0;
-                element.addEventListener('touchstart', function(e) {
-                    touchStartY = e.touches[0].clientY;
-                }, { passive: true });
-
-                element.addEventListener('touchmove', function(e) {
-                    const currentY = e.touches[0].clientY;
-                    const deltaY = currentY - touchStartY;
-                    const isAtTop = this.scrollTop === 0 && deltaY > 0;
-                    const isAtBottom = (this.scrollTop + this.clientHeight >= this.scrollHeight - 1) && deltaY < 0;
-
-                    if (isAtTop || isAtBottom) {
-                        document.body.style.overflow = 'auto';
-                        window.scrollBy({
-                            top: -deltaY,
-                            behavior: 'auto'
-                        });
-                        e.preventDefault();
-                    }
-                }, { passive: false });
+            const mediaWindow = document.querySelector('.media-window');
+            const closeBtn = document.querySelector('.close-btn');
+            let scrollPosition = 0;
+            
+            // 打开媒体窗口
+            function openMediaWindow() {
+                // 保存当前滚动位置
+                scrollPosition = window.scrollY;
+                
+                // 打开窗口
+                mediaWindow.classList.add('active');
+                overlay.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+                document.body.style.position = 'fixed';
+                document.body.style.width = '100%';
+                
+                // 确保窗口在视图中
+                const container = mediaWindow.querySelector('.window-container');
+                container.scrollTop = 0;
             }
-
+            
+            // 关闭媒体窗口
+            function closeMediaWindow() {
+                mediaWindow.classList.remove('active');
+                overlay.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                document.body.style.position = '';
+                document.body.style.width = '';
+                window.scrollTo(0, scrollPosition);
+            }
+            
+            // 事件绑定
             mediaItems.forEach(item => {
-                const mediaWindow = item.querySelector('.media-window');
-                const closeBtn = item.querySelector('.close-btn');
-
-                // 初始化滚动传递
-                handleScrollTransfer(mediaWindow);
-
                 item.addEventListener('click', (e) => {
-                    if (!mediaWindow.classList.contains('active')) {
-                        if(currentWindow) currentWindow.classList.remove('active');
-                        mediaWindow.classList.add('active');
-                        overlay.style.display = 'block';
-                        document.body.style.overflow = 'hidden';
-                        currentWindow = mediaWindow;
-                    }
-                });
-
-                closeBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    mediaWindow.classList.remove('active');
-                    overlay.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                    currentWindow = null;
+                    if (e.target.closest('a')) return; // 防止点击链接触发
+                    openMediaWindow();
                 });
             });
-
-            overlay.addEventListener('click', () => {
-                if(currentWindow) {
-                    currentWindow.classList.remove('active');
-                    overlay.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                    currentWindow = null;
-                }
+            
+            closeBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                closeMediaWindow();
             });
-
-            // 键盘支持
+            
+            overlay.addEventListener('click', closeMediaWindow);
+            
+            // ESC键支持
             document.addEventListener('keydown', (e) => {
-                if(e.key === 'Escape' && currentWindow) {
-                    currentWindow.classList.remove('active');
-                    overlay.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                    currentWindow = null;
+                if(e.key === 'Escape' && mediaWindow.classList.contains('active')) {
+                    closeMediaWindow();
                 }
             });
-
-            // 图片懒加载
-            const lazyLoad = (entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target.querySelector('img');
-                        img.src = img.dataset.src;
-                        img.onload = () => {
-                            entry.target.classList.remove('loading');
-                        };
-                        observer.unobserve(entry.target);
-                    }
-                });
-            };
-
-            const lazyObserver = new IntersectionObserver(lazyLoad, {
-                rootMargin: '200px 0px'
-			});
-
-            mediaItems.forEach(item => {
-                item.classList.add('loading');
-                lazyObserver.observe(item);
+            
+            // 防止窗口内部点击关闭
+            document.querySelector('.window-container').addEventListener('click', (e) => {
+                e.stopPropagation();
             });
-
-            // 初始化
-            updateProgress();
+            
+            // 初始化 - 如果有hash则滚动到对应位置
             if (window.location.hash) {
                 document.querySelector(window.location.hash).scrollIntoView();
             }
-        });Add commentMore actions
+        });
     </script>
 </body>
 </html>
