@@ -1,0 +1,1769 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>孙颖莎比赛赛果汇总</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans SC', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary-color: #e6f7ff;
+            --secondary-color: #b3e0ff;
+            --accent-color: #5cb3ff;
+            --dark-accent: #3a7bbd;
+            --text-color: #1a3c5a;
+            --light-text: #5a7a9a;
+            --card-bg: #ffffff;
+            --phase-bg: #f0f9ff;
+            --breakthrough-bg: #e6f2ff;
+            --shadow: 0 4px 20px rgba(92, 179, 255, 0.15);
+            --hover-color: #d1edff;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2ff);
+            color: var(--text-color);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 0 30px;
+            animation: fadeIn 1s ease;
+        }
+        
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            color: var(--text-color);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            font-weight: 700;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+            color: #2c577a;
+        }
+        
+        .year-badge {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 10px 30px;
+            border-radius: 40px;
+            font-weight: 800;
+            margin-top: 30px;
+            box-shadow: var(--shadow);
+        }
+        
+        /* 下拉选择区域样式 */
+        .project-selector {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            margin: 40px auto;
+            max-width: 800px;
+            box-shadow: var(--shadow);
+            animation: slideUp 0.8s ease;
+            border: 1px solid var(--secondary-color);
+        }
+        
+        .selector-title {
+            text-align: center;
+            margin-bottom: 25px;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .selector-title i {
+            margin-right: 12px;
+            color: var(--accent-color);
+        }
+        
+        .project-dropdown {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid var(--secondary-color);
+            border-radius: 12px;
+            background: var(--primary-color);
+            font-size: 1.1rem;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%235cb3ff'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 20px center;
+            background-size: 20px;
+            font-weight: 500;
+        }
+        
+        .project-dropdown:hover {
+            background-color: var(--hover-color);
+            border-color: var(--accent-color);
+        }
+        
+        .project-dropdown:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(92, 179, 255, 0.3);
+        }
+        
+        .dropdown-container {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        
+        .dropdown-label {
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            background: white;
+            padding: 0 8px;
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+        
+        .selector-description {
+            text-align: center;
+            font-size: 1.05rem;
+            color: var(--light-text);
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .details-section {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin: 40px 0 60px;
+            box-shadow: var(--shadow);
+            animation: fadeIn 1s ease;
+            position: relative;
+            border: 1px solid var(--secondary-color);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--text-color);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+        
+        .project-detail {
+            margin-bottom: 60px;
+            padding: 30px;
+            border-radius: 12px;
+            background: var(--card-bg);
+            box-shadow: 0 4px 15px rgba(92, 179, 255, 0.1);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .project-detail:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(92, 179, 255, 0.2);
+        }
+        
+        .project-detail h3 {
+            font-size: 1.8rem;
+            color: var(--text-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .project-detail h3 i {
+            margin-right: 12px;
+            color: var(--accent-color);
+        }
+        
+        .project-overview {
+            display: flex;
+            margin-bottom: 30px;
+            gap: 30px;
+        }
+        
+        .overview-text {
+            flex: 1;
+        }
+        
+        .project-stats {
+            flex: 0 0 300px;
+            background: var(--phase-bg);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid var(--secondary-color);
+        }
+        
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px dashed var(--secondary-color);
+        }
+        
+        .stat-item:last-child {
+            border-bottom: none;
+        }
+        
+        .stat-label {
+            color: var(--light-text);
+            font-weight: 500;
+        }
+        
+        .stat-value {
+            font-weight: 600;
+            color: var(--dark-accent);
+        }
+        
+        .project-detail p {
+            line-height: 1.7;
+            margin-bottom: 20px;
+            color: var(--light-text);
+        }
+        
+        .project-detail ul {
+            padding-left: 20px;
+            margin: 15px 0;
+        }
+        
+        .project-detail li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        /* 项目阶段样式 */
+        .project-phases {
+            margin: 40px 0;
+        }
+        
+        .phases-title {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+            color: var(--text-color);
+            font-size: 1.5rem;
+        }
+        
+        .phases-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+        
+        .phases-container {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .phase-card {
+            flex: 1;
+            background: var(--phase-bg);
+            border-radius: 12px;
+            padding: 25px;
+            border: 1px solid var(--secondary-color);
+            transition: all 0.3s ease;
+        }
+        
+        .phase-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+        
+        .phase-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            color: var(--dark-accent);
+        }
+        
+        .phase-title i {
+            margin-right: 10px;
+            background: var(--accent-color);
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .phase-content h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+        
+        .breakthroughs {
+            margin-top: 20px;
+        }
+        
+        .breakthrough {
+            background: var(--breakthrough-bg);
+            border-radius: 10px;
+            padding: 18px;
+            margin-bottom: 15px;
+            border-left: 3px solid var(--accent-color);
+        }
+        
+        .breakthrough h5 {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            color: var(--dark-accent);
+        }
+        
+        .breakthrough h5 i {
+            margin-right: 8px;
+            color: var(--accent-color);
+        }
+        
+        .breakthrough p {
+            color: var(--light-text);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--accent-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(92, 179, 255, 0.4);
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: var(--light-text);
+            font-size: 0.95rem;
+            border-top: 1px solid var(--secondary-color);
+            margin-top: 20px;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .project-selector {
+                padding: 20px;
+            }
+            
+            .selector-title {
+                font-size: 1.3rem;
+            }
+            
+            .project-dropdown {
+                padding: 12px 15px;
+                font-size: 1rem;
+            }
+            
+            .details-section {
+                padding: 25px;
+            }
+            
+            .project-detail {
+                padding: 20px;
+            }
+            
+            .project-detail h3 {
+                font-size: 1.5rem;
+            }
+            
+            .project-overview {
+                flex-direction: column;
+            }
+            
+            .project-stats {
+                width: 100%;
+            }
+            
+            .phases-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>孙颖莎比赛赛果汇总</h1>
+            <p>🌻</p>
+            <div class="year-badge">2023</div>
+        </header>
+        
+        <!-- 导航汇总区域 -->
+        <div class="project-selector">
+            <h2 class="selector-title"><i class="fas fa-folder-open"></i> 导航目录</h2>
+            
+            <div class="dropdown-container">
+                <span class="dropdown-label">选择比赛查看详情</span>
+                <select class="project-dropdown" id="projectDropdown" onchange="scrollToProject(this.value)">
+                    <option value="" disabled selected>请选择比赛...</option>
+                    <option value="project1">2023德班世锦赛亚洲区预选赛</option>
+                    <option value="project2">2023德班世乒赛直通选拔赛（第一站）</option>
+                    <option value="project3">2023 WTT大满贯赛·新加坡站</option>
+					<option value="project4">2023德班世乒赛直通选拔赛（第二站）</option>
+					<option value="project5">2023 WTT冠军赛·新乡站</option>
+					<option value="project6">2023 WTT冠军赛·澳门站</option>
+					<option value="project7">2023 德班世界乒乓球锦标赛（单项）</option>
+					<option value="project8">2023 WTT常规挑战赛·萨格勒布站</option>
+                    <option value="project9">2023 WTT球星挑战赛·卢布尔雅那站</option>
+                    <option value="project10">2023中国乒乓球俱乐部超级联赛第一阶段</option>
+                    <option value="project11">2023中国乒乓球队亚洲锦标赛及亚洲运动会热身赛</option>
+                    <option value="project12">2023 第26届亚洲乒乓球锦标赛（韩国平昌）</option>
+                    <option value="project13">2023 第19届亚洲运动会（中国杭州）</option>
+                    <option value="project14">2023 WTT球星挑战赛·兰州站</option>
+                    <option value="project15">2023全国乒乓球锦标赛</option>
+                    <option value="project16">2023 WTT冠军赛·法兰克福站</option>
+                    <option value="project17">2023 WTT常规挑战赛·太原站</option>
+                    <option value="project18">2023成都混合团体世界杯</option>
+                    <option value="project19">2023 WTT名古屋女子总决赛</option>
+                    <option value="project20">2023中国乒乓球俱乐部超级联赛总决赛</option>
+                </select>
+            </div>
+            
+            <p class="selector-description">
+                可以通过下拉菜单选择跳转到具体比赛场次查看赛果，也可以直接滚动页面按时间查看不同比赛赛果。
+            </p>
+        </div>
+		
+		
+        
+        <!-- 比赛赛果区域 -->
+        <div class="details-section">
+            <h2 class="section-title">比赛赛果</h2>
+            <div class="project-detail" id="project1">
+                <h3>2023德班世锦赛亚洲区预选赛</h3>
+                <p><strong>比赛时间：</strong> 2023.01.07—2023.01.13 </p>
+                <p><strong>比赛地点：</strong> 卡塔尔·多哈 </p>
+                
+                <!-- 比赛比分 -->
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>女单：获得世乒赛正赛资格</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            小组决胜轮：孙颖莎 4-0 王歆茹（新加坡）（11-5,11-3,11-0,11-2）
+                                        </p>
+                                    </div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>女双：获得世乒赛正赛资格</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            小组决胜轮：孙颖莎&王曼昱 4-0 阿卡舍娃&米尔卡迪洛娃（哈萨克斯坦）（11-3,11-6,11-4,11-7）
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>混双：获得世乒赛正赛资格</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            小组决胜轮：孙颖莎&王楚钦 4-2 冯耀恩&王歆茹（新加坡）（11-8,11-7,7-11,9-11,11-3,11-5）
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+			</div>
+
+			<div class="project-detail" id="project2">
+                <h3>2023德班世乒赛直通选拔赛（第一站）</h3>
+                <p><strong>比赛时间：</strong> 2023.02.18—2023.02.23</p>
+                <p><strong>比赛地点：</strong> 北京</p>
+                
+                <!-- 比赛比分 -->
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>女单：冠军，获得德班世乒赛女单参赛资格</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            小组赛第一轮：轮空
+                                            <br>
+                                            小组赛第二轮：孙颖莎 3-0 刘炜珊（11-5,11-8,11-3）
+                                            <br>
+                                            小组赛第三轮：孙颖莎 3-0 钱天一（弃权）
+                                            <br>
+                                            半决赛：孙颖莎 3-0 何卓佳（11-7,11-7,13-11）
+                                            <br>
+                                            决赛：孙颖莎 3-0 陈幸同（11-9,11-9,11-8）
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>混双：第7名(搭档王楚钦)</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            小组赛第一轮：孙颖莎&王楚钦 3-0 魏世皓&王添艺(11-3,11-3,11-5)
+                                            <br>
+                                            小组赛第二轮：孙颖莎&王楚钦 3-0 向鹏/刘炜珊（弃权）
+                                            <br>
+                                            小组赛第三轮：孙颖莎&王楚钦 0-3 薛飞&张瑞(8-11,7-11,6-11)
+                                            <br>
+                                            5-8名排位赛：孙颖莎&王楚钦（弃权） 0-3 袁励岑&王艺迪
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			
+			<div class="project-detail" id="project3">
+				<h3>2023 WTT大满贯赛·新加坡站</h3>
+				<p><strong>比赛时间：</strong> 2023.03.07—2023.03.19 </p>
+				<p><strong>比赛地点：</strong> 新加坡</p>
+				
+				<!-- 比赛比分 -->
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>女单：冠军</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            1/32决赛：孙颖莎 3-0 刘馨尹(中国台北)(11-5,11-3,11-3)
+                                            <br>
+                                            1/16决赛：孙颖莎 3-0 萨宾·温特(德国)(11-8,11-5,12-10)
+                                            <br>
+                                            1/8决赛：孙颖莎 3-0 米特兰姆(德国)(11-6,11-8,11-6)
+                                            <br>
+                                            1/4决赛：孙颖莎 4-3 朱芊曦(韩国)(11-3,5-11,11-6,11-5,7-11,10-12,11-5)
+                                            <br>
+                                            半决赛：孙颖莎 4-0 王曼昱(中国)(11-4,11-8,11-7,11-8)
+                                            <br>
+                                            决赛：孙颖莎 4-1 钱天一(中国)(11-7,10-12,13-11,11-6,11-7)
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>女双：冠军（搭档王曼昱）</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            1/8决赛：孙颖莎&王曼昱 3-0 李皓晴&陈思羽(中国香港&中国台北)(11-4,11-7,11-7)
+                                            <br>
+                                            1/4决赛：孙颖莎&王曼昱 3-1 杜凯琹&朱成竹(中国香港)(11–6,11-6,7-11,11-5)
+                                            <br>
+                                            半决赛：孙颖莎&王曼昱 3-0 田志希&申裕斌(韩国)(12-10,14-12,11-3)
+                                            <br>
+                                            决赛：孙颖莎&王曼昱 3-2 陈梦&王艺迪(中国)(5-11,3-11,11-9,11-4,13-11)
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>混双：冠军（搭档王楚钦）</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            1/8决赛：孙颖莎&王楚钦 3-0 皮斯特耶&巴拉佐娃(斯洛伐克)(11-7,11-5,11-5)
+                                            <br>
+                                            1/4决赛：孙颖莎&王楚钦 3-1 林钟勋&申裕斌(韩国)(7-11,14-12,11-7,11-7)
+                                            <br>
+                                            半决赛：孙颖莎&王楚钦 3-1 林昀儒&陈思羽(中国台北)(11-5,11-3,7-11,11-9)
+                                            <br>
+                                            决赛：孙颖莎&王楚钦 3-1 张本智和&早田希娜(日本)(11-2,5-11,11-9,11-8)
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+			</div>
+
+			<div class="project-detail" id="project4">
+				<h3>2023德班世乒赛直通选拔赛（第二站）</h3>
+				<p><strong>比赛时间：</strong> 2023.03.26—2023.03.30 </p>
+				<p><strong>比赛地点：</strong> 北京</p>
+				
+				<!-- 比赛比分 -->
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>混双：冠军，获得世乒赛混双名额</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            小组赛第一轮：孙颖莎&王楚钦 3-0 严升&石洵瑶（11-7,11-9,11-5）
+                                            <br>
+                                            小组赛第二轮：孙颖莎&王楚钦 3-0 徐瑛彬&韩菲儿（11-1,11-7,11-9）
+                                            <br>
+                                            小组赛第三轮：孙颖莎&王楚钦 3-0 袁励岑&王艺迪（11-7,11-7,11-3）
+                                            <br>
+                                            半决赛：孙颖莎&王楚钦 3-1 林诗栋&蒯曼（11-8,11-3,9-11,11-8）
+                                            <br>
+                                            决赛：孙颖莎&王楚钦 3-2 向鹏&刘炜珊（8-11,7-11,11-8,11-5,11-9）
+                                            <br>
+                                            名额PK赛：孙颖莎&王楚钦 3-2 林高远&陈幸同（11-9,11-7,8-11,11-13,11-6）
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+			</div>
+
+			<div class="project-detail" id="project5">
+				<h3>2023 WTT冠军赛·新乡站</h3>
+				<p><strong>比赛时间：</strong> 2023.04.09—2023.04.15  </p>
+				<p><strong>比赛地点：</strong> 中国·新乡</p>
+				
+				<!-- 比赛比分 -->
+				<div class="project-phases">
+					<div class="phases-container">
+						<div class="phase-card">
+							<div class="phase-title">
+								<h4>女单：冠军</h4>
+							</div>
+							<div class="phase-content">
+								<div class="breakthroughs">
+									<div class="breakthrough">
+										<p>
+                                            1/16决赛：孙颖莎 3-0 杜凯琹(中国香港)(11-6,12-10,11-6)
+                                            <br>
+                                            1/8决赛：孙颖莎 3-1 杨晓欣(摩纳哥)(7-11,11-4,11-5,11-7)
+                                            <br>
+                                            1/4决赛：孙颖莎 3-1 伊藤美诚(日本)(6-11,11-6,11-9,11-7)
+                                            <br>
+                                            半决赛：孙颖莎 4-0 陈梦(中国)(11-5,11-5,11-7,11-6)
+                                            <br>
+                                            决赛：孙颖莎 4-1 王艺迪(中国)(11-8,11-8,10-12,11-7,11-5)
+                                        </p>
+									</div>
+								</div>	
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="project-detail" id="project6">
+				<h3>2023 WTT冠军赛·澳门站</h3>
+				<p><strong>比赛时间：</strong> 2023.04.17—2023.04.23 </p>
+				<p><strong>比赛地点：</strong> 中国澳门</p>
+				
+				<!-- 比赛比分 -->
+				<div class="project-phases">
+					<div class="phases-container">
+						<div class="phase-card">
+							<div class="phase-title">
+								<h4>女单：四强</h4>
+							</div>
+							<div class="phase-content">
+								<div class="breakthroughs">
+									<div class="breakthrough">
+										<p>
+                                            1/16决赛：孙颖莎 3-0 马特洛娃(捷克)(11-7,11-1,11-2)
+                                            <br>
+                                            1/8决赛：孙颖莎 3-2 韩莹(德国)(9-11,7-11,11-3,11-4,11-4)                         
+                                            <br>
+                                            1/4决赛：孙颖莎 3-0 斯佐科斯(罗马尼亚)(11-6,11-3,11-7)
+                                            <br>
+                                            半决赛：孙颖莎 0-4 陈梦(中国)(14-16,6-11,8-11,9-11)
+                                        </p>
+									</div>
+								</div>		
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="project-detail" id="project7">
+				<h3>2023 德班世界乒乓球锦标赛</h3>
+				<p><strong>比赛时间：</strong> 2023.05.20—2023.05.28</p>
+				<p><strong>比赛地点：</strong> 南非·德班</p>
+				
+				<!-- 比赛比分 -->
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>女单：冠军</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            1/32决赛：孙颖莎 4-0 艾米丽·索尔佳(奥地利)(11-4,11-7,11-3,11-5)
+                                            <br>
+                                            1/16决赛：孙颖莎 4-0 萨马拉(罗马尼亚)(11-8,12-10,11-8,11-5)
+                                            <br>
+                                            1/8决赛：孙颖莎 4-0 申裕斌(韩国)(11-6,11-8,11-8,11-5)
+                                            <br>
+                                            1/4决赛：孙颖莎 4-0 韩莹(德国)(11-6,11-8,11-6,11-5)
+                                            <br>
+                                            半决赛：孙颖莎 4-1 早田希娜(日本)(11-4,11-5,11-8,5-11,11-8)
+                                            <br>
+                                            决赛：孙颖莎 4-2 陈梦(中国)(5-11,11-8,11-7,11-7,7-11,11-6)
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>女双：四强(搭档王曼昱)</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            1/16决赛：孙颖莎&王曼昱 3-0 阿库拉&奇塔莱(印度)(11-8,11-8,13-11)
+                                            <br>
+                                            1/8决赛：孙颖莎&王曼昱 3-0 杜凯琹&朱成竹(中国香港)(11-8,11-7,11-7)
+                                            <br>
+                                            1/4决赛：孙颖莎&王曼昱 3-0 郑怡静&李昱谆(中国台北)(11-4,17-15,11-8)
+                                            <br>
+                                            半决赛：孙颖莎&王曼昱 0-3 田志希&申裕斌(韩国)(7-11,9-11,6-11)
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>混双：冠军(搭档王楚钦)</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            1/16决赛：孙颖莎&王楚钦 3-1 巴多夫斯基&巴约(波兰)(11-7,11-9,5-11,11-9)
+                                            <br>
+                                            1/8决赛：孙颖莎&王楚钦 3-0 加多斯&波尔卡诺娃(奥地利)(11-7,11-6,11-7)
+                                            <br>
+                                            1/4决赛：孙颖莎&王楚钦 3-0 林昀儒&陈思羽(中国台北)(12-10,11-8,11-9)
+                                            <br>
+                                            半决赛：孙颖莎&王楚钦 3-2 黄镇廷&杜凯琹(中国香港)(9-11,11-7,10-12,11-5,11-8)
+                                            <br>
+                                            决赛：孙颖莎&王楚钦 3-0 张本智和&早田希娜(日本)(11-6,11-2,11-7)
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+			</div>
+
+            <div class="project-detail" id="project8">
+                <h3>2023 WTT常规挑战赛·萨格勒布站</h3>
+                <p><strong>比赛时间：</strong> 2023.06.26—2023.07.02</p>
+                <p><strong>比赛地点：</strong> 克罗地亚·萨格勒布</p>
+                
+                <!-- 比赛比分 -->
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>女单：亚军</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            1/16决赛：孙颖莎 3-0 何卓佳(中国)(11-4,13-11,11-7)
+                                            <br>
+                                            1/8决赛：孙颖莎 3-0 高桥·布鲁娜(巴西)(11-8,11-4,11-4)
+                                            <br>
+                                            1/4决赛：孙颖莎 3-0 申裕斌(韩国)(11-9,11-4,11-6)
+                                            <br>
+                                            半决赛：孙颖莎 3-0 早田希娜(日本)(11-5,11-9,11-9)
+                                            <br>
+                                            决赛：孙颖莎 3-4 平野美宇(日本)(11-4,9-11,11-6,7-11,11-7,12-14,6-11)
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>混双：冠军(搭档王楚钦)</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            1/8决赛：孙颖莎&王楚钦 3-0 迈斯纳&万远(德国)(12-10,11-5,11-4)
+                                            <br>
+                                            1/4决赛：孙颖莎&王楚钦 3-2 林高远&王艺迪(中国)(7-11,6-11,11-7,11-9,11-9)
+                                            <br>
+                                            半决赛：孙颖莎&王楚钦 3-0 黄镇廷&杜凯琹(中国香港)(12-10,11-7,11-7)
+                                            <br>
+                                            决赛：孙颖莎&王楚钦 3-1 林诗栋&蒯曼(中国)(11-6,11-3,9-11,11-5)
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-detail" id="project9">
+                <h3>2023 WTT球星挑战赛·卢布尔雅那站</h3>
+                <p><strong>比赛时间：</strong> 2023.07.03—2023.07.09</p>
+                <p><strong>比赛地点：</strong> 斯洛文尼亚·卢布尔雅那</p>
+                
+                <!-- 比赛比分 -->
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>女单：冠军</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            1/16决赛：孙颖莎 3-1 徐孝元(韩国)(11-4,9-11,12-10,11-4)
+                                            <br>
+                                            1/8决赛：孙颖莎 3-1 何卓佳(中国)(8-11,11-6,11-6,11-4)
+                                            <br>
+                                            1/4决赛：孙颖莎 3-2 早田希娜(日本)(7-11,11-7,11-6,5-11,11-9)
+                                            <br>
+                                            半决赛：孙颖莎 3-0 王曼昱(中国)(15-13,11-5,11-9)
+                                            <br>
+                                            决赛：孙颖莎 4-3 陈梦(中国)(3-11,8-11,11-8,11-6,14-12,9-11,11-6)
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>混双：冠军(搭档王楚钦)</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            1/8决赛：孙颖莎&王楚钦 3-0 周哲宇&曾尖(新加坡)(11-6,11-2,11-6)
+                                            <br>
+                                            1/4决赛：孙颖莎&王楚钦 3-0 林钟勋&申裕斌(韩国)(11-5,11-7,11-5)
+                                            <br>
+                                            半决赛：孙颖莎&王楚钦 3-1 黄镇廷&杜凯琹(11-6,11-4,9-11,11-7)
+                                            <br>
+                                            决赛：孙颖莎&王楚钦 3-1 梁靖崑&钱天一(中国)(12-10,9-11,11-4,11-7)
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-detail" id="project10">
+                <h3>2023中国乒乓球俱乐部超级联赛第一阶段</h3>
+                <p><strong>比赛时间：</strong> 2023.07.16—2023.07.20</p>
+                <p><strong>比赛地点：</strong> 江西·吉安</p>
+                
+                <!-- 比赛比分 -->
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>女团：胜负积分，排名第2，晋级第二阶段</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <h5>第一轮：深圳大学 3-0 上海华东理工</h5>
+                                        <ul>
+                                            <li>第二盘：孙颖莎 3-0 王艺迪(11-6,11-6,12-10)</li>
+                                        </ul>
+                                        <h5>第二轮：深圳大学 3-0 成都高新若水居</h5>
+                                        <ul>
+                                            <li>第一盘：孙颖莎&蒯曼 3-0 冷雨桐&袁媛(11-5,11-4,12-10)</li>
+                                            <li>第三盘：孙颖莎 3-0 冷雨桐(11-7,11-7,11-8)</li>
+                                        </ul>
+                                        <h5>第三轮：深圳大学 3-0 龙江惠民保</h5>
+                                        <ul>
+                                            <li>第一盘：孙颖莎&蒯曼 3-1 吴洋晨&臧小桐(12-10,9-11,11-5,13-11)</li>
+                                            <li>第三盘：孙颖莎 3-0 臧小桐(11-7,11-4,11-8)</li>
+                                        </ul>
+                                        <h5>第四轮：深圳大学 3-2 上海龙腾</h5>
+                                        <ul>
+                                            <li>第一盘：孙颖莎&蒯曼 1-3 何卓佳&刘炜珊(11-6,6-11,9-11,7-11)</li>
+                                            <li>第三盘：孙颖莎 1-3 刘炜珊(11-8,7-11,9-11,6-11)</li>
+                                        </ul>
+                                        <h5>第五轮：深圳大学 2-3 山东鲁能</h5>
+                                        <ul>
+                                            <li>第二盘：孙颖莎 1-3 王曼昱(9-11,9-11,12-10,9-11)</li>
+                                            <li>第五盘：孙颖莎2-3钱天一(11-8,11-5,7-11,11-13,5-11)</li>
+                                        </ul>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-detail" id="project11">
+                <h3>2023中国乒乓球队亚洲锦标赛及亚洲运动会热身赛</h3>
+                <p><strong>比赛时间：</strong> 2023.08.23—2023.08.26</p>
+                <p><strong>比赛地点：</strong> 山东·威海</p>
+                
+                <!-- 比赛比分 -->
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>单打：</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            第一轮：孙颖莎 3-1 张瑞(11-7,11-7,7-11,11-9)
+                                            <br>
+                                            第二轮：孙颖莎 3-0 马特(11-8,14-12,12-10)
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>女团</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <h5>半决赛：女一团 3-1 女四团</h5>
+                                        <ul>
+                                            <li>第一盘：孙颖莎 2-3 蒯曼(6-11,13-11,11-8,13-15,8-11)</li>
+                                            <li>第四盘：孙颖莎 3-0 刘炜珊(11-6,13-11,11-6)</li>
+                                        </ul>
+                                        <h5>决赛：女一团 3-1 女二团</h5>
+                                        <ul>
+                                            <li>第二盘：孙颖莎 3-0 王艺迪(11-6,11-4,11-7)</li>
+                                        </ul>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>女双(搭档王艺迪)</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            第一轮：孙颖莎&王艺迪 2-3 张瑞&蒯曼(11-6,7-11,13-11,8-11,9-11)
+                                            <br>
+                                            第二轮：孙颖莎&王艺迪 3-0 陈幸同&钱天一(11-9,11-7,12-10)
+                                            <br>
+                                            第三轮：孙颖莎&王艺迪 3-0 陈梦&王曼昱(12-10,11-6,12-10)
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>混双(搭档王楚钦)</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            第一轮：孙颖莎&王楚钦 2-3 林诗栋&蒯曼(6-11,6-11,11-6,14-12,11-13)
+                                            <br>
+                                            第二轮：孙颖莎&王楚钦 3-0 林高远&王艺迪(11-9,11-6,11-3)
+                                            <br>
+                                            第三轮：孙颖莎&王楚钦 3-1 梁靖崑&钱天一(11-7,6-11,11-6,11-8)
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-detail" id="project12">
+                <h3>2023 第26届亚洲乒乓球锦标赛（韩国平昌）</h3>
+                <p><strong>比赛时间：</strong> 2023.09.03—2023.09.10</p>
+                <p><strong>比赛地点：</strong> 韩国·平昌</p>
+                
+                <!-- 比赛比分 -->
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>女单：亚军</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            1/32决赛：孙颖莎 3-0 安德拉·蒙赫巴特(蒙古)(11-5,11-2,11-3)
+                                            <br>
+                                            1/16决赛：孙颖莎 3-0 塔莫尔万·克汉库安(泰国)(11-1,11-7,11-5)
+                                            <br>
+                                            1/8决赛：孙颖莎 3-0 朱成竹(中国香港)(11-4,13-11,11-3)
+                                            <br>
+                                            1/4决赛：孙颖莎 3-1 早田希娜(日本)(11-2,11-5,8-11,11-6)
+                                            <br>
+                                            半决赛：孙颖莎 3-2 陈幸同(中国)(14-12,9-11,8-11,11-3,11-7)
+                                            <br>
+                                            决赛：孙颖莎 2-3 王曼昱(中国)(12-10,7-11,8-11,11-5,5-11)
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>女团：冠军</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <h5>小组赛第一轮：中国 3-0 马来西亚</h5>
+                                        <ul>
+                                            <li>第二盘：孙颖莎 3-0 严丽映(11-2,11-2,11-4)</li>
+                                        </ul>
+                                        <h5>小组赛第二轮：中国 3-0 中国台北</h5>
+                                        <ul>
+                                            <li>第三盘：孙颖莎 3-0 黄郁雯(11-2,11-7,11-7)</li>
+                                        </ul>
+                                        <h5>1/8决赛：中国 3-0 伊朗</h5>
+                                        <h5>1/4决赛：中国 3-0 新加坡</h5>
+                                        <ul>
+                                            <li>第一盘：孙颖莎 3-0 曾尖(11-9,11-9,11-1)</li>
+                                        </ul>
+                                        <h5>半决赛：中国 3-0 日本</h5>
+                                        <ul>
+                                            <li>第一盘：孙颖莎 3-0 早田希娜(11-6,11-8,14-12)</li>
+                                        </ul>
+                                        <h5>决赛：中国 3-0 韩国</h5>
+                                        <ul>
+                                            <li>第一盘：孙颖莎 3-0 申裕斌(11-8,11-7,11-7)</li>
+                                        </ul>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>女双：亚军(搭档王艺迪)</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            1/16决赛：孙颖莎&王艺迪 3-0 奇塔莱&阿库拉(印度)(11-7,11-6,11-6)
+                                            <br>
+                                            1/8决赛：孙颖莎&王艺迪 3-0 可人&郑爱欣(马来西亚)(11-4,11-4,11-2)
+                                            <br>
+                                            1/4决赛：孙颖莎&王艺迪 3-0 平野美宇&张本美和(日本)(11-5,12-10,11-5)
+                                            <br>
+                                            半决赛：孙颖莎&王艺迪 3-1 田志希&申裕斌(韩国)(11-5,5-11,11-9,11-8)
+                                            <br>
+                                            决赛：孙颖莎&王艺迪 0-3 陈梦&王曼昱(中国)(4-11,9-11,5-11)
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-detail" id="project13">
+                <h3>2023 第19届亚洲运动会（中国杭州）</h3>
+                <p><strong>比赛时间：</strong> 2023.09.26—2023.10.08</p>
+                <p><strong>比赛地点：</strong> 韩国·平昌</p>
+                
+                <!-- 比赛比分 -->
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>女单：冠军</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            1/16决赛：孙颖莎 4-0 法瓦德·胡尔(巴基斯坦)(11-1,11-1,11-0,11-2)
+                                            <br>
+                                            1/8决赛：孙颖莎 4-0 奥拉万·帕拉南(泰国)(11-7,11-2,11-5,11-5)
+                                            <br>
+                                            1/4决赛：孙颖莎 4-1 边松景(朝鲜)(11-5,11-6,11-3,9-11,12-10)
+                                            <br>
+                                            半决赛：孙颖莎 4-0 申裕斌(韩国)(11-7,11-8,14-12,12-10)
+                                            <br>
+                                            决赛：孙颖莎 4-1 早田希娜(日本)(11-5,11-9,10-12,11-8,11-7)
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>女团：冠军</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <h5>小组赛第一轮：中国 3-0 中国澳门</h5>
+                                        <h5>小组赛第二轮：中国 3-0 哈萨克斯坦</h5>
+                                        <ul>
+                                            <li>第一盘：孙颖莎 3-0 米尔卡迪罗娃(11-2,11-5,11-0)</li>
+                                        </ul>
+                                        <h5>1/4决赛：中国 3-0 越南</h5>
+                                        <ul>
+                                            <li>第二盘：孙颖莎 3-0 陈梅玉(11-4,11-1,11-5)</li>
+                                        </ul>
+                                        <h5>半决赛：中国 3-0 泰国</h5>
+                                        <ul>
+                                            <li>第一盘：孙颖莎 3-0 素塔西尼·萨维塔布特(11-5,11-6,11-9)</li>
+                                        </ul>
+                                        <h5>决赛：中国 3-0 日本</h5>
+                                        <ul>
+                                            <li>第一盘：孙颖莎 3-1 早田希娜(11-6,12-10,8-11,11-9)</li>
+                                        </ul>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>女双：八强(搭档王曼昱)</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            1/16决赛：孙颖莎&王曼昱 3-0 马儿卡博&罗扎琳娜(乌兹别克斯坦)(11-1,11-4,11-1)
+                                            <br>
+                                            1/8决赛：孙颖莎&王曼昱 3-0 李皓晴&李清韻(中国香港)(11-2,11-3,11-3)
+                                            <br>
+                                            1/4决赛：孙颖莎&王曼昱 1-3 张本美和&木原美悠(日本)(9-11,11-5,7-11,9-11)
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>混双：冠军(搭档王楚钦)</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            1/16决赛：孙颖莎&王楚钦 3-0 阿尔亚斯&帕德克(巴林)(11-3,11-5,11-6)
+                                            <br>
+                                            1/8决赛：孙颖莎&王楚钦 3-0 蒙西夫&纳齐姆(马尔代夫)(11-2,11-3,11-3)
+                                            <br>
+                                            1/4决赛：孙颖莎&王楚钦 3-0 黄镇廷&杜凯琹(中国香港)(11-2,11-7,11-7)
+                                            <br>
+                                            半决赛：孙颖莎&王楚钦 4-0 林钟勋&申裕斌(韩国)(11-6,11-6,11-8,11-8)
+                                            <br>
+                                            决赛：孙颖莎&王楚钦 4-1 王艺迪&林高远(中国)(11-6,11-8,13-15,11-4,11-9)
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-detail" id="project14">
+                <h3>2023 WTT球星挑战赛·兰州站</h3>
+                <p><strong>比赛时间：</strong> 2023.10.02—2023.10.08</p>
+                <p><strong>比赛地点：</strong> 中国·兰州</p>
+                
+                <!-- 比赛比分 -->
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>女单：冠军</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            1/16决赛：孙颖莎 3-2 徐孝元(韩国)(11-7,4-11,13-15,11-6,11-5)
+                                            <br>
+                                            1/8决赛：孙颖莎 3-0 田志希(韩国)(11-1,11-6,11-5)
+                                            <br>
+                                            1/4决赛：孙颖莎 3-0 张本美和(日本)(11-7,11-9,12-10)
+                                            <br>
+                                            半决赛：孙颖莎 3-2 王曼昱(中国)(10-12,11-3,5-11,11-9,11-8)
+                                            <br>
+                                            决赛：孙颖莎 4-0 陈梦(中国)(11-4,11-6,12-10,11-5)
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>混双：四强(搭档王楚钦)</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            1/8决赛：孙颖莎&王楚钦 3-2 梁靖崑&钱天一(中国)(11-2,6-11,11-9,16-18,11-8)
+                                            <br>
+                                            1/4决赛：孙颖莎&王楚钦 2-3 林诗栋&蒯曼(中国)(6-11,11-8,11-7,10-12,9-11)
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-detail" id="project15">
+                <h3>2023全国乒乓球锦标赛</h3>
+                <p><strong>比赛时间：</strong> 2023.10.09—2023.10.15</p>
+                <p><strong>比赛地点：</strong> 江苏·扬州</p>
+                
+                <!-- 比赛比分 -->
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>女团：十六强</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <h5>1/8决赛：河北 1-3 山东</h5>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>混双：十六强(搭档王楚钦)</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            1/16决赛：轮空
+                                            <br>
+                                            1/8决赛：孙颖莎&王楚钦 0-3 王添艺&刘丁硕(山东鲁能&山东)(9-11,7-11,9-11)
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-detail" id="project16">
+                <h3>2023 WTT冠军赛·法兰克福站</h3>
+                <p><strong>比赛时间：</strong> 2023.10.29—2023.11.05 </p>
+                <p><strong>比赛地点：</strong> 德国·法兰克福</p>
+                
+                <!-- 比赛比分 -->
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>女单：四强</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            1/16决赛：孙颖莎 3-0 田志希(韩国)(11-6,11-8,11-8)
+                                            <br>
+                                            1/8决赛：孙颖莎 3-0 帕瓦德(法国)(11-9,11-3,15-13)               
+                                            <br>
+                                            1/4决赛：孙颖莎 3-1 申裕斌(韩国)(10-12,11-5,13-11,11-6)
+                                            <br>
+                                            半决赛：孙颖莎 2-4 王艺迪(中国)(9-11,11-5,9-11,11-8,5-11,7-11)
+                                        </p>
+                                    </div>
+                                </div>      
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-detail" id="project17">
+                <h3>2023 WTT常规挑战赛·太原站</h3>
+                <p><strong>比赛时间：</strong> 2023.11.06—2023.11.12 </p>
+                <p><strong>比赛地点：</strong> 中国·太原</p>
+                
+                <!-- 比赛比分 -->
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>混双：亚军(搭档王楚钦)</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            1/4决赛：孙颖莎&王楚钦 3-0 黄镇廷&吴咏琳(中国香港)(11-6,11-4,11-7)           
+                                            <br>
+                                            半决赛：孙颖莎&王楚钦 3-0 梁靖崑&钱天一(中国)(11-3,11-4,11-5)
+                                            <br>
+                                            决赛：孙颖莎&王楚钦 1-3 林诗栋&蒯曼(中国)(4-11,11-5,9-11,10-12)
+                                        </p>
+                                    </div>
+                                </div>      
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-detail" id="project18">
+                <h3>2023成都混合团体世界杯</h3>
+                <p><strong>比赛时间：</strong> 2023.12.04—2023.12.10</p>
+                <p><strong>比赛地点：</strong> 韩国·平昌</p>
+                
+                <!-- 比赛比分 -->
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>混团：冠军</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <h5>第一阶段循环小组赛第一轮：中国 8-0 瑞典</h5>
+                                        <ul>
+                                            <li>第二盘：孙颖莎 3-0 琳达·伯格斯特隆(11-9,11-5,12-10)</li>
+                                        </ul>
+                                        <h5>第一阶段循环小组赛第二轮：中国 8-0 中国香港</h5>
+                                        <ul>
+                                            <li>第一盘：孙颖莎&王楚钦 3-0 杜凯琹&何钧杰(11-7,11-5,11-7)</li>
+                                        </ul>
+                                        <h5>第一阶段循环小组赛第三轮：中国 8-2 波多黎各</h5>
+                                        <ul>
+                                            <li>第一盘：孙颖莎&王楚钦3-0阿凡纳多尔&F·迪亚兹(11-1,11-4,11-2)</li>
+                                            <li>第四盘：孙颖莎&王艺迪1-0A·迪亚兹&/M·迪亚兹(11-3)</li>
+                                        </ul>
+                                        <h5>第二阶段循环赛第一轮：中国 8-1 斯洛伐克</h5>
+                                        <h5>第二阶段循环赛第二轮：中国 8-1 中国台北</h5>
+                                        <ul>
+                                            <li>第一盘：孙颖莎&王楚钦 2-1 杨嘉安&李昱谆(11-5,11-7,9-11)</li>
+                                        </ul>
+                                        <h5>第二阶段循环赛第三轮：中国 8-1 法国</h5>
+                                        <ul>
+                                            <li>第一盘：孙颖莎&王楚钦 3-0 A·勒布伦&袁嘉楠(11-1,11-8,11-3)(11-5,11-7,9-11)</li>
+                                        </ul>
+                                        <h5>第二阶段循环赛第四轮：中国 8-1 德国</h5>
+                                        <ul>
+                                            <li>第一盘：孙颖莎&王楚钦 2-1 迈斯纳&万远(8-11,11-7,11-2)</li>
+                                        </ul>
+                                        <h5>第二阶段循环赛第五轮：中国 8-5 日本</h5>
+                                        <ul>
+                                            <li>第一盘：孙颖莎&王楚钦 1-2 户上隼辅&张本美和(11-5,11-13,9-11)</li>
+                                        </ul>
+                                        <h5>第二阶段循环赛第六轮：中国 8-1 韩国</h5>
+                                        <ul>
+                                            <li>第一盘：孙颖莎&王楚钦 3-0 安宰贤&申裕斌(11-8,11-8,11-5)</li>
+                                        </ul>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-detail" id="project19">
+                <h3>2023 WTT名古屋女子总决赛</h3>
+                <p><strong>比赛时间：</strong> 2023.12.15—2023.12.17 </p>
+                <p><strong>比赛地点：</strong> 日本·名古屋</p>
+                
+                <!-- 比赛比分 -->
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>女单：冠军</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            1/8决赛：孙颖莎 3-2 张本美和(日本)(6-11,11-9,11-8,3-11,11-6)
+                                            <br>
+                                            1/4决赛：孙颖莎 3-0 韩莹(德国)(14-12,11-4,11-7)              
+                                            <br>
+                                            半决赛：孙颖莎 4-1 陈梦(中国)(11-9,9-11,11-7,11-7,11-7)
+                                            <br>
+                                            决赛：孙颖莎 4-2 王艺迪(中国)(12-10,11-6,8-11,11-5,6-11,11-7)
+                                        </p>
+                                    </div>
+                                </div>      
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>女双：冠军(搭档王曼昱)</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            1/4决赛：孙颖莎&王曼昱 3-0 伯格斯特隆&C·卡尔伯格(瑞典)(11-9,11-7,11-8)
+                                            <br>
+                                            半决赛：孙颖莎&王曼昱 3-1 陈梦&王艺迪(中国)(11-5,9-11,11-8,11-2)
+                                            <br>
+                                            决赛：孙颖莎&王曼昱 3-1 长崎美柚&木原美悠(日本)(12-10,8-11,11-4,12-10)
+                                        </p>
+                                    </div>
+                                </div>      
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-detail" id="project20">
+                <h3>2023中国乒乓球俱乐部超级联赛总决赛</h3>
+                <p><strong>比赛时间：</strong> 2023.12.22—2023.12.24</p>
+                <p><strong>比赛地点：</strong> 广东·深圳</p>
+                
+                <!-- 比赛比分 -->
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>女团：冠军</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <h5>半决赛：深圳大学 3-1 华东理工大学</h5>
+                                        <ul>
+                                            <li>第二盘：孙颖莎 3-0 王艺迪(11-6,11-7,11-7)</li>
+                                            <li>第四盘：孙颖莎 3-0 赵尚(11-5,11-5,11-6)</li>
+                                        </ul>
+                                        <h5>决赛：深圳大学 3-2 山东鲁能</h5>
+                                        <ul>
+                                            <li>第二盘：孙颖莎 2-3 王曼昱(11-4,4-11,11-7,9-11,9-11)</li>
+                                            <li>第五盘：孙颖莎 3-0 范思琦(11-6,11-5,17-15)</li>
+                                        </ul>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+        <footer>
+            <p>© SUNDAY放映室 | 孙颖莎赛果记录</p>
+			<p>成长的每一个脚印都弥足珍贵，永远期待孙颖莎的下一个赛场</p>
+        </footer>
+    </div>
+    
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // 平滑滚动到项目详情
+        function scrollToProject(projectId) {
+            if (!projectId) return;
+            
+            const element = document.getElementById(projectId);
+            element.scrollIntoView({behavior: 'smooth', block: 'start'});
+            
+            // 添加高亮效果
+            element.style.backgroundColor = '#e6f7ff';
+            element.style.boxShadow = '0 0 0 4px rgba(92, 179, 255, 0.3)';
+            setTimeout(() => {
+                element.style.backgroundColor = '';
+                element.style.boxShadow = '';
+            }, 2000);
+            
+            // 更新下拉框显示当前项目
+            document.getElementById('projectDropdown').value = projectId;
+        }
+        
+        // 返回顶部按钮
+        const backToTopBtn = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+        
+        // 添加动画效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const details = document.querySelectorAll('.project-detail');
+            const phases = document.querySelectorAll('.phase-card');
+            
+            details.forEach((detail, index) => {
+                detail.style.animationDelay = `${index * 0.1}s`;
+                detail.style.animation = 'fadeIn 0.8s ease forwards';
+                detail.style.opacity = '0';
+            });
+            
+            phases.forEach((phase, index) => {
+                phase.style.animationDelay = `${index * 0.2 + 0.3}s`;
+                phase.style.animation = 'slideUp 0.8s ease forwards';
+                phase.style.opacity = '0';
+            });
+        });
+    </script>
+</body>
+</html>

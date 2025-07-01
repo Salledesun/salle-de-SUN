@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>孙颖莎比赛赛果汇总</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans SC', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary-color: #e6f7ff;
+            --secondary-color: #b3e0ff;
+            --accent-color: #5cb3ff;
+            --dark-accent: #3a7bbd;
+            --text-color: #1a3c5a;
+            --light-text: #5a7a9a;
+            --card-bg: #ffffff;
+            --phase-bg: #f0f9ff;
+            --breakthrough-bg: #e6f2ff;
+            --shadow: 0 4px 20px rgba(92, 179, 255, 0.15);
+            --hover-color: #d1edff;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2ff);
+            color: var(--text-color);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 0 30px;
+            animation: fadeIn 1s ease;
+        }
+        
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            color: var(--text-color);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            font-weight: 700;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+            color: #2c577a;
+        }
+        
+        .year-badge {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 10px 30px;
+            border-radius: 40px;
+            font-weight: 800;
+            margin-top: 30px;
+            box-shadow: var(--shadow);
+        }
+        
+        /* 下拉选择区域样式 */
+        .project-selector {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            margin: 40px auto;
+            max-width: 800px;
+            box-shadow: var(--shadow);
+            animation: slideUp 0.8s ease;
+            border: 1px solid var(--secondary-color);
+        }
+        
+        .selector-title {
+            text-align: center;
+            margin-bottom: 25px;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .selector-title i {
+            margin-right: 12px;
+            color: var(--accent-color);
+        }
+        
+        .project-dropdown {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid var(--secondary-color);
+            border-radius: 12px;
+            background: var(--primary-color);
+            font-size: 1.1rem;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%235cb3ff'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 20px center;
+            background-size: 20px;
+            font-weight: 500;
+        }
+        
+        .project-dropdown:hover {
+            background-color: var(--hover-color);
+            border-color: var(--accent-color);
+        }
+        
+        .project-dropdown:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(92, 179, 255, 0.3);
+        }
+        
+        .dropdown-container {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        
+        .dropdown-label {
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            background: white;
+            padding: 0 8px;
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+        
+        .selector-description {
+            text-align: center;
+            font-size: 1.05rem;
+            color: var(--light-text);
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .details-section {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin: 40px 0 60px;
+            box-shadow: var(--shadow);
+            animation: fadeIn 1s ease;
+            position: relative;
+            border: 1px solid var(--secondary-color);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--text-color);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+        
+        .project-detail {
+            margin-bottom: 60px;
+            padding: 30px;
+            border-radius: 12px;
+            background: var(--card-bg);
+            box-shadow: 0 4px 15px rgba(92, 179, 255, 0.1);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .project-detail:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(92, 179, 255, 0.2);
+        }
+        
+        .project-detail h3 {
+            font-size: 1.8rem;
+            color: var(--text-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .project-detail h3 i {
+            margin-right: 12px;
+            color: var(--accent-color);
+        }
+        
+        .project-overview {
+            display: flex;
+            margin-bottom: 30px;
+            gap: 30px;
+        }
+        
+        .overview-text {
+            flex: 1;
+        }
+        
+        .project-stats {
+            flex: 0 0 300px;
+            background: var(--phase-bg);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid var(--secondary-color);
+        }
+        
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px dashed var(--secondary-color);
+        }
+        
+        .stat-item:last-child {
+            border-bottom: none;
+        }
+        
+        .stat-label {
+            color: var(--light-text);
+            font-weight: 500;
+        }
+        
+        .stat-value {
+            font-weight: 600;
+            color: var(--dark-accent);
+        }
+        
+        .project-detail p {
+            line-height: 1.7;
+            margin-bottom: 20px;
+            color: var(--light-text);
+        }
+        
+        .project-detail ul {
+            padding-left: 20px;
+            margin: 15px 0;
+        }
+        
+        .project-detail li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        /* 项目阶段样式 */
+        .project-phases {
+            margin: 40px 0;
+        }
+        
+        .phases-title {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+            color: var(--text-color);
+            font-size: 1.5rem;
+        }
+        
+        .phases-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+        
+        .phases-container {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .phase-card {
+            flex: 1;
+            background: var(--phase-bg);
+            border-radius: 12px;
+            padding: 25px;
+            border: 1px solid var(--secondary-color);
+            transition: all 0.3s ease;
+        }
+        
+        .phase-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+        
+        .phase-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            color: var(--dark-accent);
+        }
+        
+        .phase-title i {
+            margin-right: 10px;
+            background: var(--accent-color);
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .phase-content h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+        
+        .breakthroughs {
+            margin-top: 20px;
+        }
+        
+        .breakthrough {
+            background: var(--breakthrough-bg);
+            border-radius: 10px;
+            padding: 18px;
+            margin-bottom: 15px;
+            border-left: 3px solid var(--accent-color);
+        }
+        
+        .breakthrough h5 {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            color: var(--dark-accent);
+        }
+        
+        .breakthrough h5 i {
+            margin-right: 8px;
+            color: var(--accent-color);
+        }
+        
+        .breakthrough p {
+            color: var(--light-text);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--accent-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(92, 179, 255, 0.4);
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: var(--light-text);
+            font-size: 0.95rem;
+            border-top: 1px solid var(--secondary-color);
+            margin-top: 20px;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .project-selector {
+                padding: 20px;
+            }
+            
+            .selector-title {
+                font-size: 1.3rem;
+            }
+            
+            .project-dropdown {
+                padding: 12px 15px;
+                font-size: 1rem;
+            }
+            
+            .details-section {
+                padding: 25px;
+            }
+            
+            .project-detail {
+                padding: 20px;
+            }
+            
+            .project-detail h3 {
+                font-size: 1.5rem;
+            }
+            
+            .project-overview {
+                flex-direction: column;
+            }
+            
+            .project-stats {
+                width: 100%;
+            }
+            
+            .phases-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>孙颖莎比赛赛果汇总</h1>
+            <p>🌻</p>
+            <div class="year-badge">2022</div>
+        </header>
+        
+        <!-- 导航汇总区域 -->
+        <div class="project-selector">
+            <h2 class="selector-title"><i class="fas fa-folder-open"></i> 导航目录</h2>
+            
+            <div class="dropdown-container">
+                <span class="dropdown-label">选择比赛查看详情</span>
+                <select class="project-dropdown" id="projectDropdown" onchange="scrollToProject(this.value)">
+                    <option value="" disabled selected>请选择比赛...</option>
+                    <option value="project1">WTT澳门冠军赛2021中国之星</option>
+                    <option value="project2">2022 WTT大满贯•新加坡站</option>
+                    <option value="project3">2022 WTT球星挑战赛·布达佩斯站</option>
+					<option value="project4">2022 WTT冠军赛·布达佩斯站</option>
+					<option value="project5">2022 成都世界乒乓球锦标赛（团体）</option>
+					<option value="project6">2022 WTT冠军赛·澳门站</option>
+					<option value="project7">2022 WTT新乡世界杯总决赛</option>
+					<option value="project8">2022年全国乒乓球锦标赛</option>
+                    <option value="project9">2022年中国乒乓球俱乐部超级联赛</option>
+                </select>
+            </div>
+            
+            <p class="selector-description">
+                可以通过下拉菜单选择跳转到具体比赛场次查看赛果，也可以直接滚动页面按时间查看不同比赛赛果。
+            </p>
+        </div>
+		
+		
+        
+        <!-- 比赛赛果区域 -->
+        <div class="details-section">
+            <h2 class="section-title">比赛赛果</h2>
+            <div class="project-detail" id="project1">
+                <h3>WTT澳门冠军赛2021中国之星</h3>
+                <p><strong>比赛时间：</strong> 2022.01.09—2022.01.23 </p>
+                <p><strong>比赛地点：</strong> 中国澳门 </p>
+                
+                <!-- 比赛比分 -->
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>女单：四强</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            1/8决赛：孙颖莎 3-0 何卓佳（13-11,11-4,11-6）
+                                            <br>
+                                            1/4决赛：孙颖莎 3-1 刘炜珊（11-6,11-7,9-11,11-7）
+                                            <br>
+                                            半决赛：孙颖莎 2-4 刘诗雯（11-9,10-12,11-4,8-11,11-13,6-11）
+                                        </p>
+                                    </div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>混双：八强（搭档王楚钦）</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            1/8决赛：孙颖莎&王楚钦 3-0 马龙&钱天一（11-8,11-5,11-9）
+                                            <br>
+                                            1/4决赛：孙颖莎&王楚钦 2-3 樊振东&蒯曼（11-8,5-11,9-11,11-6,6-11）
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+			</div>
+
+			<div class="project-detail" id="project2">
+                <h3>2022 WTT大满贯•新加坡站</h3>
+                <p><strong>比赛时间：</strong> 2022.03.07—2022.03.20</p>
+                <p><strong>比赛地点：</strong> 新加坡</p>
+                
+                <!-- 比赛比分 -->
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>女单：四强</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            1/32决赛：孙颖莎 3-0 温特(德国)(11-3,11-7,11-2)
+                                            <br>
+                                            1/16决赛：孙颖莎 3-0 蒯曼(中国)(11-8,11-5,11-5)
+                                            <br>
+                                            1/8决赛：孙颖莎 3-0 刘诗雯(中国)(11-5,11-5,11-9)
+                                            <br>
+                                            1/4决赛：孙颖莎 3-0 早田希娜(日本)(11-9,11-7,11-9)
+                                            <br>
+                                            半决赛：孙颖莎 3-4 王曼昱(中国)(11-7,10-12,11-9,10-12,9-11,14-12,8-11)
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>女双：冠军(搭档王曼昱)</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            1/8决赛：孙颖莎&王曼昱 3-0 郑先知&刘馨尹(中国台北)(11-5,11-7,11-2)
+                                            <br>
+                                            1/4决赛：孙颖莎&王曼昱 3-1 田志希&梁夏银(韩国)(10-12,11-7,11-6,11-9)
+                                            <br>
+                                            半决赛：孙颖莎&王曼昱 3-0 倪夏莲&德努特(卢森堡)(11-8,11-5,11-5)
+                                            <br>
+                                            决赛：孙颖莎&王曼昱 3-0 早田希娜&伊藤美诚(日本)(11-4,11-6,11-4)
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>混双：冠军(搭档王楚钦)</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            1/8决赛：孙颖莎&王楚钦 3-0 奥马尔&梅谢里夫(埃及)(11-4,11-3,12-10)
+                                            <br>
+                                            1/4决赛：孙颖莎&王楚钦 3-0 约内斯库&斯佐科斯(罗马尼亚)(11-4,11-8,11-9)
+                                            <br>
+                                            半决赛：孙颖莎&王楚钦 3-1 黄镇廷&杜凯琹(中国香港)(14-12,11-9,4-11,11-9)
+                                            <br>
+                                            决赛：孙颖莎&王楚钦 3-0 林昀儒&郑怡静(中国台北)(11-3,12-10,11-4)
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			
+			<div class="project-detail" id="project3">
+				<h3>2022 WTT球星挑战赛·布达佩斯站</h3>
+				<p><strong>比赛时间：</strong> 2022.07.11—2022.07.17 </p>
+				<p><strong>比赛地点：</strong> 匈牙利·布达佩斯</p>
+				
+				<!-- 比赛比分 -->
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>女单：亚军</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            1/16决赛：孙颖莎 3-0 巴拉佐娃(斯洛伐克)(11-2,11-2,11-9)
+                                            <br>
+                                            1/8决赛：孙颖莎 3-0 波尔卡诺娃(奥地利)(11-2,11-6,11-5)
+                                            <br>
+                                            1/4决赛：孙颖莎 3-0 早田希娜(日本)(13-11,11-8,11-6)
+                                            <br>
+                                            半决赛：孙颖莎 3W-0 王曼昱
+                                            <br>
+                                            决赛：孙颖莎 1-4 王艺迪(中国)(11-9,9-11,6-11,6-11,4-11)
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>女双：冠军（搭档王曼昱）</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            1/8决赛：孙颖莎&王曼昱 3-1 波塔&马达拉斯(匈牙利)(11-4,9-11,11-3,11-4)
+                                            <br>
+                                            1/4决赛：孙颖莎&王曼昱 3-1 平野美宇&石川佳纯(日本)(11-9,8-11,11-8,13-11)
+                                            <br>
+                                            半决赛：孙颖莎&王曼昱 3-0 斯佐科斯&波尔卡诺娃(罗马尼亚&奥地利)(11-9,11-8,11-5)
+                                            <br>
+                                            决赛：孙颖莎&王曼昱 3-0 伊藤美诚&早田希娜(日本)(14-12,11-6,15-13)
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+			</div>
+
+			<div class="project-detail" id="project4">
+				<h3>2022 WTT冠军赛·布达佩斯站</h3>
+				<p><strong>比赛时间：</strong> 2022.07.18—2022.07.23 </p>
+				<p><strong>比赛地点：</strong> 匈牙利·布达佩斯</p>
+				
+				<!-- 比赛比分 -->
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>女单：四强</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            1/16决赛：孙颖莎 3-0 米特兰姆(德国)(11-8,12-10,11-2)
+                                            <br>
+                                            1/8决赛：孙颖莎 3-0 付玉(葡萄牙)(11-4,11-5,11-4)
+                                            <br>
+                                            1/4决赛：孙颖莎 3-1 杜凯琹(中国香港)(11-7,11-4,10-12,11-2)
+                                            <br>
+                                            半决赛：孙颖莎 3-4 王艺迪(中国)(12-10,8-11,8-11,11-7,2-11,15-13,8-11)
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+			</div>
+
+			<div class="project-detail" id="project5">
+				<h3>2022 成都世界乒乓球锦标赛（团体）</h3>
+				<p><strong>比赛时间：</strong> 2022.09.30—2022.10.09  </p>
+				<p><strong>比赛地点：</strong> 中国·成都</p>
+				
+				<!-- 比赛比分 -->
+				<div class="project-phases">
+					<div class="phases-container">
+						<div class="phase-card">
+							<div class="phase-title">
+								<h4>女团：冠军</h4>
+							</div>
+							<div class="phase-content">
+								<div class="breakthroughs">
+									<div class="breakthrough">
+										<h5>小组赛第一轮：中国 3-0 加拿大</h5>
+                                        <ul>
+                                            <li>第二盘：孙颖莎 3-0 刘佳晶(11-8,11-4,11-5)</li>
+                                        </ul>
+                                        <h5>小组赛第二轮：中国 3-0 波多黎各</h5>
+                                        <h5>小组赛第三轮：中国 3-0 美国</h5>
+                                        <ul>
+                                            <li>第一盘：孙颖莎 3-0 张安(14-12,11-3,11-8)</li>
+                                        </ul>
+                                        <h5>小组赛第四轮：中国 3-0 马来西亚</h5>
+                                        <ul>
+                                            <li>第一盘：孙颖莎 3-0 莱恩(11-8,11-7,11-6)</li>
+                                        </ul>
+                                        <h5>1/8决赛：中国 3-0 匈牙利</h5>
+                                        <ul>
+                                            <li>第一盘：孙颖莎 3-0 哈特布里奇(11-4,11-2,11-2)</li>
+                                        </ul>
+                                        <h5>1/4决赛：中国 3-0 葡萄牙</h5>
+                                        <ul>
+                                            <li>第三盘：孙颖莎 3-0 马托斯(11-4,11-1,11-3)</li>
+                                        </ul>
+                                        <h5>半决赛：中国 3-0 中国台北</h5>
+                                        <ul>
+                                            <li>第一盘：孙颖莎 3-0 陈思羽(11-9,11-1,11-4)</li>
+                                        </ul>
+                                        <h5>决赛：中国 3-0 日本</h5>
+                                        <ul>
+                                            <li>第三盘：孙颖莎 3-0 长崎美柚(11-7,11-7,11-8)</li>
+                                        </ul>
+									</div>
+								</div>	
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="project-detail" id="project6">
+				<h3>2022 WTT冠军赛·澳门站</h3>
+				<p><strong>比赛时间：</strong> 2022.10.19—2022.10.23 </p>
+				<p><strong>比赛地点：</strong> 中国澳门</p>
+				
+				<!-- 比赛比分 -->
+				<div class="project-phases">
+					<div class="phases-container">
+						<div class="phase-card">
+							<div class="phase-title">
+								<h4>女单：冠军</h4>
+							</div>
+							<div class="phase-content">
+								<div class="breakthroughs">
+									<div class="breakthrough">
+										<p>
+                                            1/16决赛：孙颖莎 3-0 布鲁娜·高桥(巴西)(11-6,11-2,11-5)
+                                            <br>
+                                            1/8决赛：孙颖莎 3-1 杨晓欣(摩纳哥)(8-11,11-8,11-7,11-4)                          
+                                            <br>
+                                            1/4决赛：孙颖莎 3-0 郑怡静(中国台北)(11-4,11-8,11-3)
+                                            <br>
+                                            半决赛：孙颖莎 4-0 袁嘉楠(法国)(11-7,12-10,11-7,11-6)
+                                            <br>
+                                            决赛：孙颖莎 4-1 陈幸同(中国)(12-10,11-8,5-11,11-6,12-10)
+                                        </p>
+									</div>
+								</div>		
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="project-detail" id="project7">
+				<h3>2022 WTT新乡世界杯总决赛</h3>
+				<p><strong>比赛时间：</strong> 2022.10.27—2022.10.30</p>
+				<p><strong>比赛地点：</strong> 中国·新乡</p>
+				
+				<!-- 比赛比分 -->
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>女单：冠军</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            1/8决赛：孙颖莎 3-0 米特海姆(德国)(11-8,11-4,11-6)
+                                            <br>
+                                            1/4决赛：孙颖莎 3-0 石川佳纯(日本)(11-6,11-4,11-7)
+                                            <br>
+                                            半决赛：孙颖莎 4-1 王艺迪(中国)(11-6,11-4,4-11,14-12,11-6)
+                                            <br>
+                                            决赛：孙颖莎 4-3 陈梦(中国)(4-11,11-4,11-8,12-10,6-11,10-12,12-10)
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+			</div>
+
+            <div class="project-detail" id="project8">
+                <h3>2022年全国乒乓球锦标赛</h3>
+                <p><strong>比赛时间：</strong> 2022.11.03—2022.11.12</p>
+                <p><strong>比赛地点：</strong> 湖北·黄石</p>
+                
+                <!-- 比赛比分 -->
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>女单：16强</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            1/8决赛：孙颖莎 1-3 孙铭阳(上海地产集团)(5-11,11-4,10-12,9-11)
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>女团：第3名</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <h5>1/8决赛：河北乐旋 3-0 广东</h5>
+                                        <ul>
+                                            <li>第三盘：孙颖莎 3-0 陈梓颖(11-7,11-2,11-3)</li>
+                                        </ul>
+                                        <h5>1/4决赛：河北乐旋 3-1 黑龙江银河</h5>
+                                        <ul>
+                                            <li>第二盘：孙颖莎 3-0 孙思楠(11-9,11-7,11-3)</li>
+                                            <li>第四盘：孙颖莎 3-0 张缤月(11-9,11-3,11-4)</li>
+                                        </ul>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>混双：亚军(搭档王楚钦[北京])</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            1/8决赛：孙颖莎&王楚钦 3-0 周启豪&何卓佳(广东&河北乐旋)(11-9,14-12,11-8)
+                                            <br>
+                                            1/4决赛：孙颖莎&王楚钦 3-1 赵钊彦&孙铭阳(上海地产集团)(11-13,11-8,11-3,11-2)
+                                            <br>
+                                            半决赛：孙颖莎&王楚钦 4-0 林诗栋&蒯曼(海南国奥金冠&江苏ZGL)(11-8,11-8,11-7,11-6)
+                                            <br>
+                                            决赛：孙颖莎&王楚钦 2-4 林高远&王曼昱(广东&黑龙江银河)(12-10,7-11,7-11,11-6,4-11,6-11)
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-detail" id="project9">
+                <h3>2022年中国乒乓球俱乐部超级联赛</h3>
+                <p><strong>比赛时间：</strong> 2022.12.03—2022.12.11</p>
+                <p><strong>比赛地点：</strong> 山东·威海</p>
+                <h4>女团：亚军</h4>
+                <p>个人积分：第一阶段循环赛单打5胜，单打积分750。淘汰赛单打3胜，积分600，个人单打积分累计1350，女子MVP</p>
+                
+                <!-- 比赛比分 -->
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>第一阶段：循环赛5胜0负，积分10，排名第一</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <h5>第一轮：深圳大学 3-0 龙江惠民保·永刚</h5>
+                                        <ul>
+                                            <li>第二盘：孙颖莎 3-0 杨蕙菁(11-3,11-8,11-5)</li>
+                                        </ul>
+                                        <h5>第二轮：深圳大学 3-0 上海龙腾</h5>
+                                        <ul>
+                                            <li>第二盘：孙颖莎 3-1 杨屹韵(7-11,11-5,11-9,11-8)</li>
+                                        </ul>
+                                        <h5>第三轮：深圳大学 3-0 成都高新若水居</h5>
+                                        <ul>
+                                            <li>第一盘：孙颖莎&何卓佳 3-0 郭艳&石洵瑶(11-6,11-5,11-7)</li>
+                                            <li>第三盘：孙颖莎 3-2 石洵瑶(8-11,9-11,13-11,14-12,11-8)</li>
+                                        </ul>
+                                        <h5>第四轮：深圳大学 3-1 华东理工大学</h5>
+                                        <ul>
+                                            <li>第一盘：孙颖莎&何卓佳 3-0 秦晓策&王晓彤(11-7,11-9,11-5)</li>
+                                            <li>第三盘：孙颖莎 3-0 王晓彤(11-6,11-7,11-4)</li>
+                                        </ul>
+                                        <h5>第五轮：深圳大学 3-0 山东鲁能</h5>
+                                        <ul>
+                                            <li>第二盘：孙颖莎 3-1 王曼昱(11-4,6-11,11-9,11-3)</li>
+                                        </ul>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>第二阶段：</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <h5>半决赛：深圳大学 3-0 成都高新若水居</h5>
+                                        <ul>
+                                            <li>第二盘：孙颖莎 3-0 李雨琪(12-10,11-3,11-8)</li>
+                                        </ul>
+                                        <h5>决赛：深圳大学 2-3 山东鲁能</h5>
+                                        <ul>
+                                            <li>第二盘：孙颖莎 3-1 王曼昱(11-4,11-9,8-11,11-9)</li>
+                                            <li>第四盘：孙颖莎 3-0 钱天一(11-5,11-2,11-1)</li>
+                                        </ul>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <footer>
+            <p>© SUNDAY放映室 | 孙颖莎赛果记录</p>
+			<p>成长的每一个脚印都弥足珍贵，永远期待孙颖莎的下一个赛场</p>
+        </footer>
+    </div>
+    
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // 平滑滚动到项目详情
+        function scrollToProject(projectId) {
+            if (!projectId) return;
+            
+            const element = document.getElementById(projectId);
+            element.scrollIntoView({behavior: 'smooth', block: 'start'});
+            
+            // 添加高亮效果
+            element.style.backgroundColor = '#e6f7ff';
+            element.style.boxShadow = '0 0 0 4px rgba(92, 179, 255, 0.3)';
+            setTimeout(() => {
+                element.style.backgroundColor = '';
+                element.style.boxShadow = '';
+            }, 2000);
+            
+            // 更新下拉框显示当前项目
+            document.getElementById('projectDropdown').value = projectId;
+        }
+        
+        // 返回顶部按钮
+        const backToTopBtn = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+        
+        // 添加动画效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const details = document.querySelectorAll('.project-detail');
+            const phases = document.querySelectorAll('.phase-card');
+            
+            details.forEach((detail, index) => {
+                detail.style.animationDelay = `${index * 0.1}s`;
+                detail.style.animation = 'fadeIn 0.8s ease forwards';
+                detail.style.opacity = '0';
+            });
+            
+            phases.forEach((phase, index) => {
+                phase.style.animationDelay = `${index * 0.2 + 0.3}s`;
+                phase.style.animation = 'slideUp 0.8s ease forwards';
+                phase.style.opacity = '0';
+            });
+        });
+    </script>
+</body>
+</html>
