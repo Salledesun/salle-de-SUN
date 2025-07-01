@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>孙颖莎比赛赛果汇总</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans SC', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary-color: #e6f7ff;
+            --secondary-color: #b3e0ff;
+            --accent-color: #5cb3ff;
+            --dark-accent: #3a7bbd;
+            --text-color: #1a3c5a;
+            --light-text: #5a7a9a;
+            --card-bg: #ffffff;
+            --phase-bg: #f0f9ff;
+            --breakthrough-bg: #e6f2ff;
+            --shadow: 0 4px 20px rgba(92, 179, 255, 0.15);
+            --hover-color: #d1edff;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2ff);
+            color: var(--text-color);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 0 30px;
+            animation: fadeIn 1s ease;
+        }
+        
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            color: var(--text-color);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            font-weight: 700;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+            color: #2c577a;
+        }
+        
+        .year-badge {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 10px 30px;
+            border-radius: 40px;
+            font-weight: 800;
+            margin-top: 30px;
+            box-shadow: var(--shadow);
+        }
+        
+        /* 下拉选择区域样式 */
+        .project-selector {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            margin: 40px auto;
+            max-width: 800px;
+            box-shadow: var(--shadow);
+            animation: slideUp 0.8s ease;
+            border: 1px solid var(--secondary-color);
+        }
+        
+        .selector-title {
+            text-align: center;
+            margin-bottom: 25px;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .selector-title i {
+            margin-right: 12px;
+            color: var(--accent-color);
+        }
+        
+        .project-dropdown {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid var(--secondary-color);
+            border-radius: 12px;
+            background: var(--primary-color);
+            font-size: 1.1rem;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%235cb3ff'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 20px center;
+            background-size: 20px;
+            font-weight: 500;
+        }
+        
+        .project-dropdown:hover {
+            background-color: var(--hover-color);
+            border-color: var(--accent-color);
+        }
+        
+        .project-dropdown:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(92, 179, 255, 0.3);
+        }
+        
+        .dropdown-container {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        
+        .dropdown-label {
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            background: white;
+            padding: 0 8px;
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+        
+        .selector-description {
+            text-align: center;
+            font-size: 1.05rem;
+            color: var(--light-text);
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .details-section {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin: 40px 0 60px;
+            box-shadow: var(--shadow);
+            animation: fadeIn 1s ease;
+            position: relative;
+            border: 1px solid var(--secondary-color);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--text-color);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+        
+        .project-detail {
+            margin-bottom: 60px;
+            padding: 30px;
+            border-radius: 12px;
+            background: var(--card-bg);
+            box-shadow: 0 4px 15px rgba(92, 179, 255, 0.1);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .project-detail:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(92, 179, 255, 0.2);
+        }
+        
+        .project-detail h3 {
+            font-size: 1.8rem;
+            color: var(--text-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .project-detail h3 i {
+            margin-right: 12px;
+            color: var(--accent-color);
+        }
+        
+        .project-overview {
+            display: flex;
+            margin-bottom: 30px;
+            gap: 30px;
+        }
+        
+        .overview-text {
+            flex: 1;
+        }
+        
+        .project-stats {
+            flex: 0 0 300px;
+            background: var(--phase-bg);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid var(--secondary-color);
+        }
+        
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px dashed var(--secondary-color);
+        }
+        
+        .stat-item:last-child {
+            border-bottom: none;
+        }
+        
+        .stat-label {
+            color: var(--light-text);
+            font-weight: 500;
+        }
+        
+        .stat-value {
+            font-weight: 600;
+            color: var(--dark-accent);
+        }
+        
+        .project-detail p {
+            line-height: 1.7;
+            margin-bottom: 20px;
+            color: var(--light-text);
+        }
+        
+        .project-detail ul {
+            padding-left: 20px;
+            margin: 15px 0;
+        }
+        
+        .project-detail li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        /* 项目阶段样式 */
+        .project-phases {
+            margin: 40px 0;
+        }
+        
+        .phases-title {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+            color: var(--text-color);
+            font-size: 1.5rem;
+        }
+        
+        .phases-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+        
+        .phases-container {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .phase-card {
+            flex: 1;
+            background: var(--phase-bg);
+            border-radius: 12px;
+            padding: 25px;
+            border: 1px solid var(--secondary-color);
+            transition: all 0.3s ease;
+        }
+        
+        .phase-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+        
+        .phase-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            color: var(--dark-accent);
+        }
+        
+        .phase-title i {
+            margin-right: 10px;
+            background: var(--accent-color);
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .phase-content h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+        
+        .breakthroughs {
+            margin-top: 20px;
+        }
+        
+        .breakthrough {
+            background: var(--breakthrough-bg);
+            border-radius: 10px;
+            padding: 18px;
+            margin-bottom: 15px;
+            border-left: 3px solid var(--accent-color);
+        }
+        
+        .breakthrough h5 {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            color: var(--dark-accent);
+        }
+        
+        .breakthrough h5 i {
+            margin-right: 8px;
+            color: var(--accent-color);
+        }
+        
+        .breakthrough p {
+            color: var(--light-text);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--accent-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(92, 179, 255, 0.4);
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: var(--light-text);
+            font-size: 0.95rem;
+            border-top: 1px solid var(--secondary-color);
+            margin-top: 20px;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .project-selector {
+                padding: 20px;
+            }
+            
+            .selector-title {
+                font-size: 1.3rem;
+            }
+            
+            .project-dropdown {
+                padding: 12px 15px;
+                font-size: 1rem;
+            }
+            
+            .details-section {
+                padding: 25px;
+            }
+            
+            .project-detail {
+                padding: 20px;
+            }
+            
+            .project-detail h3 {
+                font-size: 1.5rem;
+            }
+            
+            .project-overview {
+                flex-direction: column;
+            }
+            
+            .project-stats {
+                width: 100%;
+            }
+            
+            .phases-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>孙颖莎比赛赛果汇总</h1>
+            <p>🌻</p>
+            <div class="year-badge">2021</div>
+        </header>
+        
+        <!-- 导航汇总区域 -->
+        <div class="project-selector">
+            <h2 class="selector-title"><i class="fas fa-folder-open"></i> 导航目录</h2>
+            
+            <div class="dropdown-container">
+                <span class="dropdown-label">选择比赛查看详情</span>
+                <select class="project-dropdown" id="projectDropdown" onchange="scrollToProject(this.value)">
+                    <option value="" disabled selected>请选择比赛...</option>
+                    <option value="project1">2021年全国运动会乒乓球预赛</option>
+                    <option value="project2">2021直通WTT大满贯·世乒赛暨奥运模拟赛新乡站</option>
+                    <option value="project3">2021直通WTT大满贯·世乒赛暨奥运模拟赛南阳站</option>
+					<option value="project4">2021国乒备战东京奥运会热身赛</option>
+					<option value="project5">随动S1·中国国家乒乓球队奥运热身赛</option>
+					<option value="project6">2020年东京奥林匹克运动会·乒乓球比赛</option>
+					<option value="project7">第十四届全国运动会乒乓球项目正赛</option>
+					<option value="project8">2021年中国乒乓球俱乐部超级联赛</option>
+                    <option value="project9">2021休斯顿世乒赛热身赛</option>
+                    <option value="project10">2021休斯顿世界乒乓球锦标赛（单项）</option>
+                    <option value="project11">2021WTT新加坡世界杯总决赛</option>
+                </select>
+            </div>
+            
+            <p class="selector-description">
+                可以通过下拉菜单选择跳转到具体比赛场次查看赛果，也可以直接滚动页面按时间查看不同比赛赛果。
+            </p>
+        </div>
+		
+		
+        
+        <!-- 比赛赛果区域 -->
+        <div class="details-section">
+            <h2 class="section-title">比赛赛果</h2>
+            <div class="project-detail" id="project1">
+                <h3>2021.03.20—2021.03.30</h3>
+                <p><strong>比赛时间：</strong> 2020.01.01—2020.01.04 </p>
+                <p><strong>比赛地点：</strong> 四川·成都 </p>
+                
+                <!-- 比赛比分 -->
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>女双：已获正赛资格（搭档孙铭阳）</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            资格赛第一轮：轮空
+                                            <br>
+                                            资格赛第二轮：孙颖莎&孙铭阳 3-0 张恩润&周倩婷(天津)(11-7,11-3,11-4)
+                                        </p>
+                                    </div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>混双：已获正赛资格（搭档梁靖崑）</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            资格赛第一轮：轮空
+                                            <br>
+                                            资格赛第二轮：孙颖莎&梁靖崑 3-2 房胤池&何艾格(辽宁)(11-5,11-8,7-11,7-11,11-8)
+                                            <br>
+                                            资格赛第三轮：孙颖莎&梁靖崑 3-1 闫安&郭雨涵(北京燕京啤酒集团)(11-5,10-12,11-8,11-6)
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+			</div>
+
+			<div class="project-detail" id="project2">
+                <h3>2021直通WTT大满贯·世乒赛暨奥运模拟赛新乡站</h3>
+                <p><strong>比赛时间：</strong> 2021.05.03—2021.05.07</p>
+                <p><strong>比赛地点：</strong> 河南·新乡</p>
+                
+                <!-- 比赛比分 -->
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>女单：亚军</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            小组赛第一轮：孙颖莎 3-0 孙艺祯(11-7,11-4,11-8)
+                                            <br>
+                                            小组赛第二轮：孙颖莎 3-0 臧小桐(11-5,11-2,12-10)
+                                            <br>
+                                            小组赛第三轮：孙颖莎 3-1 蒯曼(6-11,11-6,11-8,11-7)
+                                            <br>
+                                            1/4决赛：孙颖莎 4-0 陈幸同(11-9,11-8,11-7,11-5)
+                                            <br>
+                                            半决赛：孙颖莎 4-2 王艺迪(11-5,5-11,11-7,10-12,11-7,11-6)
+                                            <br>
+                                            决赛：孙颖莎 2-4 陈梦(12-10,7-11,3-11,11-9,7-11,3-11)
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>混双：季军（搭档梁靖崑）</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            1/8决赛：孙颖莎&梁靖崑 4-0 薛飞&石洵瑶(11-6,11-5,11-5,11-4)
+                                            <br>
+                                            1/4决赛：孙颖莎&梁靖崑 4-0 朱霖峰&朱雨玲(11-6,12-10,11-8,11-8)
+                                            <br>
+                                            半决赛：孙颖莎&梁靖崑 3-4 马特&刘斐(10-12,14-12,11-6,11-9,7-11,6-11,8-11)
+                                            <br>
+                                            铜牌赛：孙颖莎&梁靖崑 3-1 林高远&张瑞(11-9,5-11,11-9,11-2)
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			
+			<div class="project-detail" id="project3">
+				<h3>2021直通WTT大满贯·世乒赛暨奥运模拟赛南阳站</h3>
+				<p><strong>比赛时间：</strong> 2021.05.26—2021.05.30 </p>
+				<p><strong>比赛地点：</strong> 河南·南阳</p>
+				
+				<!-- 比赛比分 -->
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>女单：四强</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            1/8决赛：孙颖莎 4-3 张瑞(11-6,12-10,11-13,11-9,9-11,5-11,11-5)
+                                            <br>
+                                            1/4决赛：孙颖莎 4-3 顾玉婷(11-5,10-12,8-11,11-7,5-11,11-7,11-5)
+                                            <br>
+                                            半决赛：孙颖莎 1-4 王曼昱(7-11,4-11,12-14,13-11,5-11)
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>女双：冠军（搭档王曼昱）</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            半决赛：孙颖莎&王曼昱 3-1 陈幸同&钱天一(14-16,11-6,11-3,11-8)
+                                            <br>
+                                            决赛：孙颖莎&王曼昱 3-0 陈梦&刘诗雯(11-4,15-13,11-7)
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>混双：冠军（搭档王楚钦）</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            小组赛第一轮：孙颖莎&王楚钦 0-2 马特&刘斐(9-11,7-11)
+                                            <br>
+                                            小组赛第二轮：孙颖莎&王楚钦 2-1 徐晨皓&王艺迪(11-5,13-15,11-6)
+                                            <br>
+                                            小组赛第三轮：孙颖莎&王楚钦 2-0 周启豪&顾玉婷(13-11,12-10)
+                                            <br>
+                                            小组赛第四轮：孙颖莎&王楚钦 2-1 于子洋&王曼昱(7-11,11-9,11-8)
+                                            <br>
+                                            小组赛第五轮：孙颖莎&王楚钦 2-0 周雨&陈幸同(11-8,11-7)
+                                            <br>
+                                            1/4决赛：孙颖莎&王楚钦 4-1 林高远&张瑞(11-5,11-7,11-7,10-12,11-6)
+                                            <br>
+                                            半决赛：孙颖莎&王楚钦 4-2 于子洋&王曼昱(11-8,7-11,12-10,9-11,11-5,11-9)
+                                            <br>
+                                            决赛：孙颖莎&王楚钦 4-3 许昕&刘诗雯(8-11,11-9,11-13,8-11,14-12,11-4,11-9)
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+			</div>
+
+			<div class="project-detail" id="project4">
+				<h3>2021国乒备战东京奥运会热身赛</h3>
+				<p><strong>比赛时间：</strong> 2021.06.20—2021.06.23 </p>
+				<p><strong>比赛地点：</strong> 山东·威海</p>
+				
+				<!-- 比赛比分 -->
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>女团：2胜1负，积分5，中国一团</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <h5>第一轮：中国一团 4-1 中国三团</h5>
+                                        <ul>
+                                            <li>第一盘：孙颖莎&王曼昱 3-2 顾玉婷&孙铭阳（11-5,7-11,5-11,11-7,11-4）</li>
+                                            <li>第三盘：孙颖莎 1-3 张瑞（9-11,9-11,11-6,8-11）</li>
+                                        </ul>
+                                        <h5>第二轮：中国一团 5-0 中国香港</h5>
+                                        <ul>
+                                            <li>第二盘：孙颖莎 3-1 杜凯琹（10-12,11-4,11-8,11-2）</li>
+                                            <li>第四盘：孙颖莎 3-0 李皓晴（11-3,12-10,11-4）</li>
+                                        </ul>
+                                        <h5>第三轮：中国一团 2-3 中国二团</h5>
+                                        <ul>
+                                            <li>第二盘：孙颖莎 1-3 王曼昱（11-9,7-11,6-11,8-11）</li>
+                                            <li>第四盘：孙颖莎 3-0 王艺迪（11-5,12-10,11-8）</li>
+                                        </ul>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+			</div>
+
+			<div class="project-detail" id="project5">
+				<h3>随动S1·中国国家乒乓球队奥运热身赛</h3>
+				<p><strong>比赛时间：</strong> 2021.07.08—2021.07.10  </p>
+				<p><strong>比赛地点：</strong> 山东·威海</p>
+				
+				<!-- 比赛比分 -->
+				<div class="project-phases">
+					<div class="phases-container">
+						<div class="phase-card">
+							<div class="phase-title">
+								<h4>女单：</h4>
+							</div>
+							<div class="phase-content">
+								<div class="breakthroughs">
+									<div class="breakthrough">
+										<p>
+											孙颖莎 4-0 刘斐(11-5,11-4,11-7,11-9)
+                                            <br>
+                                            孙颖莎 3-4 张瑞(6-11,9-11,12-10,14-12,4-11,11-2,10-12)
+                                            <br>
+                                            孙颖莎 4-1 张瑞（12-10,6-11,11-8,11-2,11-7）
+                                            <br>
+                                            孙颖莎 4-2 蒯曼(11-4,10-12,5-11,11-7,11-6,13-11)
+										</p>
+									</div>
+								</div>	
+							</div>
+						</div>
+					</div>
+				</div>
+
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>女双：</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            孙颖莎&王曼昱 0-3 陈幸同&钱天一(6-11,9-11,6-11)
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>男女关键分对抗赛：（奇数局自6:8开打，偶数局自8:9开打）</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            孙颖莎 4-3 许昕(8-11,11-8,9-11,11-9,11-7,9-11,11-6)
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+			</div>
+
+			<div class="project-detail" id="project6">
+				<h3>2020年东京奥林匹克运动会·乒乓球比赛</h3>
+				<p><strong>比赛时间：</strong> 2021.07.24—2021.08.06 </p>
+				<p><strong>比赛地点：</strong> 日本·东京</p>
+				
+				<!-- 比赛比分 -->
+				<div class="project-phases">
+					<div class="phases-container">
+						<div class="phase-card">
+							<div class="phase-title">
+								<h4>女单：亚军</h4>
+							</div>
+							<div class="phase-content">
+								<div class="breakthroughs">
+									<div class="breakthrough">
+										<p>
+                                            1/16决赛：孙颖莎 4-0 杨晓欣(摩纳哥)(11-6,11-5,11-5,11-3)
+                                            <br>
+                                            1/8决赛：孙颖莎 4-0 陈思羽(中国台北)(11-6,14-12,11-3,12-10)                           
+                                            <br>
+                                            1/4决赛：孙颖莎 4-0 韩莹(德国)(11-8,11-3,11-8,11-6)
+                                            <br>
+                                            半决赛：孙颖莎 4-0 伊藤美诚(日本)(11-3,11-9,11-6,11-4) 
+                                            <br>
+                                            决赛：孙颖莎 2-4 陈梦(11-9,6-11,4-11,11-5,4-11,9-11)
+                                        </p>
+									</div>
+								</div>		
+							</div>
+						</div>
+					</div>
+				</div>
+
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>女团：冠军</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <h5>1/8决赛：中国 3-0 奥地利</h5>
+                                        <ul>
+                                            <li>第一盘：孙颖莎&王曼昱 3-0 刘佳&刘媛(11-4,11-6,11-4)</li>
+                                        </ul>
+                                        <h5>1/4决赛：中国 3-0 新加坡</h5>
+                                        <ul>
+                                            <li>第二盘：孙颖莎 3-0 冯天薇(11-8,11-3,11-8)</li>
+                                        </ul>
+                                        <h5>半决赛：中国 3-0 德国</h5>
+                                        <ul>
+                                            <li>第二盘：孙颖莎 3-0 韩莹(11-6,11-4,11-9)</li>
+                                        </ul>
+                                        <h5>决赛：中国 3-0 日本</h5>
+                                        <ul>
+                                            <li>第二盘：孙颖莎 3-1 伊藤美诚(11-8,11-5,3-11,11-3)</li>
+                                        </ul>
+                                    </div>
+                                </div>      
+                            </div>
+                        </div>
+                    </div>
+                </div>
+			</div>
+
+			<div class="project-detail" id="project7">
+				<h3>第十四届全国运动会乒乓球项目正赛</h3>
+				<p><strong>比赛时间：</strong> 2021.09.17~2021.09.26</p>
+				<p><strong>比赛地点：</strong> 陕西·延安</p>
+				
+				<!-- 比赛比分 -->
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>女单：亚军</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            1/16决赛：孙颖莎 4-0 刘卓颖(澳门)(11-3,11-2,11-4,11-5)
+                                            <br>
+                                            1/8决赛：孙颖莎 4-1 张迟(广东)(10-12,11-4,11-8,11-7,11-5)
+                                            <br>
+                                            1/4决赛：孙颖莎 4-2 陈幸同(辽宁)(11-3,11-9,12-10,3-11,3-11,11-4)
+                                            <br>
+                                            半决赛：孙颖莎 4-0 刘诗雯(广东)(11-4,11-7,11-8,11-6)
+                                            <br>
+                                            决赛：孙颖莎 0-4 王曼昱(黑龙江)(10-12,9-11,12-14,7-11)
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>女团：季军</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <h5>小组赛第一轮：河北 3-0 天津</h5>
+                                        <ul>
+                                            <li>第二盘：孙颖莎 3-0 齐菲(11-7,11-8,11-6)</li>
+                                        </ul>
+                                        <h5>小组赛第二轮：河北 3-1 湖北</h5>
+                                        <ul>
+                                            <li>第二盘：孙颖莎 3-1 冯亚兰(11-4,12-10,7-11,11-5)</li>
+                                            <li>第四盘：孙颖莎 3-0 张瑞(11-6,11-6,11-4)</li>
+                                        </ul>
+                                        <h5>小组赛第二轮：河北 3-1 河南</h5>
+                                        <ul>
+                                            <li>第二盘：孙颖莎 3-0 王畅（11-5,11-5,11-7）</li>
+                                            <li>第四盘：孙颖莎 3-0 刘娅琳（11-9,11-7,11-3）</li>
+                                        </ul>
+                                        <h5>1/4决赛：河北 3-0 北京</h5>
+                                        <ul>
+                                            <li>第一盘：孙颖莎 3-2 覃予萱（9-11,11-4,11-3,6-11,11-6）</li>
+                                        </ul>
+                                        <h5>半决赛：河北 2-3 辽宁</h5>
+                                        <ul>
+                                            <li>第一盘：孙颖莎 0-3 王艺迪(3-11,5-11,10-12)</li>
+                                            <li>第四盘：孙颖莎 3-2 陈幸同(10-12,9-11,11-1,11-7,11-3)</li>
+                                        </ul>
+                                        <h5>铜牌赛：河北 3-0 四川</h5>
+                                        <ul>
+                                            <li>第三盘：孙颖莎 3-2 郭艳(12-10,7-11,9-11,11-3,14-12)</li>
+                                        </ul>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>女双：第四名（搭档孙铭阳）</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            淘汰赛第二轮：孙颖莎&孙铭阳 3-1 马菀含&刘娅琳(河南)(9-11,12-10,11-2,12-10)
+                                            <br>
+                                            1/4决赛：孙颖莎&孙铭阳 3-0 钱天一&张蔷(江苏)(11-6,11-9,11-7)
+                                            <br>
+                                            半决赛：孙颖莎&孙铭阳 1-4 王曼昱&车晓曦(黑龙江)(11-6,10-12,3-11,7-11,6-11)
+                                            <br>
+                                            铜牌赛：孙颖莎&孙铭阳 0-3 蒯曼&石洵瑶(江苏)(8-11,9-11,5-11)
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>混双：八强（搭档梁靖崑）</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            1/8决赛：孙颖莎&梁靖崑 3-0 熊梦阳&冯亚兰(湖北)(11-5,11-6,11-8)
+                                            <br>
+                                            1/4决赛：孙颖莎&梁靖崑 1-3 孙闻&钱天一(江苏)(8-11,10-12,11-7,11-13)
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+			</div>
+
+            <div class="project-detail" id="project8">
+                <h3>2021年中国乒乓球俱乐部超级联赛</h3>
+                <p><strong>比赛时间：</strong> 2021.10.03—2021.10.12</p>
+                <p><strong>比赛地点：</strong> 山东·威海</p>
+                <h4>女团：亚军</h4>
+                <p>个人积分：第一阶段小组循环赛单打7胜1负，积分1050，排名第二。第二阶段个人单打几分累计1450，排名第一，女子MVP</p>
+                
+                <!-- 比赛比分 -->
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>第一阶段：小组循环赛4胜1负积分9，排名第二</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <h5>第一轮：深圳大学 3-1 黑龙江迎福台</h5>
+                                        <ul>
+                                            <li>第二盘：孙颖莎 3-0 孙铭阳(11-3,11-6,11-6)</li>
+                                            <li>第四盘：孙颖莎 3-1 齐菲(6-11,11-0,11-3,11-9)</li>
+                                        </ul>
+                                        <h5>第二轮：深圳大学 3-2 大土河华理</h5>
+                                        <ul>
+                                            <li>第二盘：孙颖莎 1-3 王艺迪(8-11,7-11,11-9,6-11)</li>
+                                            <li>第五盘：孙颖莎 3-0 王晓彤(11-7,11-2,11-6)</li>
+                                        </ul>
+                                        <h5>第三轮：深圳大学 3-0 成都高新若水居</h5>
+                                        <ul>
+                                            <li>第二盘：孙颖莎 3-0 冷雨桐(11-2,11-2,11-3)</li>
+                                        </ul>
+                                        <h5>第四轮：深圳大学 1-3 山东鲁能</h5>
+                                        <ul>
+                                            <li>第二盘：孙颖莎 3-1 陈幸同(13-15,11-6,11-8,11-7)</li>
+                                        </ul>
+                                        <h5>第五轮：深圳大学 3-1 上海龙腾</h5>
+                                        <ul>
+                                            <li>第二盘：孙颖莎 3-0 陈熠(11-2,11-6,11-2)</li>
+                                            <li>第四盘：孙颖莎 3-0 郭雨涵(11-7,11-4,11-6)</li>
+                                        </ul>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>第二阶段：</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <h5>半决赛：深圳大学 3-0 大土河华理</h5>
+                                        <ul>
+                                            <li>第二盘：孙颖莎 3-0 王艺迪(11-3,11-8,11-9)</li>
+                                        </ul>
+                                        <h5>决赛：深圳大学 1-3 山东鲁能</h5>
+                                        <ul>
+                                            <li>第一盘：孙颖莎&顾玉婷 2-3 陈梦&陈幸同(4-11,11-9,11-8,6-11,8-11)</li>
+                                            <li>第三盘：孙颖莎 3-0 陈幸同(11-9,11-9,13-11)</li>
+                                        </ul>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-detail" id="project9">
+                <h3>2021休斯顿世乒赛热身赛</h3>
+                <p><strong>比赛时间：</strong> 2021.11.12—2021.11.14 </p>
+                <p><strong>比赛地点：</strong> 浙江·温州</p>
+                
+                <!-- 比赛比分 -->
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>单打：</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            孙颖莎 3-4 王晨策(11-13,11-8,4-11,14-12,12-10,9-11,6-11)
+                                            <br>
+                                            孙颖莎 4-2 曹巍(11-7,11-9,11-9,8-11,8-11,11-6)
+                                            <br>
+                                            孙颖莎 4-1 张瑞(8-11,11-5,12-10,11-7,11-7)
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>双打：</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            孙颖莎&王曼昱 3-2 曹巍&孙铭阳(11-4,12-10,9-11,9-11,11-7)
+                                            <br>
+                                            孙颖莎&王曼昱 3-2 向鹏&蒯曼(7-11,11-9,11-6,9-11,11-8)
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-detail" id="project10">
+                <h3>2021休斯顿世界乒乓球锦标赛</h3>
+                <p><strong>比赛时间：</strong> 2021.11.23—2021.11.29 </p>
+                <p><strong>比赛地点：</strong> 美国·休斯顿</p>
+                
+                <!-- 比赛比分 -->
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>女单：亚军</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            1/32决赛：孙颖莎 4-0 吴颖岚(中国香港)(11-4,11-3,11-9,11-3)
+                                            <br>
+                                            1/16决赛：孙颖莎 4-0 韩莹(德国)(11-6,12-10,11-4,11-8)
+                                            <br>
+                                            1/8决赛：孙颖莎 4-2 迪亚兹(波多黎各)(11-4,11-8,11-8,9-11,9-11,11-4)
+                                            <br>
+                                            1/4决赛：孙颖莎 4-0 徐孝元(韩国)(11-9,11-4,11-4,11-7)
+                                            <br>
+                                            半决赛：孙颖莎 4-1 王艺迪(中国)(11-8,3-11,11-8,11-6,11-8)
+                                            <br>
+                                            决赛：孙颖莎 2-4 王曼昱(中国)(13-11,7-11,11-6,6-11,8-11,15-17)
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>女双：冠军（搭档王曼昱）</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            1/16决赛：孙颖莎&王曼昱 3-0 吴颖岚&朱成竹(中国香港)(11-7,11-7,11-8)
+                                            <br>
+                                            1/8决赛：孙颖莎&王曼昱 3-1 单晓娜&索尔佳(德国)(16-18,11-7,11-6,11-9)
+                                            <br>
+                                            1/4决赛：孙颖莎&王曼昱 3-2 石川佳纯&平野美宇(日本)(9-11,11-7,11-6,6-11,11-4)
+                                            <br>
+                                            半决赛：孙颖莎&王曼昱 3-0 倪夏莲&萨拉·德努特(卢森堡)(11-4,11-3,14-12)
+                                            <br>
+                                            决赛：孙颖莎&王曼昱 3- 0伊藤美诚&早田希娜(日本)(11-9,11-7,11-8)
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>混双：冠军（搭档王楚钦）</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            1/16决赛：孙颖莎&王楚钦 3-0 阿比奥顿&埃德姆(尼日利亚)(11-2,11-7,11-6)
+                                            <br>
+                                            1/8决赛：孙颖莎&王楚钦 3-1 陈建安&陈思羽(中国台湾)(11-7,11-6,7-11,11-6)
+                                            <br>
+                                            1/4决赛：孙颖莎&王楚钦 3-1 罗布勒斯&肖遥茜(西班牙)(6-11,11-6,11-2,11-8)
+                                            <br>
+                                            半决赛：孙颖莎&王楚钦 3-1 林昀儒&郑怡静(中国台湾)(11-8,7-11,11-7,11-9)
+                                            <br>
+                                            决赛：孙颖莎&王楚钦 3-0 张本智和&早田希娜(日本)(11-2,11-5,11-8)
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-detail" id="project11">
+                <h3>2021WTT新加坡世界杯总决赛</h3>
+                <p><strong>比赛时间：</strong> 2021.12.04—2021.12.07 </p>
+                <p><strong>比赛地点：</strong> 新加坡</p>
+                
+                <!-- 比赛比分 -->
+                <div class="project-phases">
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-title">
+                                <h4>女单：冠军</h4>
+                            </div>
+                            <div class="phase-content">
+                                <div class="breakthroughs">
+                                    <div class="breakthrough">
+                                        <p>
+                                            1/8决赛：孙颖莎 3-0 索尔佳(德国)(11-4,11-5,11-7)
+                                            <br>
+                                            1/4决赛：孙颖莎 3-0 陈幸同(中国)(11-5,11-9,11-7)
+                                            <br>
+                                            半决赛：孙颖莎 4-1 早田希娜(日本)(6-11,11-9,11-6,11-9,11-8)
+                                            <br>
+                                            决赛：孙颖莎 4-2 王艺迪(中国)(11-3,17-15,11-6,7-11,6-11,11-8)
+                                        </p>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <footer>
+            <p>© SUNDAY放映室 | 孙颖莎赛果记录</p>
+			<p>成长的每一个脚印都弥足珍贵，永远期待孙颖莎的下一个赛场</p>
+        </footer>
+    </div>
+    
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // 平滑滚动到项目详情
+        function scrollToProject(projectId) {
+            if (!projectId) return;
+            
+            const element = document.getElementById(projectId);
+            element.scrollIntoView({behavior: 'smooth', block: 'start'});
+            
+            // 添加高亮效果
+            element.style.backgroundColor = '#e6f7ff';
+            element.style.boxShadow = '0 0 0 4px rgba(92, 179, 255, 0.3)';
+            setTimeout(() => {
+                element.style.backgroundColor = '';
+                element.style.boxShadow = '';
+            }, 2000);
+            
+            // 更新下拉框显示当前项目
+            document.getElementById('projectDropdown').value = projectId;
+        }
+        
+        // 返回顶部按钮
+        const backToTopBtn = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+        
+        // 添加动画效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const details = document.querySelectorAll('.project-detail');
+            const phases = document.querySelectorAll('.phase-card');
+            
+            details.forEach((detail, index) => {
+                detail.style.animationDelay = `${index * 0.1}s`;
+                detail.style.animation = 'fadeIn 0.8s ease forwards';
+                detail.style.opacity = '0';
+            });
+            
+            phases.forEach((phase, index) => {
+                phase.style.animationDelay = `${index * 0.2 + 0.3}s`;
+                phase.style.animation = 'slideUp 0.8s ease forwards';
+                phase.style.opacity = '0';
+            });
+        });
+    </script>
+</body>
+</html>
