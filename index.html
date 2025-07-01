@@ -276,6 +276,32 @@
             text-align: justify;
         }
 
+        .bio-table {
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 15px 8px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            background-color: #f0f7ff;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background-color: #f5f9ff;
+        }
+
         .achievements {
             list-style-type: none;
         }
@@ -1022,55 +1048,58 @@
                 </ul>
             </div>
             <div class="bio-column">
-                <h3>比赛获奖记录（世界冠军标红、洲际赛标紫）</h3>
-                <ul>
-                    <li><p style="color: red;">2025 多哈世界乒乓球锦标赛女单冠军、混双冠军（搭档王楚钦）</p></li>
-                    <li><p style="color: red;">2025 澳门世界杯女单冠军</p></li>
-                    <li><p>2025 WTT重庆冠军赛女单冠军</p></li>
-                    <li><p>2025 WTT新加坡大满贯女单冠军</p></li>
-                    <li><p style="color: red;">2024 成都混合团体世界杯冠军</p></li>
-                    <li><p>2024 WTT北京大满贯女单冠军</p></li>
-                    <li><p>2024 WTT澳门冠军赛女单冠军</p></li>
-                    <li><p style="color: red;">2024 巴黎奥运会女单亚军、女团冠军、混双冠军（搭档王楚钦）</p></li>
-                    <li><p>2024 WTT重庆冠军赛女单冠军</p></li>
-                    <li><p style="color: red;">2024 澳门世界杯女单冠军</p></li>
-                    <li><p>2024 WTT仁川冠军赛女单冠军</p></li>
-                    <li><p style="color: red;">2024 釜山世界乒乓球锦标赛女团冠军</p></li>
-                    <li><p>2024 WTT多哈球星挑战赛女单冠军、混双冠军（搭档王楚钦）</p></li>
-                    <li><p>2023 WTT名古屋女子总决赛女单冠军</p></li>
-                    <li><p style="color: red;">2023 成都混合团体世界杯冠军</p></li>
-                    <li><p>2023 WTT兰州球星挑战赛女单冠军</p></li>
-                    <li><p style="color: #990099;">2023 杭州亚运会女单冠军、女团冠军、混双冠军（搭档王楚钦）</p></li>
-                    <li><p style="color: #990099;">2023 平昌亚锦赛女单亚军、女团冠军、女双亚军（搭档王艺迪）</p></li>
-                    <li><p>2023 WTT卢布尔雅那球星挑战赛女单冠军、混双冠军（搭档王楚钦）</p></li>
-                    <li><p style="color: red;">2023 德班世界乒乓球锦标赛女单冠军、混双冠军（搭档王楚钦）</p></li>
-                    <li><p>2023 WTT新乡冠军赛女单冠军</p></li>
-                    <li><p>2023 WTT新加坡大满贯女单冠军、女双冠军（搭档王曼昱）、混双冠军（搭档王楚钦）</p></li>
-                    <li><p>2022 WTT新乡世界杯总决赛女单冠军</p></li>
-                    <li><p>2022 WTT澳门冠军赛女单冠军</p></li>
-                    <li><p style="color: red;">2022 成都世界乒乓球锦标赛女团冠军</p></li>
-                    <li><p>2021 WTT新加坡世界杯总决赛女单冠军</p></li>
-                    <li><p style="color: red;">2021 休斯顿世界乒乓球锦标赛女单亚军、女双冠军（搭档王曼昱）、混双冠军（搭档王楚钦）</p></li>
-                    <li><p style="color: red;">2021 东京奥运会女单亚军、女团冠军</p></li>
-                    <li><p>2020 WTT澳门赛女单冠军</p></li>
-                    <li><p>2020 全国乒乓球锦标赛女团冠军</p></li>
-                    <li><p>2019 T2钻石赛新加坡站女单冠军</p></li>
-                    <li><p style="color: red;">2019 东京乒乓球世界杯女团冠军</p></li>
-                    <li><p>2019 ITTF德国公开赛（白金站）女单冠军、混双冠军（搭档许昕）</p></li>
-                    <li><p style="color: #990099;">2019 日惹亚锦赛女单冠军、女团冠军、混双亚军（搭档王楚钦）</p></li>
-                    <li><p>2019 全国乒乓球锦标赛女单冠军</p></li>
-                    <li><p>2019 ITTF澳大利亚公开赛（白金站）女单冠军</p></li>
-                    <li><p>2019 ITTF日本公开赛（白金站）女单冠军</p></li>
-                    <li><p style="color: red;">2019 布达佩斯世界乒乓球锦标赛女双冠军（搭档王曼昱）</p></li>
-                    <li><p>2018 布宜诺斯艾利斯青年奥运会女单冠军、混团冠军（搭档王楚钦）</p></li>
-                    <li><p>2018 全国乒乓球锦标赛混双冠军（搭档王楚钦）</p></li>
-                    <li><p style="color: #990099;">2018 雅加达亚运会女团冠军、混双冠军（搭档王楚钦）</p></li>
-                    <li><p>2017 世界青年乒乓球锦标赛女单冠军、女团冠军、女双冠军（搭档石洵瑶）</p></li>
-                    <li><p>2017 亚洲青年乒乓球锦标赛U18组女单冠军、女团冠军、女双冠军（搭档钱天一）、混双冠军（搭档王楚钦）</p></li>
-                    <li><p>2017 ITTF日本公开赛（白金站）女单冠军、女双冠军（搭档石陈幸同）</p></li>
-                    <li><p>2015 全国少年乒乓球锦标赛女单冠军</p></li>
-                    <li><p>2014 亚洲青少年乒乓球锦标赛U15组女单冠军</p></li>
-                </ul>
+                <h3>比赛获奖记录</h3>
+                <div class="bio-table">
+                    <table>
+                        <tr><th>获奖记录（世界冠军标红、洲际赛标紫）</th></tr>
+                        <tr><td style="color: red;">2025 多哈世界乒乓球锦标赛女单冠军、混双冠军（搭档王楚钦）</td></tr>
+                        <tr><td style="color: red;">2025 澳门世界杯女单冠军</td></tr>
+                        <tr><td>2025 WTT重庆冠军赛女单冠军</td></tr>
+                        <tr><td>2025 WTT新加坡大满贯女单冠军</td></tr>
+                        <tr><td style="color: red;">2024 成都混合团体世界杯冠军</td></tr>
+                        <tr><td>2024 WTT北京大满贯女单冠军</td></tr>
+                        <tr><td>2024 WTT澳门冠军赛女单冠军</td></tr>
+                        <tr><td style="color: red;">2024 巴黎奥运会女单亚军、女团冠军、混双冠军（搭档王楚钦）</td></tr>
+                        <tr><td>2024 WTT重庆冠军赛女单冠军</td></tr>
+                        <tr><td style="color: red;">2024 澳门世界杯女单冠军</td></tr>
+                        <tr><td>2024 WTT仁川冠军赛女单冠军</td></tr>
+                        <tr><td style="color: red;">2024 釜山世界乒乓球锦标赛女团冠军</td></tr>
+                        <tr><td>2024 WTT多哈球星挑战赛女单冠军、混双冠军（搭档王楚钦）</td></tr>
+                        <tr><td>2023 WTT名古屋女子总决赛女单冠军</td></tr>
+                        <tr><td style="color: red;">2023 成都混合团体世界杯冠军</td></tr>
+                        <tr><td>2023 WTT兰州球星挑战赛女单冠军</td></tr>
+                        <tr><td style="color: #990099;">2023 杭州亚运会女单冠军、女团冠军、混双冠军（搭档王楚钦）</td></tr>
+                        <tr><td style="color: #990099;">2023 平昌亚锦赛女单亚军、女团冠军、女双亚军（搭档王艺迪）</td></tr>
+                        <tr><td>2023 WTT卢布尔雅那球星挑战赛女单冠军、混双冠军（搭档王楚钦）</td></tr>
+                        <tr><td style="color: red;">2023 德班世界乒乓球锦标赛女单冠军、混双冠军（搭档王楚钦）</td></tr>
+                        <tr><td>2023 WTT新乡冠军赛女单冠军</td></tr>
+                        <tr><td>2023 WTT新加坡大满贯女单冠军、女双冠军（搭档王曼昱）、混双冠军（搭档王楚钦）</td></tr>
+                        <tr><td>2022 WTT新乡世界杯总决赛女单冠军</td></tr>
+                        <tr><td>2022 WTT澳门冠军赛女单冠军</td></tr>
+                        <tr><td style="color: red;">2022 成都世界乒乓球锦标赛女团冠军</td></tr>
+                        <tr><td>2021 WTT新加坡世界杯总决赛女单冠军</td></tr>
+                        <tr><td style="color: red;">2021 休斯顿世界乒乓球锦标赛女单亚军、女双冠军（搭档王曼昱）、混双冠军（搭档王楚钦）</td></tr>
+                        <tr><td style="color: red;">2021 东京奥运会女单亚军、女团冠军</td></tr>
+                        <tr><td>2020 WTT澳门赛女单冠军</td></tr>
+                        <tr><td>2020 全国乒乓球锦标赛女团冠军</td></tr>
+                        <tr><td>2019 T2钻石赛新加坡站女单冠军</td></tr>
+                        <tr><td style="color: red;">2019 东京乒乓球世界杯女团冠军</td></tr>
+                        <tr><td>2019 ITTF德国公开赛（白金站）女单冠军、混双冠军（搭档许昕）</td></tr>
+                        <tr><td style="color: #990099;">2019 日惹亚锦赛女单冠军、女团冠军、混双亚军（搭档王楚钦）</td></tr>
+                        <tr><td>2019 全国乒乓球锦标赛女单冠军</td></tr>
+                        <tr><td>2019 ITTF澳大利亚公开赛（白金站）女单冠军</td></tr>
+                        <tr><td>2019 ITTF日本公开赛（白金站）女单冠军</td></tr>
+                        <tr><td style="color: red;">2019 布达佩斯世界乒乓球锦标赛女双冠军（搭档王曼昱）</td></tr>
+                        <tr><td>2018 布宜诺斯艾利斯青年奥运会女单冠军、混团冠军（搭档王楚钦）</td></tr>
+                        <tr><td>2018 全国乒乓球锦标赛混双冠军（搭档王楚钦）</td></tr>
+                        <tr><td style="color: #990099;">2018 雅加达亚运会女团冠军、混双冠军（搭档王楚钦）</td></tr>
+                        <tr><td>2017 世界青年乒乓球锦标赛女单冠军、女团冠军、女双冠军（搭档石洵瑶）</td></tr>
+                        <tr><td>2017 亚洲青年乒乓球锦标赛U18组女单冠军、女团冠军、女双冠军（搭档钱天一）、混双冠军（搭档王楚钦）</td></tr>
+                        <tr><td>2017 ITTF日本公开赛（白金站）女单冠军、女双冠军（搭档陈幸同）</td></tr>
+                        <tr><td>2015 全国少年乒乓球锦标赛女单冠军</td></tr>
+                        <tr><td>2014 亚洲青少年乒乓球锦标赛U15组女单冠军</td></tr>
+                    </table>
+                </div>
             </div>
         </div>
     </section>
