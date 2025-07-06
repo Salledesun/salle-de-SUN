@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2017年赛事图频</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary-color: #e6f7ff;
+            --secondary-color: #b3e0ff;
+            --accent-color: #5cb3ff;
+            --dark-accent: #3a7bbd;
+            --text-color: #1a3c5a;
+            --light-text: #5a7a9a;
+            --card-bg: #ffffff;
+            --section-bg: #f8fbff;
+            --shadow: 0 4px 20px rgba(92, 179, 255, 0.15);
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2ff);
+            color: var(--text-color);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 0 20px;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--text-color);
+            font-weight: 600;
+        }
+        
+        header p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 25px;
+            color: var(--light-text);
+        }
+        
+        .selector-container {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            margin: 30px auto;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--secondary-color);
+            max-width: 600px;
+        }
+        
+        .selector-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            justify-content: center;
+        }
+        
+        .selector-header i {
+            font-size: 1.8rem;
+            color: var(--accent-color);
+        }
+        
+        .selector-header h2 {
+            font-size: 1.6rem;
+            color: var(--text-color);
+        }
+        
+        .project-selector {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid var(--secondary-color);
+            border-radius: 12px;
+            background: var(--primary-color);
+            font-size: 1.1rem;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%235cb3ff'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 20px center;
+            background-size: 20px;
+            font-weight: 500;
+        }
+        
+        .project-selector:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--accent-color);
+        }
+        
+        .project-selector:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(92, 179, 255, 0.3);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin: 40px 0 30px;
+            color: var(--text-color);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+        
+        .links-section {
+            background: var(--section-bg);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 50px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--secondary-color);
+            transition: all 0.4s ease;
+            display: none;
+        }
+        
+        .links-section.active {
+            display: block;
+            animation: fadeIn 0.6s ease;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 4px rgba(92, 179, 255, 0.2);
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .section-header-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            flex-shrink: 0;
+        }
+        
+        .section-header-content h2 {
+            font-size: 1.8rem;
+            color: var(--text-color);
+            margin-bottom: 5px;
+        }
+        
+        .section-header-content p {
+            color: var(--light-text);
+        }
+        
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .link-item {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(92, 179, 255, 0.1);
+            border-left: 4px solid var(--accent-color);
+            transition: all 0.3s ease;
+        }
+        
+        .link-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(92, 179, 255, 0.2);
+        }
+        
+        .link-type {
+            display: inline-block;
+            padding: 4px 12px;
+            background: var(--primary-color);
+            color: var(--dark-accent);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        
+        .link-title {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            color: var(--text-color);
+            font-weight: 600;
+        }
+        
+        .link-description {
+            color: var(--light-text);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .link-url {
+            display: block;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            word-break: break-all;
+        }
+        
+        .link-url:hover {
+            text-decoration: underline;
+        }
+        
+        .link-date {
+            color: var(--light-text);
+            font-size: 0.85rem;
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--accent-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(92, 179, 255, 0.4);
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 0 20px;
+            color: var(--light-text);
+            font-size: 0.95rem;
+            margin-top: 40px;
+            border-top: 1px solid var(--secondary-color);
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .links-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .links-section {
+                padding: 25px;
+            }
+            
+            .selector-container {
+                padding: 20px;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .section-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            .section-header-content h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-film"></i> 2017年赛事图频</h1>
+            <p>选择查看对应的图频链接合集</p>
+        </header>
+        
+        <div class="selector-container">
+            <div class="selector-header">
+                <i class="fas fa-folder-open"></i>
+                <h2>选择赛事</h2>
+            </div>
+            
+            <select class="project-selector" id="projectSelector">
+                <option value="" disabled selected>请选择赛事...</option>
+                <option value="project1">2017年杜塞尔多夫世乒赛黄石热身赛</option>
+                <option value="project2">2017年日本公开赛（白金站）</option>
+                <option value="project3">2017年中国公开赛（白金站）</option>
+                <option value="project4">2017年亚洲青少年乒乓球锦标赛</option>
+                <option value="project5">2017年T2亚太乒乓球联赛</option>
+            </select>
+            
+            <p style="text-align: center; margin-top: 20px; color: var(--light-text);">
+                从下拉菜单中选择赛事，查看相关图频资源，年份较久微博限制，建议手机打开链接
+            </p>
+        </div>
+        
+        <h2 class="section-title">赛事图频链接合集</h2>
+        
+        <div class="links-section" id="project1">
+            <div class="section-header">
+                <div class="section-header-content">
+                    <h2>2017年杜塞尔多夫世乒赛黄石热身赛</h2>
+                    <div class="link-date">
+                        <i class="fas fa-calendar"></i> 2017.05.13
+                    </div>
+                </div>
+            </div>
+            
+            <div class="links-grid">
+                <div class="link-item">
+                    <span class="link-type">饭拍</span>
+                    <h3 class="link-title">饭拍图频</h3>
+                    <a href="https://weibo.com/5966766976/4108883784123854" class="link-url" target="_blank">
+                        女双第一轮
+                    </a>
+                    <a href="https://weibo.com/1826709691/4123188914635512" class="link-url" target="_blank">
+                        场外挠一挠
+                    </a>
+                    <a href="https://weibo.com/1826709691/4123203972878103" class="link-url" target="_blank">
+                        场外打闹
+                    </a>
+                    <a href="https://weibo.com/1826709691/4123211665302620" class="link-url" target="_blank">
+                        和黄海城指导
+                    </a>
+                    <a href="https://weibo.com/1826709691/4123207197864290" class="link-url" target="_blank">
+                        女单孙颖莎VS陈幸同
+                    </a>
+                    <a href="https://weibo.com/6261089765/4164695692291267" class="link-url" target="_blank">
+                        赛场外
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="links-section" id="project2">
+            <div class="section-header">
+                <div class="section-header-content">
+                    <h2>2017年日本公开赛（白金站）</h2>
+                    <div class="link-date">
+                        <i class="fas fa-calendar"></i> 2017.06.14-2017.06.18
+                    </div>
+                </div>
+            </div>
+            
+            <div class="links-grid">
+                <div class="link-item">
+                    <span class="link-type">官方返图</span>
+                    <h3 class="link-title">ITTF国际乒联</h3>
+                    <a href="https://weibo.com/3515112791/F7Uv9p6Xu" class="link-url" target="_blank">
+                        20170615 双打资格赛
+                    </a>
+                    <a href="https://weibo.com/3515112791/F83X41Raw" class="link-url" target="_blank">
+                        20170616 双打1/8决赛
+                    </a>
+                    <a href="https://weibo.com/3515112791/F84yXpZ5s" class="link-url" target="_blank">
+                        20170616 女单首轮
+                    </a>
+                    <a href="https://weibo.com/3515112791/F873mrCxC" class="link-url" target="_blank">
+                        20170616 女单1/8决赛
+                    </a>
+                    <a href="https://weibo.com/3515112791/F8hhECDOg" class="link-url" target="_blank">
+                        20170617 双打冠军自拍
+                    </a>
+                    <a href="https://weibo.com/3515112791/F8mkaEA6a" class="link-url" target="_blank">
+                        20170618 双打决赛返图
+                    </a>
+                    <a href="https://weibo.com/3515112791/F8o7UrfDx" class="link-url" target="_blank">
+                        20170618 女单决赛
+                    </a>
+                    <a href="https://weibo.com/3515112791/F8oFby5jD" class="link-url" target="_blank">
+                        20170618 单打冠军自拍
+                    </a>
+                    <a href="https://weibo.com/6261089765/4120103300260321" class="link-url" target="_blank">
+                        20170618 单打冠军合影
+                    </a>
+                </div>
+                
+                <div class="link-item">
+                    <span class="link-type">采访视频</span>
+                    <h3 class="link-title">赛后采访</h3>
+                    <a href="https://www.weibo.com/1356325604/F8h7n0emz" class="link-url" target="_blank">
+                        20170617【饭拍】女双决赛赛后采访
+                    </a>
+                    <a href="https://www.bilibili.com/video/BV1M54y1o76S/" class="link-url" target="_blank">
+                        20170618 女单决赛赛后采访
+                    </a>
+                </div>
+                
+                <div class="link-item">
+                    <span class="link-type">饭拍</span>
+                    <h3 class="link-title">饭拍图频</h3>
+                    <a href="https://weibo.com/1356325604/F8e4hlhll" class="link-url" target="_blank">
+                        20170617 女双半决赛及决赛
+                    </a>
+                    <a href="https://weibo.com/1356325604/F8inGwn5u" class="link-url" target="_blank">
+                        20170617 女双颁奖
+                    </a>
+                    <a href="https://weibo.com/6261089765/4120130114160170" class="link-url" target="_blank">
+                        20170618 女单返图
+                    </a>
+                    <a href="https://weibo.com/6261089765/4120073231051825" class="link-url" target="_blank">
+                        20170618 女单半决赛及决赛
+                    </a>
+                    <a href="https://weibo.com/1356325604/F8m4yl1Ad" class="link-url" target="_blank">
+                        20170618 女单半决赛候场
+                    </a>
+                    <a href="https://weibo.com/2073834142/4121556675955495" class="link-url" target="_blank">
+                        20170618 女单决赛
+                    </a>
+                    <a href="https://weibo.com/1356325604/F8q477aev" class="link-url" target="_blank">
+                        20170618 女单颁奖
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="links-section" id="project3">
+            <div class="section-header">
+                <div class="section-header-content">
+                    <h2>2017年中国公开赛（白金站）</h2>
+                    <div class="link-date">
+                        <i class="fas fa-calendar"></i> 2017.06.20-2017.06.25
+                    </div>
+                </div>
+            </div>
+            
+            <div class="links-grid">
+                <div class="link-item">
+                    <span class="link-type">官方返图</span>
+                    <h3 class="link-title">ITTF国际乒联</h3>
+                    <a href="https://weibo.com/3515112791/F8Ha5lEhR" class="link-url" target="_blank">
+                        20170620 训练场
+                    </a>
+                    <a href="https://weibo.com/3515112791/F9iRxoRur" class="link-url" target="_blank">
+                        20170624 女单1/4决赛
+                    </a>
+                    <a href="https://weibo.com/3515112791/F9kXauFk9" class="link-url" target="_blank">
+                        20170624 女单半决赛
+                    </a>
+                    <a href="https://weibo.com/3515112791/F9skSBGJ4" class="link-url" target="_blank">
+                        20170625 女单赛前与波尔训练后合影
+                    </a>
+                    <br>
+                    <h3 class="link-title">乒乓世界TTW</h3>
+                    <a href="https://weibo.com/1498760141/F91JQntNj" class="link-url" target="_blank">
+                        20170622 女单正赛第一轮
+                    </a>
+                    <a href="https://weibo.com/1498760141/F9iVHB8Im" class="link-url" target="_blank">
+                        20170624 女单1/4决赛
+                    </a>
+                    <a href="https://weibo.com/1498760141/F9l2q5qYe" class="link-url" target="_blank">
+                        20170624 女单半决赛
+                    </a>
+                    <br>
+                    <h3 class="link-title">视觉中国</h3>
+                    <a href="https://weibo.com/6261089765/4121720635681781" class="link-url" target="_blank">
+                        20170620 女单资格赛第一轮part1
+                    </a>
+                    <a href="https://weibo.com/6261089765/4121724032670538" class="link-url" target="_blank">
+                        20170620 女单资格赛第一轮part2
+                    </a>
+                    <a href="https://weibo.com/6261089765/4121459497996087 " class="link-url" target="_blank">
+                        20170621 女单资格赛第二轮
+                    </a>
+                    <a href="https://weibo.com/6261089765/4121542784231971" class="link-url" target="_blank">
+                        20170622 女单正赛第一轮
+                    </a>
+                    <a href="https://weibo.com/6261089765/4121915951600667" class="link-url" target="_blank">
+                        20170623 女单1/8决赛
+                    </a>
+                    <a href="https://weibo.com/6261089765/4122287756472316" class="link-url" target="_blank">
+                        20170624 女单半决赛
+                    </a>
+                    <a href="https://weibo.com/6261089765/4122951928924576" class="link-url" target="_blank">
+                        20170625 女单决赛及颁奖
+                    </a>
+                </div>
+                
+                <div class="link-item">
+                    <span class="link-type">采访图频</span>
+                    <h3 class="link-title">赛后采访</h3>
+                    <a href="https://weibo.com/5681734521/F8SCiqC2T" class="link-url" target="_blank">
+                       20170621 【直播TV】资格赛第二轮赛后采访
+                    </a>
+                    <a href="https://weibo.com/5681734521/F9cnQpfov" class="link-url" target="_blank">
+                       20170623 【直播TV】1/8决赛赛后采访
+                    </a>
+                    <a href="https://weibo.com/5681734521/F9iZ9zCJA" class="link-url" target="_blank">
+                       20170624 【直播TV】1/4决赛赛后采访
+                    </a>
+                    <a href="https://www.bilibili.com/video/BV1Gx41167WZ/" class="link-url" target="_blank">
+                       20170624 【后台混采】1/4决赛赛后采访
+                    </a>
+                    <a href="https://weibo.com/5681734521/F9lmunSwa" class="link-url" target="_blank">
+                       20170624 【直播TV】半决赛赛后采访
+                    </a>
+                    <a href="https://www.bilibili.com/video/BV1gx41167a8/" class="link-url" target="_blank">
+                       20170624 【后台混采】半决赛赛后采访
+                    </a>
+                    <a href="https://weibo.com/3070740702/4122182520726043" class="link-url" target="_blank">
+                       20170624 混采图集
+                    </a>
+                    <a href="https://weibo.com/5681734521/F9sWZ5LFJ" class="link-url" target="_blank">
+                        20170625 女单决赛后新闻发布会
+                    </a>
+                </div>
+                
+                <div class="link-item">
+                    <span class="link-type">饭拍</span>
+                    <h3 class="link-title">饭拍图频</h3>
+                    <a href="https://weibo.com/6261089765/4120747661746666" class="link-url" target="_blank">
+                        20170620 女单资格赛第一轮返图
+                    </a>
+                    <a href="https://weibo.com/1979974983/4121175581714068" class="link-url" target="_blank">
+                        20170621 女单资格赛第二轮预览图
+                    </a>
+                    <a href="https://weibo.com/6037271243/4121243336514513" class="link-url" target="_blank">
+                        20170621 女单资格赛第二轮返图
+                    </a>
+                    <a href="https://weibo.com/5688621586/4121423926522298" class="link-url" target="_blank">
+                        20170622 女单赛前训练视频
+                    </a>
+                    <a href="https://weibo.com/6261089765/4121454004460603" class="link-url" target="_blank">
+                        20170622 女单赛前要泡腾片的养生包
+                    </a>
+                    <a href="https://weibo.com/1820760854/4121882087659543" class="link-url" target="_blank">
+                        20170623 女单1/8决赛预览图
+                    </a>
+                    <a href="https://weibo.com/1813218875/4121879805897656" class="link-url" target="_blank">
+                        20170623 女单1/8决赛预览图
+                    </a>
+                    <a href="https://weibo.com/6261089765/4122184584518623" class="link-url" target="_blank">
+                        20170624 女单1/4决赛入场
+                    </a>
+                    <a href="https://weibo.com/1820760854/4122310543631306" class="link-url" target="_blank">
+                        20170624 女单半决赛
+                    </a>
+                    <a href="https://weibo.com/6054490441/4122339253571838" class="link-url" target="_blank">
+                        20170624 女单半决赛
+                    </a>
+                    <a href="https://weibo.com/6261089765/4122464122337264" class="link-url" target="_blank">
+                        20170624 女单半决赛
+                    </a>
+                    <a href="https://weibo.com/6261089765/4122467792031580" class="link-url" target="_blank">
+                        20170624 女单半决赛
+                    </a>
+                    <a href="https://weibo.com/5681734521/4122535929068537" class="link-url" target="_blank">
+                        20170625 女单决赛前与波尔训练视频
+                    </a>
+                    <a href="https://weibo.com/6107697820/4122874816411253" class="link-url" target="_blank">
+                        20170625 女单决赛前与波尔训练视频2
+                    </a>
+                    <a href="https://weibo.com/1684227611/4124347506894576" class="link-url" target="_blank">
+                        20170625 女单决赛
+                    </a>
+                    <a href="https://weibo.com/3496556527/4123638720570303" class="link-url" target="_blank">
+                        20170625 女单颁奖
+                    </a>
+                    <a href="https://weibo.com/5949975985/4122620464961116" class="link-url" target="_blank">
+                        20170625 成都送机
+                    </a>
+                    <a href="https://weibo.com/1665564547/4123400950090080" class="link-url" target="_blank">
+                        20170625 成都送机
+                    </a>
+                    <a href="https://weibo.com/1577121373/4123355928184100" class="link-url" target="_blank">
+                        20170625 成都送机
+                    </a>
+                    <a href="https://weibo.com/5949975985/4123763689390812" class="link-url" target="_blank">
+                        中国公开赛
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="links-section" id="project4">
+            <div class="section-header">
+                <div class="section-header-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="section-header-content">
+                    <h2>数据仪表盘图频资源</h2>
+                    <p>数据分析仪表盘的设计、演示和教程资源</p>
+                </div>
+            </div>
+            
+            <div class="links-grid">
+                <div class="link-item">
+                    <span class="link-type">设计稿</span>
+                    <h3 class="link-title">可视化设计</h3>
+                    <p class="link-description">数据可视化组件和图表设计</p>
+                    <a href="https://example.com/project3-design" class="link-url" target="_blank">
+                        https://example.com/project3-design
+                    </a>
+                    <div class="link-date">
+                        <i class="fas fa-calendar"></i> 2023-05-22
+                    </div>
+                </div>
+                
+                <div class="link-item">
+                    <span class="link-type">视频</span>
+                    <h3 class="link-title">功能演示</h3>
+                    <p class="link-description">仪表盘核心功能演示视频</p>
+                    <a href="https://example.com/demo-video" class="link-url" target="_blank">
+                        https://example.com/demo-video
+                    </a>
+                    <div class="link-date">
+                        <i class="fas fa-calendar"></i> 2023-07-30
+                    </div>
+                </div>
+                
+                <div class="link-item">
+                    <span class="link-type">教程</span>
+                    <h3 class="link-title">使用教程</h3>
+                    <p class="link-description">仪表盘操作指南视频教程</p>
+                    <a href="https://example.com/tutorial" class="link-url" target="_blank">
+                        https://example.com/tutorial
+                    </a>
+                    <div class="link-date">
+                        <i class="fas fa-calendar"></i> 2023-09-15
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="links-section" id="project5">
+            <div class="section-header">
+                <div class="section-header-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="section-header-content">
+                    <h2>在线教育图频资源</h2>
+                    <p>教育平台的教学视频、课程设计和界面设计资源</p>
+                </div>
+            </div>
+            
+            <div class="links-grid">
+                <div class="link-item">
+                    <span class="link-type">视频</span>
+                    <h3 class="link-title">课程样片</h3>
+                    <p class="link-description">数学课程示范教学视频</p>
+                    <a href="https://example.com/math-lesson" class="link-url" target="_blank">
+                        https://example.com/math-lesson
+                    </a>
+                    <div class="link-date">
+                        <i class="fas fa-calendar"></i> 2023-03-10
+                    </div>
+                </div>
+                
+                <div class="link-item">
+                    <span class="link-type">设计稿</span>
+                    <h3 class="link-title">学习界面</h3>
+                    <p class="link-description">学生端学习界面设计稿</p>
+                    <a href="https://example.com/learning-ui" class="link-url" target="_blank">
+                        https://example.com/learning-ui
+                    </a>
+                    <div class="link-date">
+                        <i class="fas fa-calendar"></i> 2023-04-18
+                    </div>
+                </div>
+                
+                <div class="link-item">
+                    <span class="link-type">视频</span>
+                    <h3 class="link-title">教师培训</h3>
+                    <p class="link-description">教师平台使用培训视频</p>
+                    <a href="https://example.com/teacher-training" class="link-url" target="_blank">
+                        https://example.com/teacher-training
+                    </a>
+                    <div class="link-date">
+                        <i class="fas fa-calendar"></i> 2023-06-05
+                    </div>
+                </div>
+                
+                <div class="link-item">
+                    <span class="link-type">文档</span>
+                    <h3 class="link-title">课程大纲</h3>
+                    <p class="link-description">各学科详细课程大纲文档</p>
+                    <a href="https://example.com/course-outline" class="link-url" target="_blank">
+                        https://example.com/course-outline
+                    </a>
+                    <div class="link-date">
+                        <i class="fas fa-calendar"></i> 2023-05-22
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2023 项目图频链接中心 | 简洁高效的资源管理系统</p>
+            <p>共包含 4 个项目，15 个图频资源链接</p>
+        </footer>
+    </div>
+    
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // 项目选择器功能
+        const projectSelector = document.getElementById('projectSelector');
+        const sections = document.querySelectorAll('.links-section');
+        
+        projectSelector.addEventListener('change', function() {
+            const selectedProject = this.value;
+            
+            // 隐藏所有部分
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // 显示选中的部分
+            if (selectedProject) {
+                const selectedSection = document.getElementById(selectedProject);
+                selectedSection.classList.add('active');
+                
+                // 滚动到选中的部分
+                selectedSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+        
+        // 默认显示第一个项目
+        document.addEventListener('DOMContentLoaded', function() {
+            if (projectSelector.value === "") {
+                projectSelector.value = "project1";
+                document.getElementById('project1').classList.add('active');
+            }
+        });
+        
+        // 返回顶部按钮
+        const backToTopBtn = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
